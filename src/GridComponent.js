@@ -1,5 +1,4 @@
 import React ,{Component} from 'react';
-import Code from 'react-code-prettify';
 import './GridComponent.css'
 
 class GridComponent extends Component{
