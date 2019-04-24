@@ -4,6 +4,21 @@ import './GridComponent.css'
 class GridComponent extends Component {
     constructor(props) {
         super(props);
+
+        this.runCodePrettify = this.runCodePrettify.bind(this);
+    }
+
+    componentDidMount() {
+        this.runCodePrettify();
+    }
+
+    runCodePrettify() {
+        let script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+
+        script.src = 'https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
     }
 
     render() {
@@ -20,16 +35,7 @@ class GridComponent extends Component {
 
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Usage </h3>
 
-                <pre style={{
-                    backgroundColor: "#1b1717",
-                    color: "white",
-                    marginLeft: 400,
-                    marginRight: 400,
-                    borderRadius: 20,
-                    paddingLeft: 50,
-                    textAlign: "left",
-                    scrollable: "false"
-                }}>
+                <pre class="prettyprint lang-html">
                     <code>
                         <br/>
                         <p> &lt;GridComponent </p>
