@@ -5,15 +5,6 @@ import PopUpComponent from './PopUpComponent';
 import MaskComponent from './MaskComponent';
 import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import './MainComponent.css';
-import Code from 'react-code-prettify';
-
-const codeString = `function map(f, a) {
-  var result = [], // Create a new Array
-      i;
-  for (i = 0; i != a.length; i++)
-    result[i] = f(a[i]);
-  return result;
-};`;
 
 class MainComponent extends Component{
     constructor(props){
@@ -73,11 +64,6 @@ class MainComponent extends Component{
                     </Navbar.Collapse>
                 </Navbar>
                 {mainComponent}
-
-                <Code
-                    codeString={codeString}
-                    language={"javascript"}
-                />
 
             </div>
 

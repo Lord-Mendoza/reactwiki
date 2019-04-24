@@ -1,5 +1,7 @@
-#grid-container{
-    border: 1px solid black;
-    margin: 200px 100px;
-    border: 1px solid red;
+dd {
+    text-align: left;
+ }
+
+dd.col-sm-9{
+    padding-right: 125px;
 }
