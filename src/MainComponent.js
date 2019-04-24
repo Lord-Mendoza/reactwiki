@@ -3,10 +3,17 @@ import FormComponent from './FormComponent';
 import GridComponent from './GridComponent';
 import PopUpComponent from './PopUpComponent';
 import MaskComponent from './MaskComponent';
-import {Navbar, NavDropdown, Button} from 'react-bootstrap';
+import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import './MainComponent.css';
+import Code from 'react-code-prettify';
 
-
+const codeString = `function map(f, a) {
+  var result = [], // Create a new Array
+      i;
+  for (i = 0; i != a.length; i++)
+    result[i] = f(a[i]);
+  return result;
+};`;
 
 class MainComponent extends Component{
     constructor(props){
@@ -15,7 +22,7 @@ class MainComponent extends Component{
         this.state = {
             selection:"",
             copySuccess:""
-        }
+        };
 
         this.handleSelection = this.handleSelection.bind(this);
         this.copyToClipboard = this.copyToClipboard.bind(this);
@@ -34,7 +41,7 @@ class MainComponent extends Component{
         this.setState({
             copySuccess: "Copied!"
         })
-    }
+    };
 
 
     render(){
@@ -52,26 +59,26 @@ class MainComponent extends Component{
             <div>
                 <Navbar sticky="top" collapseOnSelect expand ="lg" bg="dark" variant="dark">
                     <Navbar.Brand> React Wiki </Navbar.Brand>
-                    <NavDropdown title = "Components">
-                        <NavDropdown.Item id="grid-component" onClick = {this.handleSelection} > Grid Component </NavDropdown.Item>
-                        <NavDropdown.Item id='form-component' onClick = {this.handleSelection}> Form Component </NavDropdown.Item>
-                        <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> PopUp Component </NavDropdown.Item>
-                        <NavDropdown.Item id='mask-component' onClick = {this.handleSelection}> Mask Component </NavDropdown.Item>
-                        <NavDropdown.Item id='get-package-component'> Get Package </NavDropdown.Item>
-                    </NavDropdown>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href={"./reactComponents.zip"}> Get Package </Nav.Link>
+                            <NavDropdown title = "Components">
+                                <NavDropdown.Item id="grid-component" onClick = {this.handleSelection} > Grid Component </NavDropdown.Item>
+                                <NavDropdown.Item id='form-component' onClick = {this.handleSelection}> Form Component </NavDropdown.Item>
+                                <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> PopUp Component </NavDropdown.Item>
+                                <NavDropdown.Item id='mask-component' onClick = {this.handleSelection}> Mask Component </NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Navbar>
                 {mainComponent}
 
-                <div>
-                    <button onClick = {this.copyToClipboard}>Copy</button>
-                    {this.state.copySuccess}
-                </div>
-                <form>
-                    <textarea
-                        ref={(textarea) => this.textArea = textarea}
-                        value='copy here'
-                    />
-                </form>
+                <Code
+                    codeString={codeString}
+                    language={"javascript"}
+                />
+
             </div>
 
 
