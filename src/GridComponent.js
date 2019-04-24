@@ -9,7 +9,7 @@ class GridComponent extends Component {
     render() {
         return (
             <div>
-                <h1 class="display-4">Grid Component</h1>
+                <h1 class="display-4" style={{textAlign: "left", paddingLeft: 10}}> Grid Component</h1>
 
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
