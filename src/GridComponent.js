@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import './GridComponent.css'
+import './ComponentStyling.css'
+import {Carousel} from "react-bootstrap";
 
 class GridComponent extends Component {
     constructor(props) {
@@ -26,14 +27,80 @@ class GridComponent extends Component {
             <div>
                 <h1 class="display-4" style={{textAlign: "left", paddingLeft: 10}}> Grid Component</h1>
 
-                <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
+
+                <Carousel pauseOnHover={true}>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/bare.png"
+                            alt="Render for bare"
+                        />
+                        <Carousel.Caption>
+                            <h3>viewConfig = "bare"</h3>
+                            <p>Displays only the grid & paging options.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/simple.png"
+                            alt="Render for simple"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "simple"</h3>
+                            <p>Builds on top of "bare" but provides a refresh button.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/search.png"
+                            alt="Render for search"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "search"</h3>
+                            <p>Builds on top of "simple" but provides search-by-column functionality</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/all.png"
+                            alt="Render for all"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "all"</h3>
+                            <p>Builds on top of "search" but provides options to add, edit, and delete rows.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/allnosearch.png"
+                            alt="Render for allnosearch"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "allnosearch"</h3>
+                            <p>Presents the same features of "all", but excludes search-by-column functionality.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
 
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
                 <hr/>
 
-                <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Usage </h3>
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
 
                 <pre class="prettyprint lang-html">
                     <code>
@@ -110,7 +177,7 @@ class GridComponent extends Component {
                 {/*====================== Additional Section ======================*/}
 
                 <hr width={"90%"}/>
-                <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional customizations </h5>
+                <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customizations </h5>
 
                 {/*-----Next Entry-----*/}
 

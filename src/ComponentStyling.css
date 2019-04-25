@@ -6,6 +6,26 @@ dd.col-sm-9{
     padding-right: 125px;
 }
 
+div.carousel-caption{
+    color: black;
+    position: relative;
+    left: auto;
+    right: auto;
+}
+
+ol.carousel-indicators{
+    background-color: black;
+}
+
+div.carousel.slide{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+pre.prettyprint.lang-html.prettyprinted{
+    width: 50%;
+}
+
 /* Pretty printing styles. Used with prettify.js. */
 /* Vim sunburst theme by David Leibovic */
 
