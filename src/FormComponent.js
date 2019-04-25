@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
 import './ComponentStyling.css';
 import {Carousel} from "react-bootstrap";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class FormComponent extends Component{
     constructor(props){
@@ -25,7 +26,30 @@ class FormComponent extends Component{
             <div>
                 <div>
 
-                    <h1 className="display-4" style={{textAlign: "left", paddingLeft: 10}}>Form Component</h1>
+                    <h1 className="display-4" style={{textAlign: "center"}}>Form Component</h1>
+
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
+
+                    <ul className="nav flex-column" style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#prereq">Pre-Requisites</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#demo">Demonstration</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#implementation">Sample Implementation</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#api">APIs</a>
+                        </li>
+                    </ul>
+
+                    {/*=======================================================
+                    ====================== Next Section ======================
+                    =======================================================*/}
+                    <section id={"prereq"}> </section>
+                    <hr />
 
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
@@ -55,7 +79,8 @@ class FormComponent extends Component{
                     {/*=======================================================
                        ====================== Next Section ===================
                        =======================================================*/}
-                    <hr/>
+                    <section id={"demo"}> </section>
+                    <hr />
 
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
@@ -112,7 +137,8 @@ class FormComponent extends Component{
                     {/*=======================================================
                     ====================== Next Section ======================
                     =======================================================*/}
-                    <hr/>
+                    <section id={"implementation"}> </section>
+                    <hr />
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
 
                     <pre className="prettyprint lang-html">
@@ -135,7 +161,8 @@ class FormComponent extends Component{
                     {/*=======================================================
                     ====================== Next Section ======================
                     =======================================================*/}
-                    <hr/>
+                    <section id={"api"}> </section>
+                    <hr />
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
 
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
@@ -227,6 +254,7 @@ class FormComponent extends Component{
                         <dd className="col-sm-9" style={{textAlign: "left"}}> FormComponent does not directly handle validating forms as to allow flexibility & prevent too much customized design.</dd>
                     </dl>
 
+                    <ScrollUpButton showAtPosition={300}/>
                 </div>
             </div>
         );

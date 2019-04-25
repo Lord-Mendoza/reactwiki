@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './ComponentStyling.css'
 import {Carousel} from "react-bootstrap";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+
 
 class GridComponent extends Component {
     constructor(props) {
@@ -25,8 +27,30 @@ class GridComponent extends Component {
     render() {
         return (
             <div>
-                <h1 class="display-4" style={{textAlign: "left", paddingLeft: 10}}> Grid Component</h1>
+                <h1 class="display-4" style={{textAlign: "center"}}>Grid Component</h1>
 
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
+
+                <ul className="nav flex-column" style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#prereq">Pre-Requisites</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#configs">Available Configurations</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#implementation">Sample Implementation</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#api">APIs</a>
+                    </li>
+                </ul>
+
+                {/*=======================================================
+                ====================== Next Section ======================
+                =======================================================*/}
+                <section id={"prereq"}> </section>
+                <hr />
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
                 <div style={{textAlign: "left", paddingLeft: 70}}>
@@ -57,7 +81,8 @@ class GridComponent extends Component {
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
-                <hr/>
+                <section id={"configs"}> </section>
+                <hr />
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
                 <Carousel pauseOnHover={true}>
@@ -129,7 +154,8 @@ class GridComponent extends Component {
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
-                <hr/>
+                <section id={"implementation"}> </section>
+                <hr />
 
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
 
@@ -166,7 +192,8 @@ class GridComponent extends Component {
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
-                <hr/>
+                <section id={"api"}> </section>
+                <hr />
 
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
 
@@ -517,6 +544,7 @@ class GridComponent extends Component {
                     <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
                 </dl>
 
+                <ScrollUpButton showAtPosition={300}/>
             </div>
         );
     }
