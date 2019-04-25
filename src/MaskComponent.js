@@ -25,6 +25,35 @@ class MaskComponent extends Component{
             <div>
                 <h1 className="display-4" style={{textAlign: "left", paddingLeft: 10}}>Mask Component</h1>
 
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
+
+                <div style={{textAlign: "left", paddingLeft: 70}}>
+                    <p> You need to include the following on your package.json </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp>
+                            <p>&#34;dependencies&#34;: 	&#123;</p>
+                            <p>&#8220;react-bootstrap&#8221;	&#58; &#8220;^1.0.0-beta.5&#8221;,</p>
+                            <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
+                            <p>&#125;</p>
+                        </samp>
+                    </div>
+
+                    <p> Then on your index.js file include: </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
+                    </div>
+
+                    <br/>
+                    <p> Lastly, import the FormComponent for use: </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp> import MaskComponent from "./MaskComponent"; </samp>
+                    </div>
+                </div>
+
+                {/*=======================================================
+                       ====================== Next Section ===================
+                       =======================================================*/}
+                <hr/>
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
                 <Image
