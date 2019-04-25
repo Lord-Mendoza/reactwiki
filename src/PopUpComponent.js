@@ -1,30 +1,93 @@
 import React ,{Component} from 'react';
 import './ComponentStyling.css';
-import {Carousel} from "react-bootstrap";
+import {Carousel, Image} from "react-bootstrap";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class PopUpComponent extends Component{
     constructor(props){
         super(props);
     }
 
+    componentDidMount() {
+        this.runCodePrettify();
+    }
+
+    runCodePrettify() {
+        let script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+
+        script.src = 'https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    }
+
     render(){
         return(
             <div>
 
-                <h1 className="display-4" style={{textAlign: "left", paddingLeft: 10}}>PopUp Component</h1>
+                <h1 className="display-4" style={{textAlign: "center"}}>PopUp Component</h1>
+
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
+
+                <ul className="nav flex-column" style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#prereq">Pre-Requisites</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#configs">Available Configurations</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#implementation">Sample Implementation</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#api">APIs</a>
+                    </li>
+                </ul>
 
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
-                <hr/>
+                <section id={"prereq"}> </section>
+                <hr />
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
+
+                <div style={{textAlign: "left", paddingLeft: 70}}>
+                    <p> You need to include the following on your package.json </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp>
+                            <p>&#34;dependencies&#34;: 	&#123;</p>
+                            <p>&#8220;react-bootstrap&#8221;	&#58; &#8220;^1.0.0-beta.5&#8221;,</p>
+                            <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
+                            <p>&#125;</p>
+                        </samp>
+                    </div>
+
+                    <p> Then on your index.js file include: </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
+                    </div>
+
+                    <br/>
+                    <p> Lastly, import the PopupComponent for use: </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp> import PopupComponent from "./PopupComponent"; </samp>
+                    </div>
+                </div>
+
+                {/*=======================================================
+                ====================== Next Section ======================
+                =======================================================*/}
+                <section id={"configs"}> </section>
+                <hr />
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
                 <Carousel pauseOnHover={true}>
                     <Carousel.Item>
-                        <img
+                        <Image
                             className="d-block w-100"
                             src="/closeOnly.png"
                             alt="Render for closeOnly"
+                            style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                         />
                         <Carousel.Caption>
                             <h3>footerConfig = "closeOnly"</h3>
@@ -33,67 +96,93 @@ class PopUpComponent extends Component{
                     </Carousel.Item>
 
                     <Carousel.Item>
-                        <img
+                        <Image
                             className="d-block w-100"
-                            src="/simple.png"
+                            src="/submit.png"
                             alt="Render for simple"
+                            style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                         />
 
                         <Carousel.Caption>
-                            <h3>viewConfig = "simple"</h3>
-                            <p>Builds on top of "bare" but provides a refresh button.</p>
+                            <h3>footerConfig = "submit"</h3>
+                            <p>Displays a submit button along with a close button.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
-                        <img
+                        <Image
                             className="d-block w-100"
-                            src="/search.png"
+                            src="/popupall.png"
                             alt="Render for search"
+                            style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                         />
 
                         <Carousel.Caption>
-                            <h3>viewConfig = "search"</h3>
-                            <p>Builds on top of "simple" but provides search-by-column functionality</p>
+                            <h3>footerConfig = "all"</h3>
+                            <p>Displays the close, reset, and submit buttons (ideal for forms).</p>
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
-                        <img
+                        <Image
                             className="d-block w-100"
-                            src="/all.png"
+                            src="/custom.png"
                             alt="Render for all"
+                            style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                         />
 
                         <Carousel.Caption>
-                            <h3>viewConfig = "all"</h3>
-                            <p>Builds on top of "search" but provides options to add, edit, and delete rows.</p>
+                            <h3>footerConfig = "custom"</h3>
+                            <p>You can define what appears on the footer section.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
 
                     <Carousel.Item>
-                        <img
+                        <Image
                             className="d-block w-100"
-                            src="/allnosearch.png"
-                            alt="Render for allnosearch"
+                            src="/formInside.png"
+                            alt="Render for all with a form as the content"
+                            style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                         />
 
                         <Carousel.Caption>
-                            <h3>viewConfig = "allnosearch"</h3>
-                            <p>Presents the same features of "all", but excludes search-by-column functionality.</p>
+                            <h4>You can utilize the content portion of the popup to have another component.</h4>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
 
+                {/*=======================================================
+                   ====================== Next Section ===================
+                   =======================================================*/}
+                <section id={"implementation"}> </section>
+                <hr />
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
 
-                <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Usage </h3>
+                <pre className="prettyprint lang-html">
+                    <code>
+                        <br/>
+                        <p> &lt;PopupComponent </p>
+                        <p>     //Required Ones </p>
+                        <p>     header=&#123;"Title"&#125;</p>
+                        <p>     content=&#123;"Message here"&#125;</p>
+                        <p>     footerConfig=&#123;"all"&#125;</p>
+                        <br/>
 
-                <div className="highlight">
-                <pre><code>&lt;PopUpComponent/&gt;;
-                </code></pre>
-                </div>
+                        <p>     //Optional One </p>
+                        <p>     resetToggled=&#123;this.handleReset&#125; </p>
+                        <p>     submitToggled=&#123;this.handleSubmit&#125; </p>
+                        /&gt;
+                    </code>
+                </pre>
 
+                {/*=======================================================
+                ====================== Next Section ======================
+                =======================================================*/}
+                <section id={"api"}> </section>
+                <hr />
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
+                <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
+
                 <dl className = "row">
                     <dt className="col-sm-3"> Name </dt>
                     <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> header</dd>
@@ -108,7 +197,8 @@ class PopUpComponent extends Component{
                     <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
                 </dl>
 
-                <hr width={"50%"}/>
+                {/*-----Next Entry-----*/}
+                <hr width={"85%"}/>
 
                 <dl className = "row">
                     <dt className="col-sm-3"> Name </dt>
@@ -124,7 +214,8 @@ class PopUpComponent extends Component{
                     <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
                 </dl>
 
-                <hr width={"50%"}/>
+                {/*-----Next Entry-----*/}
+                <hr width={"85%"}/>
 
                 <dl className = "row">
                     <dt className="col-sm-3"> Name </dt>
@@ -149,7 +240,10 @@ class PopUpComponent extends Component{
                     <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
                 </dl>
 
-                <hr width={"50%"}/>
+                {/*====================== Additional Section ======================*/}
+
+                <hr width={"90%"}/>
+                <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customization </h5>
 
                 <dl className = "row">
                     <dt className="col-sm-3"> Name </dt>
@@ -165,7 +259,8 @@ class PopUpComponent extends Component{
                     <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
                 </dl>
 
-                <hr width={"50%"}/>
+                {/*-----Next Entry-----*/}
+                <hr width={"85%"}/>
 
                 <dl className = "row">
                     <dt className="col-sm-3"> Name </dt>
@@ -182,6 +277,8 @@ class PopUpComponent extends Component{
                     <dt className="col-sm-3"> Example </dt>
                     <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
                 </dl>
+
+                <ScrollUpButton showAtPosition={300}/>
             </div>
         );
     }

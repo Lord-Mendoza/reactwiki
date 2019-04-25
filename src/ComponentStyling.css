@@ -1,6 +1,6 @@
 dd {
     text-align: left;
- }
+}
 
 dd.col-sm-9{
     padding-right: 125px;
@@ -21,6 +21,15 @@ div.carousel.slide{
     padding-left: 60px;
     padding-right: 60px;
 }
+
+section[id]:before {
+    display: block;
+    height: 30px;   /* equal to the header height */
+    margin-top: -30px;  /* negative margin equal to the header height */
+    visibility: hidden;
+    content: "";
+}
+
 
 pre.prettyprint.lang-html.prettyprinted{
     width: 50%;

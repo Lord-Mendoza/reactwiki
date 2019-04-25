@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
 import './ComponentStyling.css';
 import {Image} from "react-bootstrap";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class MaskComponent extends Component{
     constructor(props){
@@ -23,7 +24,30 @@ class MaskComponent extends Component{
     render(){
         return(
             <div>
-                <h1 className="display-4" style={{textAlign: "left", paddingLeft: 10}}>Mask Component</h1>
+                <h1 className="display-4" style={{textAlign: "center"}}>Mask Component</h1>
+
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
+
+                <ul className="nav flex-column" style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#prereq">Pre-Requisites</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#demo">Demonstration</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#implementation">Sample Implementation</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#api">APIs</a>
+                    </li>
+                </ul>
+
+                {/*=======================================================
+                ====================== Next Section ======================
+                =======================================================*/}
+                <section id={"prereq"}> </section>
+                <hr/>
 
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
@@ -51,9 +75,10 @@ class MaskComponent extends Component{
                 </div>
 
                 {/*=======================================================
-                       ====================== Next Section ===================
-                       =======================================================*/}
-                <hr/>
+                   ====================== Next Section ===================
+                   =======================================================*/}
+                <section id={"demo"}> </section>
+                <hr />
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
                 <Image
@@ -65,7 +90,8 @@ class MaskComponent extends Component{
                 {/*=======================================================
                    ====================== Next Section ===================
                    =======================================================*/}
-                <hr/>
+                <section id={"implementation"}> </section>
+                <hr />
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
 
                 <pre className="prettyprint lang-html">
@@ -87,7 +113,8 @@ class MaskComponent extends Component{
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
-                <hr/>
+                <section id={"api"}> </section>
+                <hr />
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
 
                 <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
@@ -148,6 +175,8 @@ class MaskComponent extends Component{
                     <dt className="col-sm-3"> Values </dt>
                     <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean </dd>
                 </dl>
+
+                <ScrollUpButton showAtPosition={300}/>
             </div>
         );
     }

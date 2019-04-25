@@ -36,7 +36,7 @@ class MainComponent extends Component{
 
 
     render(){
-        let mainComponent = <PopUpComponent/>;
+        let mainComponent = <GridComponent/>;
         if(this.state.selection === "grid-component"){
             mainComponent = <GridComponent />
         } else if (this.state.selection === "form-component"){
