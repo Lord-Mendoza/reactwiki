@@ -27,6 +27,37 @@ class GridComponent extends Component {
             <div>
                 <h1 class="display-4" style={{textAlign: "left", paddingLeft: 10}}> Grid Component</h1>
 
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
+
+                <div style={{textAlign: "left", paddingLeft: 70}}>
+                    <p> You need to include the following on your package.json </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp>
+                            <p>&#34;dependencies&#34;: 	&#123;</p>
+                            <p>&#8220;@devexpress/dx-react-core&#8221;	&#58; &#8220;^1.10.1&#8221;,</p>
+                            <p>&#8220;@devexpress/dx-react-grid&#8221;	&#58; &#8220;^1.10.1&#8221;,</p>
+                            <p>&#8220;@devexpress/dx-react-grid-bootstrap4&#8221;	&#58; &#8220;^1.10.5&#8221;,</p>
+                            <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
+                            <p>&#125;</p>
+                        </samp>
+                    </div>
+
+                    <p> Then on your index.js file include: </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
+                    </div>
+
+                    <br/>
+                    <p> Lastly, import the GridComponent for use: </p>
+                    <div style={{paddingLeft: 80}}>
+                        <samp> import GridComponent from "./GridComponent" </samp>
+                    </div>
+                </div>
+
+                {/*=======================================================
+                ====================== Next Section ======================
+                =======================================================*/}
+                <hr/>
                 <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
                 <Carousel pauseOnHover={true}>
