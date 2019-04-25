@@ -1,5 +1,6 @@
 import React ,{Component} from 'react';
-import './PopUpComponent.css';
+import './ComponentStyling.css';
+import {Carousel} from "react-bootstrap";
 
 class PopUpComponent extends Component{
     constructor(props){
@@ -9,11 +10,77 @@ class PopUpComponent extends Component{
     render(){
         return(
             <div>
-                <h2>PopUp Component</h2>
-                Where does it come from?
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                {/*=======================================================
+                ====================== Next Section ======================
+                =======================================================*/}
+                <hr/>
+                <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
-                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                <Carousel pauseOnHover={true}>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/closeOnly.png"
+                            alt="Render for closeOnly"
+                        />
+                        <Carousel.Caption>
+                            <h3>footerConfig = "closeOnly"</h3>
+                            <p>Displays only a close button.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/simple.png"
+                            alt="Render for simple"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "simple"</h3>
+                            <p>Builds on top of "bare" but provides a refresh button.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/search.png"
+                            alt="Render for search"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "search"</h3>
+                            <p>Builds on top of "simple" but provides search-by-column functionality</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/all.png"
+                            alt="Render for all"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "all"</h3>
+                            <p>Builds on top of "search" but provides options to add, edit, and delete rows.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/allnosearch.png"
+                            alt="Render for allnosearch"
+                        />
+
+                        <Carousel.Caption>
+                            <h3>viewConfig = "allnosearch"</h3>
+                            <p>Presents the same features of "all", but excludes search-by-column functionality.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
             </div>
         );
     }
