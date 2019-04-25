@@ -36,7 +36,7 @@ class MainComponent extends Component{
 
 
     render(){
-        let mainComponent;
+        let mainComponent = <FormComponent/>;
         if(this.state.selection === "grid-component"){
             mainComponent = <GridComponent />
         } else if (this.state.selection === "form-component"){
@@ -53,13 +53,13 @@ class MainComponent extends Component{
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link href={"./reactComponents.zip"}> Get Package </Nav.Link>
                             <NavDropdown title = "Components">
                                 <NavDropdown.Item id="grid-component" onClick = {this.handleSelection} > Grid Component </NavDropdown.Item>
                                 <NavDropdown.Item id='form-component' onClick = {this.handleSelection}> Form Component </NavDropdown.Item>
                                 <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> PopUp Component </NavDropdown.Item>
                                 <NavDropdown.Item id='mask-component' onClick = {this.handleSelection}> Mask Component </NavDropdown.Item>
                             </NavDropdown>
+                            <Nav.Link href={"./reactComponents.zip"}> Get Package </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

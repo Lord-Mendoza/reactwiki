@@ -1,9 +1,23 @@
 import React ,{Component} from 'react';
-import './FormComponent.css';
+import './ComponentStyling.css';
+import {Carousel} from "react-bootstrap";
 
 class FormComponent extends Component{
     constructor(props){
         super(props);
+    }
+
+    componentDidMount() {
+        this.runCodePrettify();
+    }
+
+    runCodePrettify() {
+        let script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+
+        script.src = 'https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
     }
 
     render(){
@@ -15,36 +29,110 @@ class FormComponent extends Component{
 
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
+                    <Carousel pauseOnHover={true}>
+                        <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/formcode.png"
+                            alt="Code for rendering form"
+                        />
 
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Usage </h3>
+                        <Carousel.Caption>
+                            <h4>Setting form labels, types, as well as options for the select type.</h4>
+                        </Carousel.Caption>
+                    </Carousel.Item>
 
-                    <div className="highlight">
-                    <pre><code>&lt;FormComponent/&gt;;
-                    </code></pre>
-                    </div>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="/form.png"
+                                alt="Render for form as configured"
+                            />
 
+                            <Carousel.Caption>
+                                <h4>Rendering the form in accordance to the configuration.</h4>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="/formcodeinvalid.png"
+                                alt="Code for rendering form"
+                            />
+
+                            <Carousel.Caption>
+                                <h4>If certain labels are specified to be marked as invalid in the code...</h4>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="/forminvalid.png"
+                                alt="Render for form as configured"
+                            />
+
+                            <Carousel.Caption>
+                                <h4>...then they'll be rendered with a red outline, highlighting invalid inputs to the user. </h4>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
+
+                    {/*=======================================================
+                    ====================== Next Section ======================
+                    =======================================================*/}
+                    <hr/>
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
+
+                    <pre className="prettyprint lang-html">
+                    <code>
+                        <br/>
+                        <p> &lt;FormComponent </p>
+                        <p>     //Required Ones </p>
+                        <p>     configuration=&#123;this.state.configuration&#125;</p>
+                        <p>     formValues=&#123;this.getFormValues&#125;</p>
+                        <p>     submitForm=&#123;this.state.toggleSubmit&#125;</p>
+                        <p>     clearForm=&#123;this.state.toggleClear&#125;</p>
+                        <br/>
+
+                        <p>     //Optional One </p>
+                        <p>     markInvalid=&#123;this.state.invalid&#125; </p>
+                        /&gt;
+                    </code>
+                </pre>
+
+                    {/*=======================================================
+                    ====================== Next Section ======================
+                    =======================================================*/}
+                    <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
+
+                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
+
                     <dl className = "row">
                         <dt className="col-sm-3"> Name </dt>
                         <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> configuration</dd>
 
                         <dt className="col-sm-3"> Description </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
-                            <p>The list of form components to be generated where the label, type, placeholder and options (if applicable) are defined for each component.</p>
-                            <p>Notes:
-                                -Placeholder is an available option only to text-based form components. </p>
-                            <p>-When using the “select” type, the options property needs to be specified to render the available options of the select box.
-                                See example for sample usage. </p>
-                        </dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> The list of form components to be generated where the label, type, placeholder and options (if applicable) are defined for each component.</dd>
 
-                        <dt className="col-sm-3"> Values </dt>
+                        <dt className="col-sm-3"> Value </dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> An array of JSON objects</dd>
 
-                        <dt className="col-sm-3"> Example </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                        <dt className="col-sm-3"> Notes </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <ul style={{textAlign: "left", listStyleType: "none", paddingLeft: "0px"}}>
+                                <li>i. Placeholder is an available option only to text-based form components.</li>
+                                <li>ii. When using the “select” type, the options property needs to be specified to render the available options of the select box.</li>
+                            </ul>
+                        </dd>
+
+
                     </dl>
 
-                    <hr width={"50%"}/>
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
 
                     <dl className = "row">
                         <dt className="col-sm-3"> Name </dt>
@@ -53,33 +141,29 @@ class FormComponent extends Component{
                         <dt className="col-sm-3"> Description </dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> This property uses the supplied callback function to pass the form values as typed by the user. </dd>
 
-                        <dt className="col-sm-3"> Values </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function </dd>
-
-                        <dt className="col-sm-3"> Example </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                        <dt className="col-sm-3"> Value </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Callback function </dd>
                     </dl>
 
-                    <hr width={"50%"}/>
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
 
                     <dl className = "row">
                         <dt className="col-sm-3"> Name </dt>
                         <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> submitForm</dd>
 
                         <dt className="col-sm-3"> Description </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
-                            <p>Toggles the FormComponent to submit the retrieved values from the user through the formValues callback function.</p>
-                            <p>Note: This will not clear the form.</p>
-                        </dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Toggles the FormComponent to submit the retrieved values from the user through the formValues callback function. </dd>
 
-                        <dt className="col-sm-3"> Values </dt>
+                        <dt className="col-sm-3"> Value </dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean </dd>
 
-                        <dt className="col-sm-3"> Example </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                        <dt className="col-sm-3"> Notes </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Toggling this will not clear the form.</dd>
                     </dl>
 
-                    <hr width={"50%"}/>
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
 
                     <dl className = "row">
                         <dt className="col-sm-3"> Name </dt>
@@ -88,14 +172,14 @@ class FormComponent extends Component{
                         <dt className="col-sm-3"> Description </dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> Toggles the FormComponent to clear the form. </dd>
 
-                        <dt className="col-sm-3"> Values </dt>
+                        <dt className="col-sm-3"> Value </dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean </dd>
-
-                        <dt className="col-sm-3"> Example </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
                     </dl>
 
-                    <hr width={"50%"}/>
+                    {/*====================== Additional Section ======================*/}
+
+                    <hr width={"90%"}/>
+                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customization </h5>
 
                     <dl className = "row">
                         <dt className="col-sm-3"> Name </dt>
@@ -104,14 +188,13 @@ class FormComponent extends Component{
                         <dt className="col-sm-3"> Description </dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}>
                             <p>This property is used by FormComponent to filter out the components that are invalid. Once marked invalid, the form component will have a red on its surrounding, highlighting to the user where they need to revise their entry.</p>
-                            <p>Note: FormComponent does not directly handle validating forms as to allow flexibility & prevent too much customized design. </p>
                         </dd>
 
-                        <dt className="col-sm-3"> Values </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> An array </dd>
+                        <dt className="col-sm-3"> Value </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> An array of strings </dd>
 
-                        <dt className="col-sm-3"> Example </dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> [ “Full name”, “Date of birth”] </dd>
+                        <dt className="col-sm-3"> Notes </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> FormComponent does not directly handle validating forms as to allow flexibility & prevent too much customized design.</dd>
                     </dl>
 
                 </div>
