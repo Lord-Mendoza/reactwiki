@@ -94,7 +94,7 @@ class GridComponent extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="/bare.png"
+                                src="./bare.png"
                                 alt="Render for bare"
                             />
                             <Carousel.Caption>
@@ -106,7 +106,7 @@ class GridComponent extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="/simple.png"
+                                src="./simple.png"
                                 alt="Render for simple"
                             />
 
@@ -119,7 +119,7 @@ class GridComponent extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="/search.png"
+                                src="./search.png"
                                 alt="Render for search"
                             />
 
@@ -132,7 +132,7 @@ class GridComponent extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="/all.png"
+                                src="./all.png"
                                 alt="Render for all"
                             />
 
@@ -145,7 +145,7 @@ class GridComponent extends Component {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
-                                src="/allnosearch.png"
+                                src="./allnosearch.png"
                                 alt="Render for allnosearch"
                             />
 

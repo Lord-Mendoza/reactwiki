@@ -89,7 +89,7 @@ class FormComponent extends Component {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="/formcode.png"
+                                    src="./formcode.png"
                                     alt="Code for rendering form"
                                 />
 
@@ -101,7 +101,7 @@ class FormComponent extends Component {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="/form.png"
+                                    src="./form.png"
                                     alt="Render for form as configured"
                                 />
 
@@ -113,7 +113,7 @@ class FormComponent extends Component {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="/formcodeinvalid.png"
+                                    src="./formcodeinvalid.png"
                                     alt="Code for rendering form"
                                 />
 
@@ -125,7 +125,7 @@ class FormComponent extends Component {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="/forminvalid.png"
+                                    src="./forminvalid.png"
                                     alt="Render for form as configured"
                                 />
 

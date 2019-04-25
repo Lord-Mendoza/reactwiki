@@ -83,7 +83,7 @@ class MaskComponent extends Component {
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
                     <Image
-                        src="/maskcomponent.gif"
+                        src="./maskcomponent.gif"
                         alt="Code for rendering form"
                         style={{width: "50%"}}
                     />
