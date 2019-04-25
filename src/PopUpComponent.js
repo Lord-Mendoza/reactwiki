@@ -86,7 +86,7 @@ class PopUpComponent extends Component {
                         <Carousel.Item>
                             <Image
                                 className="d-block w-100"
-                                src="/closeOnly.png"
+                                src="./closeOnly.png"
                                 alt="Render for closeOnly"
                                 style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
@@ -99,7 +99,7 @@ class PopUpComponent extends Component {
                         <Carousel.Item>
                             <Image
                                 className="d-block w-100"
-                                src="/submit.png"
+                                src="./submit.png"
                                 alt="Render for simple"
                                 style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
@@ -113,7 +113,7 @@ class PopUpComponent extends Component {
                         <Carousel.Item>
                             <Image
                                 className="d-block w-100"
-                                src="/popupall.png"
+                                src="./popupall.png"
                                 alt="Render for search"
                                 style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
@@ -127,7 +127,7 @@ class PopUpComponent extends Component {
                         <Carousel.Item>
                             <Image
                                 className="d-block w-100"
-                                src="/custom.png"
+                                src="./custom.png"
                                 alt="Render for all"
                                 style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
@@ -141,7 +141,7 @@ class PopUpComponent extends Component {
                         <Carousel.Item>
                             <Image
                                 className="d-block w-100"
-                                src="/formInside.png"
+                                src="./formInside.png"
                                 alt="Render for all with a form as the content"
                                 style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
