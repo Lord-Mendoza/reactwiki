@@ -28,22 +28,25 @@ class FormComponent extends Component {
 
                     <h1 className="display-4" style={{textAlign: "center"}}>Form Component</h1>
 
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
+                    <section data-aos={"fade-right"} data-aos-delay={"300"}>
+                        <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
 
-                    <ul className="nav flex-column" style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#prereq">Pre-Requisites</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#demo">Demonstration</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#implementation">Sample Implementation</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#api">APIs</a>
-                        </li>
-                    </ul>
+                        <ul className="nav flex-column"
+                            style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#prereq">Pre-Requisites</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#demo">Demonstration</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#implementation">Sample Implementation</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#api">APIs</a>
+                            </li>
+                        </ul>
+                    </section>
 
                     {/*=======================================================
                     ====================== Next Section ======================
