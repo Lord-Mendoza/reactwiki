@@ -9,11 +9,111 @@ class PopUpComponent extends Component{
     render(){
         return(
             <div>
-                <h2>PopUp Component</h2>
-                Where does it come from?
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                <div>
 
-                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                    <h1 className="display-4" style={{textAlign: "left", paddingLeft: 10}}>PopUp Component</h1>
+
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
+
+
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Usage </h3>
+
+                    <div className="highlight">
+                    <pre><code>&lt;PopUpComponent/&gt;;
+                    </code></pre>
+                    </div>
+
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
+                    <dl className = "row">
+                        <dt className="col-sm-3"> Name </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> header</dd>
+
+                        <dt className="col-sm-3"> Description </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> The title of the popup. </dd>
+
+                        <dt className="col-sm-3"> Values </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string.</dd>
+
+                        <dt className="col-sm-3"> Example </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                    </dl>
+
+                    <hr width={"50%"}/>
+
+                    <dl className = "row">
+                        <dt className="col-sm-3"> Name </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> content</dd>
+
+                        <dt className="col-sm-3"> Description </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> The content of the popup. PopupComponent offers flexibility on the content, such as placing another component (ex. FormComponent) inside. </dd>
+
+                        <dt className="col-sm-3"> Values </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> An object </dd>
+
+                        <dt className="col-sm-3"> Example </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                    </dl>
+
+                    <hr width={"50%"}/>
+
+                    <dl className = "row">
+                        <dt className="col-sm-3"> Name </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> footerConfig</dd>
+
+                        <dt className="col-sm-3"> Description </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            The buttons to appear at the foot of the popup.
+                            Note: providing the value of “custom” requires for customFooter to be defined
+                        </dd>
+
+                        <dt className="col-sm-3"> Values </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <p>A string of either</p>
+                            <p>i. “custom” = giving the developer the option to define their own buttons in the footer</p>
+                            <p>ii. “closeOnly” = renders only a close button to close the popup.</p>
+                            <p>iii. “submit” = renders a close button as well as submit button.</p>
+                            <p>iv. “all” = renders a close, reset, & submit button. Ideal for forms</p>
+                        </dd>
+
+                        <dt className="col-sm-3"> Example </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                    </dl>
+
+                    <hr width={"50%"}/>
+
+                    <dl className = "row">
+                        <dt className="col-sm-3"> Name </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> resetToggled</dd>
+
+                        <dt className="col-sm-3"> Description </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> When “footerConfig” is set to “all”, this must be included to respond to the user's desire to reset what's placed in the content body. </dd>
+
+                        <dt className="col-sm-3"> Values </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function </dd>
+
+                        <dt className="col-sm-3"> Example </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                    </dl>
+
+                    <hr width={"50%"}/>
+
+                    <dl className = "row">
+                        <dt className="col-sm-3"> Name </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> submitToggled</dd>
+
+                        <dt className="col-sm-3"> Description </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            When “footerConfig” is set to “all” or “submit”, this must be included to respond to the user's desire to submit what's placed in the content body.
+                        </dd>
+
+                        <dt className="col-sm-3"> Values </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function </dd>
+
+                        <dt className="col-sm-3"> Example </dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example </dd>
+                    </dl>
+
+                </div>
             </div>
         );
     }
