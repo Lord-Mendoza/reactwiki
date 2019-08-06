@@ -62,9 +62,9 @@ class GridComponent extends Component {
                         <div style={{paddingLeft: 80}}>
                             <samp>
                                 <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p>&#8220;@devexpress/dx-react-core&#8221;    &#58; &#8220;^1.10.1&#8221;,</p>
-                                <p>&#8220;@devexpress/dx-react-grid&#8221;    &#58; &#8220;^1.10.1&#8221;,</p>
-                                <p>&#8220;@devexpress/dx-react-grid-bootstrap4&#8221;    &#58; &#8220;^1.10.5&#8221;,</p>
+                                <p>&#8220;@devexpress/dx-react-core&#8221;    &#58; &#8220;^1.11.0&#8221;,</p>
+                                <p>&#8220;@devexpress/dx-react-grid&#8221;    &#58; &#8220;^1.11.0&#8221;,</p>
+                                <p>&#8220;@devexpress/dx-react-grid-bootstrap4&#8221;    &#58; &#8220;^1.11.0&#8221;,</p>
                                 <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
@@ -216,7 +216,7 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"> an array of strings</dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9"></dd>
+                        <dd className="col-sm-9"> columns=&#123;["Name", "Age"]&#125;</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -233,10 +233,10 @@ class GridComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> json array whose keys corresponds to the columns prop.</dd>
+                        <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop. Note the lack of quotation marks around the keys.</dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9"></dd>
+                        <dd className="col-sm-9">rows=&#123; [ &#123;Name: "Sarah", Age: "24"&#125;, &#123;Name: "Sam", Age: "32"&#125; ] &#125;</dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
@@ -269,7 +269,7 @@ class GridComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9"> "simple"</dd>
+                        <dd className="col-sm-9"> "bare"</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -307,7 +307,7 @@ class GridComponent extends Component {
 
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9">a function called by GridComponent to pass the values that the
-                            users have selected to the parent component; this will return an array of json object(s)
+                            users have selected to the parent component; this will return an array of JSON object(s)
                             that
                             corresponds to the ones provided in the rows prop.
                         </dd>
@@ -485,7 +485,7 @@ class GridComponent extends Component {
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9"> retrieves the rows that the user opted to delete. The callback
                             function
-                            will be called with a parameter containing an array of json objects corresponding to the
+                            will be called with a parameter containing an array of JSON objects corresponding to the
                             rows
                             provided in “rows” prop.
                         </dd>
@@ -506,7 +506,7 @@ class GridComponent extends Component {
 
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9"> retrieves the row that has been edited. The callback function will be
-                            called with a parameter containing an array of json objects where the first element is a row
+                            called with a parameter containing an array of JSON objects where the first element is a row
                             corresponding to one of the rows in the “row” prop, and the second element being the changes
                             made to that row.
                         </dd>
