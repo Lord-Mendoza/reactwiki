@@ -4,10 +4,6 @@ import {Image} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class MaskComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.runCodePrettify();
     }

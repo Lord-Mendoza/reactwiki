@@ -4,10 +4,6 @@ import {Carousel, Image} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class PopUpComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.runCodePrettify();
     }
@@ -56,7 +52,7 @@ class PopUpComponent extends Component {
                         <div style={{paddingLeft: 80}}>
                             <samp>
                                 <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p>&#8220;react-bootstrap&#8221;    &#58; &#8220;^1.0.0-beta.5&#8221;,</p>
+                                <p>&#8220;react-bootstrap&#8221;    &#58; &#8220;^1.0.0-beta.9&#8221;,</p>
                                 <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
@@ -194,7 +190,7 @@ class PopUpComponent extends Component {
                         <dd className="col-sm-9" style={{textAlign: "left"}}> The title of the popup.</dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string.</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
 
                         <dt className="col-sm-3"> Example</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example</dd>
