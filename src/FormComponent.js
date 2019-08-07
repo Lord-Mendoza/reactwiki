@@ -185,9 +185,11 @@ class FormComponent extends Component {
                             <dd className="col-sm-9" style={{textAlign: "left"}}> An array of JSON objects</dd>
 
                             <dt className="col-sm-3"> Example</dt>
-                            <dd className="col-sm-9"> configuration = &#123; [ &#123;name: "Full Name", type: "text", placeholder: "required"&#125;,
-                                &#123;name: "Date of Birth", type: "date"&#125;,
-                                &#123;name: "College Year", type: "select", options: ["Freshman", "Sophomore"]&#125;
+                            <dd className="col-sm-9">
+                                <p> configuration = &#123; [ </p>
+                                <p> &#123; name: "Full Name", type: "text", placeholder: "required"&#125;, </p>
+                                <p> &#123;name: "Date of Birth", type: "date"&#125;, </p>
+                                <p> &#123;name: "College Year", type: "select", options: ["Freshman", "Sophomore"]&#125; </p>
                                 ] &#125;</dd>
 
                             <dt className="col-sm-3"> Notes</dt>
