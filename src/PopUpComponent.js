@@ -166,6 +166,7 @@ class PopUpComponent extends Component {
                         <p>     header=&#123;"Title"&#125;</p>
                         <p>     content=&#123;"Message here"&#125;</p>
                         <p>     footerConfig=&#123;"all"&#125;</p>
+                        <p>     closeToggled=&#123;this.closePopup&#125;</p>
                         <br/>
 
                         <p>     //Optional One </p>
@@ -193,9 +194,6 @@ class PopUpComponent extends Component {
 
                         <dt className="col-sm-3"> Values</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
-
-                        <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -212,10 +210,7 @@ class PopUpComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> An object</dd>
-
-                        <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Text, or another component. </dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -240,9 +235,25 @@ class PopUpComponent extends Component {
                             <p>iii. “submit” = renders a close button as well as submit button.</p>
                             <p>iv. “all” = renders a close, reset, & submit button. Ideal for forms</p>
                         </dd>
+                    </dl>
 
-                        <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example</dd>
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3"> Name</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> closeToggled</dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            This property uses the supplied callback function to close the popup component. Ideally, the
+                            callback function should set the state of showing the popup to false.
+                        </dd>
+
+                        <dt className="col-sm-3"> Values</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            A callback function
+                        </dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
@@ -261,9 +272,6 @@ class PopUpComponent extends Component {
 
                         <dt className="col-sm-3"> Values</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function</dd>
-
-                        <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -281,9 +289,6 @@ class PopUpComponent extends Component {
 
                         <dt className="col-sm-3"> Values</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function</dd>
-
-                        <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Here's an example</dd>
                     </dl>
 
                     <ScrollUpButton showAtPosition={300}/>

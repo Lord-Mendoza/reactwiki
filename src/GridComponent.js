@@ -235,7 +235,7 @@ class GridComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop. Note the lack of quotation marks around the keys.</dd>
+                        <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop. <i> Note the lack of quotation marks around the keys. </i> </dd>
 
                         <dt className="col-sm-3"> Example</dt>
                         <dd className="col-sm-9">rows=&#123; [ &#123;Name: "Sarah", Age: "24"&#125;, &#123;Name: "Sam", Age: "32"&#125; ] &#125;</dd>

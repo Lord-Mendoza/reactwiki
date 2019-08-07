@@ -54,7 +54,7 @@ class MaskComponent extends Component {
                         <div style={{paddingLeft: 80}}>
                             <samp>
                                 <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p>&#8220;react-bootstrap&#8221;    &#58; &#8220;^1.0.0-beta.5&#8221;,</p>
+                                <p>&#8220;react-bootstrap&#8221;    &#58; &#8220;^1.0.0-beta.9&#8221;,</p>
                                 <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
