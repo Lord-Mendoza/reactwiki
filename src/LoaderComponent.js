@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './ComponentStyling.css';
-import {Image} from "react-bootstrap";
+import {Carousel, Image} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class LoaderComponent extends Component {
@@ -80,17 +80,31 @@ class LoaderComponent extends Component {
                     <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
-                    <Image
-                        src="./loader.gif"
-                        alt="Code for rendering form"
-                        style={{width: "50%"}}
-                    />
+                    <Carousel pauseOnHover={true}>
+                        <Carousel.Item>
+                            <Image
+                                src="./loader.gif"
+                                alt="Code for rendering form"
+                                style={{width: "50%"}}
+                            />
+                            <Carousel.Caption>
+                                <h3>Inverted Loader</h3>
+                                <p>This is the default appearance of the loader, where the inverted property isn't defined.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
 
-                    <Image
-                        src="./loaderInverted.gif"
-                        alt="Code for rendering form"
-                        style={{width: "50%"}}
-                    />
+                        <Carousel.Item>
+                            <Image
+                                src="./loaderInverted.gif"
+                                alt="Code for rendering form"
+                                style={{width: "50%"}}
+                            />
+                            <Carousel.Caption>
+                                <h3>Basic Loader</h3>
+                                <p>This is the appearance when the inverted property is set to false.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
                 </section>
 
                 {/*=======================================================
@@ -104,14 +118,14 @@ class LoaderComponent extends Component {
                     <code>
                         <br/>
                         <p> &lt;MaskComponent </p>
-                        <p>     //Required Ones </p>
-                        <p>     header=&#123;"Please Wait"&#125;</p>
-                        <p>     content=&#123;"Loading"&#125;</p>
-                        <p>     show=&#123;this.state.toggleShow&#125;</p>
+                        <p>     &#47;&#47;Required Ones </p>
+                        <p>     isLoading=&#123;this.state.isLoadingGrid&#125;</p>
+                        <p>     content=&#123;gridComponentVariable&#125;</p>
                         <br/>
 
-                        <p>     //Optional One </p>
-                        <p>     loadingIcon=&#123;true&#125; </p>
+                        <p>     &#47;&#47;Optional Ones </p>
+                        <p>     loadingMessage=&#123;"Loading..."&#125;</p>
+                        <p>     inverted=&#123;false&#125;</p>
                         /&gt;
                     </code>
                 </pre>
@@ -127,13 +141,13 @@ class LoaderComponent extends Component {
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> header</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> isLoading</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The title of the popup.</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Determines if the component is to be overlayed.</dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> String</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -144,11 +158,11 @@ class LoaderComponent extends Component {
                         <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> content</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The message to appear in the mask popup.
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> The content to be overlayed.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> String</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> An object.</dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
@@ -158,15 +172,31 @@ class LoaderComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> loadingIcon</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> loadingMessage</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Toggles whether to show a rotating loading
-                            icon in the content.
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> What message to appear at the center of the overlay.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
+                    </dl>
+
+                    <dl className="row">
+                        <dt className="col-sm-3"> Name</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> inverted</dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Whether to invert the background color of the overlay.
+                            Note that if this property is omitted, the default value will be taken.
+                        </dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> True
+                        </dd>
+
+                        <dt className="col-sm-3"> Values</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
                     </dl>
 
                     <ScrollUpButton showAtPosition={300}/>

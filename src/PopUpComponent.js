@@ -162,14 +162,14 @@ class PopUpComponent extends Component {
                     <code>
                         <br/>
                         <p> &lt;PopupComponent </p>
-                        <p>     //Required Ones </p>
+                        <p>     &#47;&#47;Required Ones </p>
                         <p>     header=&#123;"Title"&#125;</p>
                         <p>     content=&#123;"Message here"&#125;</p>
                         <p>     footerConfig=&#123;"all"&#125;</p>
                         <p>     closeToggled=&#123;this.closePopup&#125;</p>
                         <br/>
 
-                        <p>     //Optional One </p>
+                        <p>     &#47;&#47;Optional One </p>
                         <p>     resetToggled=&#123;this.handleReset&#125; </p>
                         <p>     submitToggled=&#123;this.handleSubmit&#125; </p>
                         /&gt;
