@@ -5,6 +5,7 @@ import PopUpComponent from './PopUpComponent';
 import MaskComponent from './MaskComponent';
 import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import './MainComponent.css';
+import LoaderComponent from "./LoaderComponent";
 
 class MainComponent extends Component{
     constructor(props){
@@ -45,6 +46,8 @@ class MainComponent extends Component{
             mainComponent = <PopUpComponent />
         } else if (this.state.selection === "mask-component") {
             mainComponent = <MaskComponent />
+        } else if (this.state.selection === "loader-component") {
+            mainComponent = <LoaderComponent />
         }
         return(
             <div>
@@ -58,6 +61,7 @@ class MainComponent extends Component{
                                 <NavDropdown.Item id='form-component' onClick = {this.handleSelection}> Form Component </NavDropdown.Item>
                                 <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> PopUp Component </NavDropdown.Item>
                                 <NavDropdown.Item id='mask-component' onClick = {this.handleSelection}> Mask Component </NavDropdown.Item>
+                                <NavDropdown.Item id='loader-component' onClick = {this.handleSelection}> Loader Component </NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href={"./reactComponents.zip"}> Get Package </Nav.Link>
                         </Nav>
