@@ -82,6 +82,6 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     pre .atv, code .atv { color: #060; }
 }
 
-ul.nav.flex-column, li.nav-item {
+ul.nav.flex-column li.nav-item {
     width: 15vw;
 }
