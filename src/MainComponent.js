@@ -3,9 +3,11 @@ import FormComponent from './FormComponent';
 import GridComponent from './GridComponent';
 import PopUpComponent from './PopUpComponent';
 import MaskComponent from './MaskComponent';
+import FileUploadComponent from './FileUploadComponent';
+import LoaderComponent from "./LoaderComponent";
+
 import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import './MainComponent.css';
-import LoaderComponent from "./LoaderComponent";
 
 class MainComponent extends Component{
     constructor(props){
@@ -48,6 +50,8 @@ class MainComponent extends Component{
             mainComponent = <MaskComponent />
         } else if (this.state.selection === "loader-component") {
             mainComponent = <LoaderComponent />
+        } else if (this.state.selection === "file-component") {
+            mainComponent = <FileUploadComponent />
         }
         return(
             <div>
@@ -57,6 +61,7 @@ class MainComponent extends Component{
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <NavDropdown title = "Components">
+                                <NavDropdown.Item id='file-component' onClick = {this.handleSelection}> File Upload Component </NavDropdown.Item>
                                 <NavDropdown.Item id='form-component' onClick = {this.handleSelection}> Form Component </NavDropdown.Item>
                                 <NavDropdown.Item id="grid-component" onClick = {this.handleSelection} > Grid Component </NavDropdown.Item>
                                 <NavDropdown.Item id='loader-component' onClick = {this.handleSelection}> Loader Component </NavDropdown.Item>

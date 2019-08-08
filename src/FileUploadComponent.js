@@ -3,7 +3,7 @@ import './ComponentStyling.css';
 import {Carousel, Image} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
-class LoaderComponent extends Component {
+class FileUploadComponent extends Component {
     componentDidMount() {
         this.runCodePrettify();
     }
@@ -20,7 +20,7 @@ class LoaderComponent extends Component {
     render() {
         return (
             <div>
-                <h1 className="display-4" style={{textAlign: "center"}}>Loader Component</h1>
+                <h1 className="display-4" style={{textAlign: "center"}}>File Upload Component</h1>
 
                 <section data-aos={"fade-right"} data-aos-delay={"300"}>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
@@ -56,6 +56,7 @@ class LoaderComponent extends Component {
                                 <p>&#34;dependencies&#34;:    &#123;</p>
                                 <p>&#8220;semantic-ui-css&#8221;    &#58; &#8220;^2.4.1&#8221;,</p>
                                 <p>&#8220;semantic-ui-react&#8221;: &#8220;^0.87.1&#8221;,</p>
+                                <p>&#8220;react-dropzone&#8221;: &#8220;^10.1.7&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
                         </div>
@@ -66,9 +67,9 @@ class LoaderComponent extends Component {
                         </div>
 
                         <br/>
-                        <p> Lastly, import the LoaderComponent for use: </p>
+                        <p> Lastly, import the FileUploadComponent for use: </p>
                         <div style={{paddingLeft: 80}}>
-                            <samp> import LoaderComponent from "./LoaderComponent"; </samp>
+                            <samp> import FileUploadComponent from "./FileUploadComponent"; </samp>
                         </div>
                     </div>
                 </section>
@@ -80,31 +81,11 @@ class LoaderComponent extends Component {
                     <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
-                    <Carousel pauseOnHover={true}>
-                        <Carousel.Item>
-                            <Image
-                                src="./loader.gif"
-                                alt="Code for rendering form"
-                                style={{width: "50%"}}
-                            />
-                            <Carousel.Caption>
-                                <h3>Inverted Loader</h3>
-                                <p>This is the default appearance of the loader, where the inverted property isn't defined.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-
-                        <Carousel.Item>
-                            <Image
-                                src="./loaderInverted.gif"
-                                alt="Code for rendering form"
-                                style={{width: "50%"}}
-                            />
-                            <Carousel.Caption>
-                                <h3>Basic Loader</h3>
-                                <p>This is the appearance when the inverted property is set to false.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    </Carousel>
+                    <Image
+                        src="./fileupload.gif"
+                        alt="Clip demonstrating the loader component overlaying a grid."
+                        style={{width: "50%"}}
+                    />
                 </section>
 
                 {/*=======================================================
@@ -117,15 +98,14 @@ class LoaderComponent extends Component {
                     <pre className="prettyprint lang-html">
                     <code>
                         <br/>
-                        <p> &lt;LoaderComponent </p>
+                        <p> &lt;FileUploadComponent </p>
                         <p>     &#47;&#47;Required Ones </p>
-                        <p>     isLoading=&#123;this.state.isLoadingGrid&#125;</p>
-                        <p>     content=&#123;gridComponentVariable&#125;</p>
+                        <p>     files=&#123;this.getUploadedFiles&#125;</p>
                         <br/>
 
                         <p>     &#47;&#47;Optional Ones </p>
-                        <p>     loadingMessage=&#123;"Loading..."&#125;</p>
-                        <p>     inverted=&#123;false&#125;</p>
+                        <p>     fileType=&#123;"text/plain"&#125;</p>
+                        <p>     resetUponSubmit=&#123;false&#125;</p>
                         /&gt;
                     </code>
                 </pre>
@@ -141,28 +121,13 @@ class LoaderComponent extends Component {
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> isLoading</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> files</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Determines if the component is to be overlayed.</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>Uses the callback function to return the list of files.</dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
-                    </dl>
-
-                    {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
-
-                    <dl className="row">
-                        <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> content</dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The content to be overlayed.
-                        </dd>
-
-                        <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> An object.</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function.</dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
@@ -172,27 +137,30 @@ class LoaderComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> loadingMessage</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> fileType</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> What message to appear at the center of the overlay.
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Determines the file type that the file uploader will accept.
+                        </dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> "" (which will accept any file type).
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>A string that specifies a file type.</dd>
                     </dl>
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> inverted</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> resetUponSubmit</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Whether to invert the background color of the overlay.
-                            Note that if this property is omitted, the default value will be taken.
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Determines whether to reset the list of files uploaded upon clicking "submit".
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> True
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> true
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
@@ -206,5 +174,5 @@ class LoaderComponent extends Component {
     }
 }
 
-export default LoaderComponent;
+export default FileUploadComponent;
 
