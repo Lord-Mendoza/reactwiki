@@ -98,13 +98,13 @@ class MaskComponent extends Component {
                     <code>
                         <br/>
                         <p> &lt;MaskComponent </p>
-                        <p>     //Required Ones </p>
+                        <p>     &#47;&#47;Required Ones </p>
                         <p>     header=&#123;"Please Wait"&#125;</p>
                         <p>     content=&#123;"Loading"&#125;</p>
                         <p>     show=&#123;this.state.toggleShow&#125;</p>
                         <br/>
 
-                        <p>     //Optional One </p>
+                        <p>     &#47;&#47;Optional One </p>
                         <p>     loadingIcon=&#123;true&#125; </p>
                         /&gt;
                     </code>

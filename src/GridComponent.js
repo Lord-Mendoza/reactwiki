@@ -171,12 +171,12 @@ class GridComponent extends Component {
                     <code>
                         <br/>
                         <p> &lt;GridComponent </p>
-                        <p>     //Required Ones </p>
+                        <p>     &#47;&#47;Required Ones </p>
                         <p>     columns=&#123;this.state.labels&#125;</p>
                         <p>     rows=&#123;this.state.data&#125;</p>
                         <br/>
 
-                        <p>     //Optional Ones </p>
+                        <p>     &#47;&#47;Optional Ones </p>
                         <p>     viewConfig="all"</p>
                         <p>     toggleSelect=&#123;false&#125;</p>
                         <p>     selectedValues=&#123;this.handleSelectedValues&#125;</p>

@@ -147,14 +147,14 @@ class FormComponent extends Component {
                     <code>
                         <br/>
                         <p> &lt;FormComponent </p>
-                        <p>     //Required Ones </p>
+                        <p>     &#47;&#47;Required Ones </p>
                         <p>     configuration=&#123;this.state.configuration&#125;</p>
                         <p>     formValues=&#123;this.getFormValues&#125;</p>
                         <p>     submitForm=&#123;this.state.toggleSubmit&#125;</p>
                         <p>     clearForm=&#123;this.state.toggleClear&#125;</p>
                         <br/>
 
-                        <p>     //Optional One </p>
+                        <p>     &#47;&#47;Optional One </p>
                         <p>     markInvalid=&#123;this.state.invalid&#125; </p>
                         /&gt;
                     </code>
