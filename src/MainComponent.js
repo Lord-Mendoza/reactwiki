@@ -8,6 +8,8 @@ import LoaderComponent from "./LoaderComponent";
 
 import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import './MainComponent.css';
+import 'aos/dist/aos.css';
+import AOS from "aos";
 
 class MainComponent extends Component{
     constructor(props){
@@ -39,7 +41,9 @@ class MainComponent extends Component{
 
 
     render(){
-        let mainComponent = <GridComponent/>;
+        AOS.init();
+
+        let mainComponent = <FileUploadComponent />;
         if(this.state.selection === "grid-component"){
             mainComponent = <GridComponent />
         } else if (this.state.selection === "form-component"){

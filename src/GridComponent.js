@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import './ComponentStyling.css'
 import {Carousel} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
 
 class GridComponent extends Component {
     constructor(props) {
@@ -27,8 +24,6 @@ class GridComponent extends Component {
     }
 
     render() {
-        AOS.init();
-
         return (
             <div>
                 <h1 class="display-4" style={{textAlign: "center"}}>Grid Component</h1>
