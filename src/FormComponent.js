@@ -53,23 +53,23 @@ class FormComponent extends Component {
                         <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
                         <div style={{textAlign: "left", paddingLeft: 70}}>
-                            <p> You need to include the following on your package.json </p>
+                            <p>  &#8226; You need to include the following on your package.json </p>
                             <div style={{paddingLeft: 80}}>
                                 <samp>
                                     <p>&#34;dependencies&#34;:    &#123;</p>
-                                    <p>&#8220;react-bootstrap&#8221;    &#58; &#8220;^1.0.0-beta.9&#8221;,</p>
-                                    <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
+                                    <p style={{marginLeft: "40px"}}>&#8220;react-bootstrap&#8221;    &#58; &#8220;latest&#8221;,</p>
+                                    <p style={{marginLeft: "40px"}}>&#8220;bootstrap&#8221;: &#8220;latest&#8221;,</p>
                                     <p>&#125;</p>
                                 </samp>
                             </div>
 
-                            <p> Then on your index.js file include: </p>
+                            <p>  &#8226; Then on your index.js file include: </p>
                             <div style={{paddingLeft: 80}}>
                                 <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
                             </div>
 
                             <br/>
-                            <p> Lastly, import the FormComponent for use: </p>
+                            <p>  &#8226; Lastly, import the FormComponent for use: </p>
                             <div style={{paddingLeft: 80}}>
                                 <samp> import FormComponent from './FormComponent' </samp>
                             </div>
@@ -93,7 +93,7 @@ class FormComponent extends Component {
                                 />
 
                                 <Carousel.Caption>
-                                    <h4>Setting form labels, types, as well as options for the select type.</h4>
+                                    <h4>1. Setting form labels, types, as well as options for the select type.</h4>
                                 </Carousel.Caption>
                             </Carousel.Item>
 
@@ -105,7 +105,7 @@ class FormComponent extends Component {
                                 />
 
                                 <Carousel.Caption>
-                                    <h4>Rendering the form in accordance to the configuration.</h4>
+                                    <h4>2. Rendering the form in accordance to the configuration.</h4>
                                 </Carousel.Caption>
                             </Carousel.Item>
 
@@ -117,7 +117,7 @@ class FormComponent extends Component {
                                 />
 
                                 <Carousel.Caption>
-                                    <h4>If certain labels are specified to be marked as invalid in the code...</h4>
+                                    <h4>3. If certain labels are specified to be marked as invalid in the code...</h4>
                                 </Carousel.Caption>
                             </Carousel.Item>
 
@@ -129,7 +129,7 @@ class FormComponent extends Component {
                                 />
 
                                 <Carousel.Caption>
-                                    <h4>...then they'll be rendered with a red outline, highlighting invalid inputs to
+                                    <h4>4. ...then they'll be rendered with a red outline, highlighting invalid inputs to
                                         the user. </h4>
                                 </Carousel.Caption>
                             </Carousel.Item>
@@ -187,9 +187,9 @@ class FormComponent extends Component {
                             <dt className="col-sm-3"> Example</dt>
                             <dd className="col-sm-9">
                                 <p> configuration = &#123; [ </p>
-                                <p> &#123; name: "Full Name", type: "text", placeholder: "required"&#125;, </p>
-                                <p> &#123;name: "Date of Birth", type: "date"&#125;, </p>
-                                <p> &#123;name: "College Year", type: "select", options: ["Freshman", "Sophomore"]&#125; </p>
+                                <p style={{marginLeft: "40px"}}> &#123;name: "Full Name", type: "text", placeholder: "required"&#125;, </p>
+                                <p style={{marginLeft: "40px"}}> &#123;name: "Date of Birth", type: "date"&#125;, </p>
+                                <p style={{marginLeft: "40px"}}> &#123;name: "College Year", type: "select", options: ["Freshman", "Sophomore"]&#125; </p>
                                 ] &#125;</dd>
 
                             <dt className="col-sm-3"> Notes</dt>
@@ -212,11 +212,11 @@ class FormComponent extends Component {
 
                             <dt className="col-sm-3"> Description</dt>
                             <dd className="col-sm-9" style={{textAlign: "left"}}> This property uses the supplied
-                                callback function to pass the form values as typed by the user.
+                                callback function to pass the form values when <i>submitForm</i> gets toggled to true.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> Callback function</dd>
+                            <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function</dd>
                         </dl>
 
                         {/*-----Next Entry-----*/}
@@ -228,11 +228,11 @@ class FormComponent extends Component {
 
                             <dt className="col-sm-3"> Description</dt>
                             <dd className="col-sm-9" style={{textAlign: "left"}}> Toggles the FormComponent to submit
-                                the retrieved values from the user through the formValues callback function.
+                                the retrieved values from the user through the <i>formValues</i> callback function.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean</dd>
+                            <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
 
                             <dt className="col-sm-3"> Notes</dt>
                             <dd className="col-sm-9" style={{textAlign: "left"}}> Toggling this will not clear the
@@ -253,7 +253,7 @@ class FormComponent extends Component {
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean</dd>
+                            <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
                         </dl>
 
                         {/*====================== Additional Section ======================*/}
@@ -268,9 +268,9 @@ class FormComponent extends Component {
 
                             <dt className="col-sm-3"> Description</dt>
                             <dd className="col-sm-9" style={{textAlign: "left"}}>
-                                <p>This property is used by FormComponent to filter out the components that are invalid.
-                                    Once marked invalid, the form component will have a red on its surrounding,
-                                    highlighting to the user where they need to revise their entry.</p>
+                                <p>This property is used by FormComponent to highlight fields that are invalid.
+                                    Once marked invalid, the field will have a red on its surrounding,
+                                    showing to the user where they need to revise their entry.</p>
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>

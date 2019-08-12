@@ -55,25 +55,26 @@ class GridComponent extends Component {
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
                     <div style={{textAlign: "left", paddingLeft: 70}}>
-                        <p> You need to include the following on your package.json </p>
+                        <p> &#8226; You need to include the following on your package.json </p>
                         <div style={{paddingLeft: 80}}>
                             <samp>
                                 <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p>&#8220;@devexpress/dx-react-core&#8221;    &#58; &#8220;^1.11.0&#8221;,</p>
-                                <p>&#8220;@devexpress/dx-react-grid&#8221;    &#58; &#8220;^1.11.0&#8221;,</p>
-                                <p>&#8220;@devexpress/dx-react-grid-bootstrap4&#8221;    &#58; &#8220;^1.11.0&#8221;,</p>
-                                <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;@devexpress/dx-react-core&#8221;    &#58; &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;@devexpress/dx-react-grid&#8221;    &#58; &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;@devexpress/dx-react-grid-bootstrap4&#8221;    &#58; &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;bootstrap&#8221;: &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;react-icons&#8221;: &#8220;latest&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
                         </div>
 
-                        <p> Then on your index.js file include: </p>
+                        <p> &#8226; Then on your index.js file include: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
                         </div>
 
                         <br/>
-                        <p> Lastly, import the GridComponent for use: </p>
+                        <p> &#8226; Lastly, import the GridComponent for use: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import GridComponent from "./GridComponent" </samp>
                         </div>
@@ -95,7 +96,7 @@ class GridComponent extends Component {
                                 alt="Render for bare"
                             />
                             <Carousel.Caption>
-                                <h3>viewConfig = "bare"</h3>
+                                <h3><i>viewConfig</i> = "bare"</h3>
                                 <p>Displays only the grid & paging options.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -108,7 +109,7 @@ class GridComponent extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>viewConfig = "simple"</h3>
+                                <h3><i>viewConfig</i> = "simple"</h3>
                                 <p>Builds on top of "bare" but provides a refresh button.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -121,7 +122,7 @@ class GridComponent extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>viewConfig = "search"</h3>
+                                <h3><i>viewConfig</i> = "search"</h3>
                                 <p>Builds on top of "simple" but provides search-by-column functionality</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -134,7 +135,7 @@ class GridComponent extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>viewConfig = "all"</h3>
+                                <h3><i>viewConfig</i> = "all"</h3>
                                 <p>Builds on top of "search" but provides options to add, edit, and delete rows.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -147,7 +148,7 @@ class GridComponent extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>viewConfig = "allnosearch"</h3>
+                                <h3><i>viewConfig</i> = "allnosearch"</h3>
                                 <p>Presents the same features of "all", but excludes search-by-column functionality.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -225,8 +226,6 @@ class GridComponent extends Component {
 
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9">the list of rows (data) for the given grid.
-                            Note: for proper sorting behavior, ensure to pass numbers as column values for number-typed
-                            columns.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -234,6 +233,11 @@ class GridComponent extends Component {
 
                         <dt className="col-sm-3"> Example</dt>
                         <dd className="col-sm-9">rows=&#123; [ &#123;Name: "Sarah", Age: "24"&#125;, &#123;Name: "Sam", Age: "32"&#125; ] &#125;</dd>
+
+                        <dt className="col-sm-3"> Notes</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> For proper sorting behavior, ensure to pass numbers as column values for number-typed
+                            columns.
+                        </dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
@@ -248,8 +252,7 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>viewConfig</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> toggles a particular grid setup such as showing the grid only, grid +
-                            refresh button, grid + refresh + search, or all.
+                        <dd className="col-sm-9"> toggles a particular grid setup.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
