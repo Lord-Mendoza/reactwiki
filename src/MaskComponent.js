@@ -50,23 +50,25 @@ class MaskComponent extends Component {
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
                     <div style={{textAlign: "left", paddingLeft: 70}}>
-                        <p> You need to include the following on your package.json </p>
+                        <p> &#8226; You need to include the following on your package.json </p>
                         <div style={{paddingLeft: 80}}>
                             <samp>
                                 <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p>&#8220;react-bootstrap&#8221;    &#58; &#8220;^1.0.0-beta.9&#8221;,</p>
-                                <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;react-bootstrap&#8221;    &#58; &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;bootstrap&#8221;: &#8220;latest&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
                         </div>
 
-                        <p> Then on your index.js file include: </p>
+                        <p> &#8226; Then on your index.js file include: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
                         </div>
 
                         <br/>
-                        <p> Lastly, import the MaskComponent for use: </p>
+                        <p> &#8226; Add the loading.png file to the public folder. <i> Note: you can put your own image on there, as long as its named "loading.png". </i> </p>
+
+                        <p> &#8226; Lastly, import the MaskComponent for use: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import MaskComponent from "./MaskComponent"; </samp>
                         </div>
@@ -127,7 +129,7 @@ class MaskComponent extends Component {
                         <dd className="col-sm-9" style={{textAlign: "left"}}> The title of the popup.</dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> String</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -142,7 +144,7 @@ class MaskComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> String</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -157,12 +159,11 @@ class MaskComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
 
                         <dt className="col-sm-3"> Note</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}>It's ideal to assign a parent's state
-                            property here to toggle when to show a mask or not (which is ideal when performing a
-                            background process)
+                            property here to toggle when to show the mask or not
                         </dd>
                     </dl>
 
@@ -181,7 +182,7 @@ class MaskComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Boolean</dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
                     </dl>
 
                     <ScrollUpButton showAtPosition={300}/>

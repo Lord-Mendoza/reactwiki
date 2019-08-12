@@ -6,7 +6,7 @@ import MaskComponent from './MaskComponent';
 import FileUploadComponent from './FileUploadComponent';
 import LoaderComponent from "./LoaderComponent";
 
-import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
+import {Navbar, NavDropdown, Nav, Image} from 'react-bootstrap';
 import './MainComponent.css';
 import 'aos/dist/aos.css';
 import AOS from "aos";
@@ -45,22 +45,28 @@ class MainComponent extends Component{
 
         let mainComponent = <FileUploadComponent />;
         if(this.state.selection === "grid-component"){
-            mainComponent = <GridComponent />
+            window.scrollTo(0,0);
+            mainComponent = <GridComponent />;
         } else if (this.state.selection === "form-component"){
-            mainComponent = <FormComponent />
+            window.scrollTo(0,0);
+            mainComponent = <FormComponent />;
         } else if (this.state.selection === "popup-component"){
-            mainComponent = <PopUpComponent />
+            window.scrollTo(0,0);
+            mainComponent = <PopUpComponent />;
         } else if (this.state.selection === "mask-component") {
-            mainComponent = <MaskComponent />
+            window.scrollTo(0,0);
+            mainComponent = <MaskComponent />;
         } else if (this.state.selection === "loader-component") {
-            mainComponent = <LoaderComponent />
+            window.scrollTo(0,0);
+            mainComponent = <LoaderComponent />;
         } else if (this.state.selection === "file-component") {
-            mainComponent = <FileUploadComponent />
+            window.scrollTo(0,0);
+            mainComponent = <FileUploadComponent />;
         }
         return(
             <div>
                 <Navbar sticky="top" collapseOnSelect expand ="lg" bg="dark" variant="dark">
-                    <Navbar.Brand> React Wiki </Navbar.Brand>
+                    <Navbar.Brand> <Image src={"logo.png"} style={{marginBottom: "4px", marginRight: "4px"}}/> React Wiki </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

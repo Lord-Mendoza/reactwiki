@@ -50,23 +50,24 @@ class PopUpComponent extends Component {
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
                     <div style={{textAlign: "left", paddingLeft: 70}}>
-                        <p> You need to include the following on your package.json </p>
+                        <p> &#8226; You need to include the following on your package.json </p>
                         <div style={{paddingLeft: 80}}>
                             <samp>
                                 <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p>&#8220;react-bootstrap&#8221;    &#58; &#8220;^1.0.0-beta.9&#8221;,</p>
-                                <p>&#8220;bootstrap&#8221;: &#8220;^4.3.1&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;react-bootstrap&#8221;    &#58; &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;bootstrap&#8221;: &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;react-icons&#8221;: &#8220;latest&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
                         </div>
 
-                        <p> Then on your index.js file include: </p>
+                        <p> &#8226; Then on your index.js file include: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
                         </div>
 
                         <br/>
-                        <p> Lastly, import the PopupComponent for use: </p>
+                        <p> &#8226; Lastly, import the PopupComponent for use: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import PopupComponent from "./PopupComponent"; </samp>
                         </div>
@@ -89,7 +90,7 @@ class PopUpComponent extends Component {
                                 style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
                             <Carousel.Caption>
-                                <h3>footerConfig = "closeOnly"</h3>
+                                <h3><i>footerConfig</i> = "closeOnly"</h3>
                                 <p>Displays only a close button.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -103,7 +104,7 @@ class PopUpComponent extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>footerConfig = "submit"</h3>
+                                <h3><i>footerConfig</i> = "submit"</h3>
                                 <p>Displays a submit button along with a close button.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -117,7 +118,7 @@ class PopUpComponent extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>footerConfig = "all"</h3>
+                                <h3><i>footerConfig</i> = "all"</h3>
                                 <p>Displays the close, reset, and submit buttons (ideal for forms).</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -131,7 +132,7 @@ class PopUpComponent extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>footerConfig = "custom"</h3>
+                                <h3><i>footerConfig</i> = "custom"</h3>
                                 <p>You can define what appears on the footer section.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -210,7 +211,7 @@ class PopUpComponent extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Text, or another component. </dd>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string, or another component. </dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -223,7 +224,6 @@ class PopUpComponent extends Component {
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}>
                             The buttons to appear at the foot of the popup.
-                            Note: providing the value of “custom” requires for customFooter to be defined
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
@@ -234,6 +234,11 @@ class PopUpComponent extends Component {
                             <p>ii. “closeOnly” = renders only a close button to close the popup.</p>
                             <p>iii. “submit” = renders a close button as well as submit button.</p>
                             <p>iv. “all” = renders a close, reset, & submit button. Ideal for forms</p>
+                        </dd>
+
+                        <dt className="col-sm-3"> Notes</dt>
+                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            Providing the value of “custom” requires for customFooter to be defined
                         </dd>
                     </dl>
 

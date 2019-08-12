@@ -30,7 +30,7 @@ class FileUploadComponent extends Component {
                             <a className="nav-link" href="#prereq">Pre-Requisites</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#demo">Demonstration</a>
+                            <a className="nav-link" href="#demo">Available Configurations</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#implementation">Sample Implementation</a>
@@ -50,28 +50,28 @@ class FileUploadComponent extends Component {
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
 
                     <div style={{textAlign: "left", paddingLeft: 70}}>
-                        <p> You need to include the following on your package.json </p>
+                        <p> &#8226; You need to include the following on your package.json </p>
                         <div style={{paddingLeft: 80}}>
                             <samp>
                                 <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p>&#8220;semantic-ui-css&#8221;    &#58; &#8220;^2.4.1&#8221;,</p>
-                                <p>&#8220;semantic-ui-react&#8221;: &#8220;^0.87.1&#8221;,</p>
-                                <p>&#8220;react-dropzone&#8221;: &#8220;^10.1.7&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;semantic-ui-css&#8221;    &#58; &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;semantic-ui-react&#8221;: &#8220;latest&#8221;,</p>
+                                <p style={{marginLeft: "40px"}}>&#8220;react-dropzone&#8221;: &#8220;latest&#8221;,</p>
                                 <p>&#125;</p>
                             </samp>
                         </div>
 
-                        <p> Then on your index.js file include: </p>
+                        <p> &#8226; Then on your index.js file include: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import 'semantic-ui-css/semantic.min.css'; </samp>
                         </div>
 
                         <br/>
-                        <p> Add the upload.png file to the public folder.
+                        <p> &#8226; Add the upload.png file to the public folder.
                             <i> Note: you can put your own image on there, as long as its named "upload.png".</i>
                         </p>
 
-                        <p> Lastly, import the FileUploadComponent for use: </p>
+                        <p> &#8226; Lastly, import the FileUploadComponent for use: </p>
                         <div style={{paddingLeft: 80}}>
                             <samp> import FileUploadComponent from "./FileUploadComponent"; </samp>
                         </div>
@@ -83,9 +83,9 @@ class FileUploadComponent extends Component {
                    =======================================================*/}
                 <section id={"demo"} data-aos={"fade-right"} data-aos-delay={"300"}>
                     <hr/>
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
-                    <Carousel pauseOnHover={true}>
+                    <Carousel pauseOnHover={true} interval={20000}>
                         <Carousel.Item>
                             <Image
                                 src="./fileupload.gif"
@@ -105,7 +105,7 @@ class FileUploadComponent extends Component {
                                 style={{width: "50%"}}
                             />
                             <Carousel.Caption>
-                                <h3> uploadByButton = true </h3>
+                                <h3> <i>uploadByButton </i> = true </h3>
                                 <p>On the other hand it can also be set as a button.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -128,7 +128,7 @@ class FileUploadComponent extends Component {
                         <br/>
 
                         <p>     &#47;&#47;Optional Ones </p>
-                        <p>     fileType=&#123;"text/plain"&#125;</p>
+                        <p>     fileType=&#123;".txt, .pdf"&#125;</p>
                         <p>     fileUploadText=&#123;"Upload Here!"&#125;</p>
                         <p>     showFileUploadManager=&#123;true&#125;</p>
                         <p>     resetUponSubmit=&#123;false&#125;</p>
@@ -153,13 +153,13 @@ class FileUploadComponent extends Component {
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}>Uses the callback function to return the list of files.</dd>
 
-                        <dt className="col-sm-3"> Values</dt>
+                        <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function.</dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
 
-                    <hr width={"90%"}/>
+                    <hr width={"85%"}/>
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customization </h5>
 
                     <dl className="row">
@@ -174,7 +174,7 @@ class FileUploadComponent extends Component {
                         <dd className="col-sm-9" style={{textAlign: "left"}}> "" (which will accept any file type).
                         </dd>
 
-                        <dt className="col-sm-3"> Values</dt>
+                        <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}>
                             <p>A comma-separated list of unique content type specifiers (string format):</p>
                             <p>&#8226; A file extension starting with the STOP character (U+002E). (e.g. .jpg, .png, .doc).</p>
@@ -185,6 +185,7 @@ class FileUploadComponent extends Component {
                         </dd>
                     </dl>
 
+                    <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
                         <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> fileUploadText</dd>
@@ -199,28 +200,30 @@ class FileUploadComponent extends Component {
                             <p> &#8226; Otherwise, it's “Drag and drop some files here, or click to select files”</p>
                         </dd>
 
-                        <dt className="col-sm-3"> Values</dt>
+                        <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> A string
                         </dd>
                     </dl>
 
+                    <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
                         <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> showFileUploadManager</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Specifying whether to show the files uploaded queue to the user, and allow them to reset, delete, and submit them.
+                        <dd className="col-sm-9" style={{textAlign: "left"}}> Specifying whether to show the "files uploaded" queue to the user, and allow them to reset, delete, and submit them.
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> true
                         </dd>
 
-                        <dt className="col-sm-3"> Values</dt>
+                        <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean
                         </dd>
                     </dl>
 
+                    <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
                         <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> resetUponSubmit</dd>
@@ -233,10 +236,11 @@ class FileUploadComponent extends Component {
                         <dd className="col-sm-9" style={{textAlign: "left"}}> true
                         </dd>
 
-                        <dt className="col-sm-3"> Values</dt>
+                        <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
                     </dl>
 
+                    <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
                         <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> uploadByBtn</dd>
@@ -249,7 +253,7 @@ class FileUploadComponent extends Component {
                         <dd className="col-sm-9" style={{textAlign: "left"}}> false
                         </dd>
 
-                        <dt className="col-sm-3"> Values</dt>
+                        <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}>A boolean</dd>
                     </dl>
 
