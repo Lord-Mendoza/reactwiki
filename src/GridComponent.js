@@ -225,14 +225,14 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>rows</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">the list of rows (data) for the given grid.
+                        <dd className="col-sm-9">the list of rows (data) for the given grid. <b><i> Object keys must match the column names (case-sensitive) without spaces. </i></b>
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop. <i> Note the lack of quotation marks around the keys. </i> </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">rows=&#123; [ &#123;Name: "Sarah", Age: "24"&#125;, &#123;Name: "Sam", Age: "32"&#125; ] &#125;</dd>
+                        <dd className="col-sm-9">rows=&#123; [ &#123;FirstName: "Sarah", LastName: "Doe", Age: "24"&#125;, &#123;FirstName: "Sam", LastName: "Smith", Age: "32"&#125; ] &#125;</dd>
 
                         <dt className="col-sm-3"> Notes</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> For proper sorting behavior, ensure to pass numbers as column values for number-typed
@@ -246,6 +246,28 @@ class GridComponent extends Component {
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customizations </h5>
 
                     {/*-----Next Entry-----*/}
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>columnWidths</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> the specified column widths for each column. If not specified, the default will be applied. <b><i> Object keys must match the column names (case-sensitive) without spaces. </i></b>
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9"> JSON object whose keys corresponds to the columns prop.
+                        </dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">columnWidths=&#123;&#123;FirstName: 100, LastName: 100, Age: 50&#125;&#125;</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9"> 180</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
