@@ -22,6 +22,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "del /f /s /q docs 1>nul && rmdir /s /q docs && rename build docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
