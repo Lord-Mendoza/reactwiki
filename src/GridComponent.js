@@ -41,9 +41,32 @@ class GridComponent extends Component {
                         <li className="nav-item">
                             <a className="nav-link" href="#implementation">Sample Implementation</a>
                         </li>
+
                         <li className="nav-item">
                             <a className="nav-link" href="#api">APIs</a>
                         </li>
+                        <ul className="nav flex-column" style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
+                            <p style={{marginBottom: 5, marginTop: 5}}><b>Jump To: </b></p>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#api">Required</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="#interactions">Data Interactions</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="#displaying">Displaying Data</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="#paging">Paging</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="#styling">Styling</a>
+                            </li>
+                        </ul>
                     </ul>
                 </section>
 
@@ -202,7 +225,7 @@ class GridComponent extends Component {
 
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
 
-                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
+                    <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl class="row">
                         <dt className="col-sm-3"> Name</dt>
                         <dd className="col-sm-9"><i>columns</i></dd>
@@ -211,10 +234,10 @@ class GridComponent extends Component {
                         <dd className="col-sm-9">the list of columns for the given grid.</dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> an array of strings</dd>
+                        <dd className="col-sm-9"> an array of JSON objects that contains the properties "name" for the name/id of the column, and "title" for the column's header title </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9"> columns=&#123;["Name", "Age"]&#125;</dd>
+                        <dd className="col-sm-9"> columns=&#123; &nbsp; [&#123;name: "name", title: "Name"&#125;, &#123;name: "age", title: "Age"&#125;] &nbsp; &#125;</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -225,14 +248,14 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>rows</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">the list of rows (data) for the given grid. <b><i> Object keys must match the column names (case-sensitive) without spaces. </i></b>
+                        <dd className="col-sm-9">the list of rows (data) for the given grid. <b><i> Object keys must match the column "name" (case-sensitive). </i></b>
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop. <i> Note the lack of quotation marks around the keys. </i> </dd>
+                        <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop. </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">rows=&#123; [ &#123;FirstName: "Sarah", LastName: "Doe", Age: "24"&#125;, &#123;FirstName: "Sam", LastName: "Smith", Age: "32"&#125; ] &#125;</dd>
+                        <dd className="col-sm-9">rows=&#123; &nbsp; [ &#123;name: "Sarah", age: 24&#125;, &#123;name: "Sam", age: 32&#125; ] &nbsp; &#125;</dd>
 
                         <dt className="col-sm-3"> Notes</dt>
                         <dd className="col-sm-9" style={{textAlign: "left"}}> For proper sorting behavior, ensure to pass numbers as column values for number-typed
@@ -240,30 +263,66 @@ class GridComponent extends Component {
                         </dd>
                     </dl>
 
-                    {/*====================== Additional Section ======================*/}
+                    {/*====================== Interacting With Data Section ======================*/}
+
+                    <section id={"interactions"}/>
 
                     <hr width={"90%"}/>
-                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customizations </h5>
+                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Interacting With Data: </h5>
 
-                    {/*-----Next Entry-----*/}
-
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Disabling </h6>
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>columnWidths</i></dd>
+                        <dd className="col-sm-9"><i>disableModifications</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> the specified column widths for each column. If not specified, the default will be applied. <b><i> Object keys must match the column names (case-sensitive) without spaces. </i></b>
+                        <dd className="col-sm-9">toggles whether to disable making any changes to the grid, but allows for viewing only.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> JSON object whose keys corresponds to the columns prop.
+                        <dd className="col-sm-9"> boolean</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Creating </h6>
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>createToggled</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">responds to the user's desire to add new entry.
+                            Note: that this won't provide any create form.
                         </dd>
 
-                        <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">columnWidths=&#123;&#123;FirstName: 100, LastName: 100, Age: 50&#125;&#125;</dd>
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Editing </h6>
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>editExternally</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> specifies whether the developer wants to handle editing on their own, and not allow for in-line editing as provided.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9"> 180</dd>
+                        <dd className="col-sm-9">false</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>editToggled</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -271,31 +330,105 @@ class GridComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>viewConfig</i></dd>
+                        <dd className="col-sm-9"><i>editToggled</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> toggles a particular grid setup.
+                        <dd className="col-sm-9"> a function that passes two parameters (row object based on "Rows" prop, and it's index)
+                            which allows the developer to handle it's data changes.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> a string of either
-                            <ul style={{textAlign: "left", listStyleType: "none"}}>
-                                <li>i. “bare” = renders only the grid with pagination & “# of entries at a time” options
-                                    available.
-                                </li>
-                                <li>ii. “simple” = similar to bare, but includes a refresh button</li>
-                                <li>iii. “search” = similar to simple, but includes search by column components</li>
-                                <li>iv. “all” = similar to search but includes the create/edit/delete components</li>
-                                <li>v. “allnosearch” = similar to all but excludes the search by column components</li>
-                            </ul>
-                        </dd>
+                        <dd className="col-sm-9">callback function</dd>
 
-                        <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9"> "bare"</dd>
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>editExternally</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
                     <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>hideOnSubmit</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> specifies whether the edit button should hide everytime a user completes an edit.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9">false</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Deleting </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>deletedValues</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> retrieves the rows that the user opted to delete. The callback
+                            function
+                            will be called with a parameter containing an array of JSON objects corresponding to the
+                            rows
+                            provided in “rows” prop.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>clearDeletedRows</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether to clear the list of rows selected for deletion.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9">false</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>revertClearDeletedRows</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>revertClearDeletedRows</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">reverts the toggle made by clearDeletedRows to restore normal state.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>clearDeletedRows</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Selecting </h6>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
@@ -346,6 +479,173 @@ class GridComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>resetSelections</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether to reset selections made in the grid.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>selectionsWereReset</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a function called once resetSelections took effect.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">callback function</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Refreshing </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>refreshToggled</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">responds to the user's desire to refresh the data in the grid. Note
+                            that
+                            the ideal response to this is to change the values provided in the “columns” and “rows” prop
+                            of
+                            GridComponent to reflect the latest data
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>viewConfig = "simple", "search", "all", "allnosearch"</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Searching </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>searchValue</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a function called by GridComponent to pass the column selected for
+                            search, as well as the search value.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>viewConfig = "all"</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>resetSearch</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether to reset the search field.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>revertResetSearch</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>revertResetSearch</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a function called once the search field has been successfully reset.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>resetSearch</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>blockedSearchColumns</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a list of columns that will be blocked for searching.</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">an array corresponding to elements in the “columns” prop</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Filtering </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>filterByColumnEnabled</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>resetSearch</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>filterArray</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9"></dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>filterByColumnEnabled == true </i></dd>
+                    </dl>
+
+                    {/*====================== Displaying Data Section ======================*/}
+
+                    <section id={"displaying"}/>
+                    <hr width={"90%"}/>
+
+                    {/*====================== Paging Section ======================*/}
+
+                    <section id={"paging"}/>
+                    <hr width={"90%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>pageConfig</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
@@ -386,20 +686,6 @@ class GridComponent extends Component {
 
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9">a list of columns that will be blocked from editing.</dd>
-
-                        <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">an array corresponding to elements in the “columns” prop</dd>
-                    </dl>
-
-                    {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
-
-                    <dl className="row">
-                        <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>blockedSearchColumns</i></dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">a list of columns that will be blocked for searching.</dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">an array corresponding to elements in the “columns” prop</dd>
@@ -482,48 +768,6 @@ class GridComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>searchValue</i></dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">a function called by GridComponent to pass the column selected for
-                            search, as well as the search value.
-                        </dd>
-
-                        <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a callback function</dd>
-
-                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>viewConfig = "all"</i></dd>
-                    </dl>
-
-
-                    {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
-
-                    <dl className="row">
-                        <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>deletedValues</i></dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> retrieves the rows that the user opted to delete. The callback
-                            function
-                            will be called with a parameter containing an array of JSON objects corresponding to the
-                            rows
-                            provided in “rows” prop.
-                        </dd>
-
-                        <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a callback function</dd>
-
-                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
-                    </dl>
-
-                    {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
-
-                    <dl className="row">
-                        <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>editedValues</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
@@ -540,45 +784,99 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
                     </dl>
 
+
+                    {/*====================== Styling ======================*/}
+
+                    <hr width={"90%"}/>
+                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Grid Styling </h5>
+
                     {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>refreshToggled</i></dd>
+                        <dd className="col-sm-9"><i>columnWidths</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">responds to the user's desire to refresh the data in the grid. Note
-                            that
-                            the ideal response to this is to change the values provided in the “columns” and “rows” prop
-                            of
-                            GridComponent to reflect the latest data
+                        <dd className="col-sm-9"> the specified column widths for each column. If not specified, the default will be applied. <b><i> Object keys must match the column "name" (case-sensitive). </i></b>
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a callback function</dd>
+                        <dd className="col-sm-9"> JSON object whose keys corresponds to the columns "name" prop.
+                        </dd>
 
-                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>viewConfig = "simple", "search", "all", "allnosearch"</i></dd>
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">columnWidths=&#123;&nbsp;&#123;name: 100, age: 50&#125;&nbsp;&#125;</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9"> 180</dd>
+                    </dl>
+
+                    <hr width={"85%"}/>
+
+                    {/*-----Next Entry-----*/}
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>tableCell</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> the specified styling/behavior for cells of the table; can be used for defining how cells should appear for certain columns, onClick callbacks when clicking a table data, etc.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9"> a function whose parameter is a JSON object contains &#123;row, column, ...restProps&#125;, and the function returns an instance of &#60;Table.Cell/&#62;
+                        </dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9"> <b><i>below demonstrates a table cell for the "add" column to display an add icon, then performing callback function upon clicking</i></b>
+                            <br/>&emsp;tableCell=&#123;
+                                &emsp;(&#123;row, column, ...restProps&#125;) => &#123; <br/>
+                                &emsp;&emsp;if (column.title === "Add") &#123;<br/>
+                                &emsp;&emsp;&emsp;return &#60;Table.Cell
+                                        <br/>&emsp;&emsp;&emsp;&emsp;row=&#123;row&#125;
+                                        <br/>&emsp;&emsp;&emsp;&emsp;&#123;...restProps&#125;
+                                        <br/>&emsp;&emsp;&emsp;&emsp;className=&#123;'icon'&#125;
+                                    <br/>&emsp;&emsp;&emsp;&#62;
+                                        <br/>&emsp;&emsp;&emsp;&emsp;&#60;div style=&#123;&#123;width: "1vw"&#125;&#125; onClick=&#123;() =&#62; this.showAdditionalInfoPopup(true, row, "add")&#125;&#62;
+                                            <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#60;Image src=&#123;create&#125; style=&#123;&#123;display: "inline"&#125;&#125;/&#62;
+                                        <br/>&emsp;&emsp;&emsp;&emsp;&#60;/div&#62;
+                                        <br/>&emsp;&emsp;&emsp;&#60;/Table.Cell&#62;
+                                    <br/>&emsp;&emsp;&#125;&emsp;else &#123;
+                                        <br/>&emsp;&emsp;&emsp;&emsp;return &#60;Table.Cell
+                                        <br/>&emsp;&emsp;&emsp;&emsp;&emsp;row=&#123;row&#125;
+                                        <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#123;...restProps&#125;
+                                    <br/>&emsp;&emsp;&emsp;&emsp;&#62;
+                                        <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#123;row[column.name]&#125;
+                                        <br/>&emsp;&emsp;&emsp;&#60;/Table.Cell&#62;
+                                    <br/>&emsp;&emsp;&#125;
+                            <br/>&emsp;&#125;</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>createToggled</i></dd>
+                        <dd className="col-sm-9"><i>viewConfig</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">responds to the user's desire to add new entry.
-                            Note: that this won't provide any create form.
+                        <dd className="col-sm-9"> toggles a particular grid setup.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a callback function</dd>
+                        <dd className="col-sm-9"> a string of either
+                            <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                <li>i. “bare” = renders only the grid with pagination & “# of entries at a time” options
+                                    available.
+                                </li>
+                                <li>ii. “simple” = similar to bare, but includes a refresh button</li>
+                                <li>iii. “search” = similar to simple, but includes search by column components</li>
+                                <li>iv. “all” = similar to search but includes the create/edit/delete components</li>
+                                <li>v. “allnosearch” = similar to all but excludes the search by column components</li>
+                            </ul>
+                        </dd>
 
-                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9"> "bare"</dd>
                     </dl>
 
                     <ScrollUpButton showAtPosition={300}/>
