@@ -52,11 +52,15 @@ class GridComponent extends Component {
                             </li>
 
                             <li className="nav-item">
-                                <a className="nav-link" href="#interactions">Data Interactions</a>
+                                <a className="nav-link" href="#interactions">Interacting With Data</a>
                             </li>
 
                             <li className="nav-item">
                                 <a className="nav-link" href="#displaying">Displaying Data</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="#sorting">Sorting</a>
                             </li>
 
                             <li className="nav-item">
@@ -307,6 +311,41 @@ class GridComponent extends Component {
                     <hr width={"85%"}/>
 
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Editing </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>editedValues</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> retrieves the row that has been edited. The callback function will be
+                            called with a parameter containing an array of JSON objects where the first element is a row
+                            corresponding to one of the rows in the “row” prop, and the second element being the changes
+                            made to that row.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>blockedColumns</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a list of columns that will be blocked from editing.</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">an array corresponding to elements in the “columns” prop</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>editExternally</i></dd>
@@ -606,14 +645,14 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>filterByColumnEnabled</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">toggles whether
+                        <dd className="col-sm-9">toggles whether columns in the grid can be filtered through.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">a callback function</dd>
 
-                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
-                        <dd className="col-sm-9"><i>resetSearch</i></dd>
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>filterArray</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -624,11 +663,19 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>filterArray</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">
+                        <dd className="col-sm-9"> specifies which column(s) to filter the grid by along with their corresponding values.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"></dd>
+                        <dd className="col-sm-9">an array of JSON objects with the following properties:
+                            <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                <li>i. "columnName", which corresponds to values in the "columns" property</li>
+                                <li>ii. "value", which is the value to filter that column by.</li>
+                            </ul>
+                        </dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">filterArray=&#123;&nbsp;[&nbsp;&#123;columnName: "name", value: "Adam"&#125;&nbsp;]&nbsp;&#125;</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
                         <dd className="col-sm-9"><i>filterByColumnEnabled == true </i></dd>
@@ -638,11 +685,214 @@ class GridComponent extends Component {
 
                     <section id={"displaying"}/>
                     <hr width={"90%"}/>
+                    <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Displaying Data </h5>
+
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Grouping </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>groupsEnabled</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether the rows in the grid should be grouped by a specified column.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>groupBy</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>groupBy</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> the column to group the rows by.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9"> a string whose value corresponds to a column in the "columns" property.</dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">groupBy=&#123;"name"&#125;</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>groupsEnabled == true</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Summarizing </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>summaryItemsEnabled</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> toggles whether to show a "summary" section on a corresponding column.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>summaryItems</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>summaryItems</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> the column to provide a summary for
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">an array of JSON object with the following properties:
+                            <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                <li>i. "columnName", which corresponds to a value in the "columns" property</li>
+                                <li>ii. "type", which is the type of summary to provide. Can be one of the following: </li>
+                                    <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                        <li>-sum</li>
+                                        <li>-max</li>
+                                        <li>-min</li>
+                                        <li>-avg</li>
+                                        <li>-count</li>
+                                    </ul>
+                            </ul>
+                        </dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">summaryItems=&#123;&nbsp; [&nbsp;&#123;columnName: "price", type: "sum"&#125;&nbsp;]&nbsp;&#125;</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>summaryItems == true</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>summaryIsCustomized</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> toggles whether the developer will pass in their own summary value.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>summaryValue</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>summaryValue</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> the summary value to display. Note: this value will override the internal summary's calculated value.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">string or numeric</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>summaryIsCustomized == true</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Column Reordering </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>colReorder</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether the user is allowed to reorder the columns.</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+                    </dl>
+
+                    {/*====================== Sorting Section ======================*/}
+
+                    <section id={"sorting"}/>
+                    <hr width={"90%"}/>
+                    <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Sorting </h5>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>gridSorting</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> specifies the sorting on the grid based on a specified column from the "columns" property, and order
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">an array of JSON object where the property is the column name, and value is either "asc" or "desc".
+                        </dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">gridSorting=&#123;&nbsp; [&nbsp;&#123;name: "asc"&#125;&nbsp;]&nbsp;&#125;</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>remoteSorting</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether remote sorting is implemented to this grid or not.</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs to Have</dt>
+                        <dd className="col-sm-9"><i>selectedSorting</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>selectedSorting</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a function called by GridComponent when the user toggles to sort by a specific column.</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function that receives a JSON object as parameter containing column name and order.</dd>
+
+                        <dt className="col-sm-3"> Sample Parameter </dt>
+                        <dd className="col-sm-9">&#123;name: asc&#125;</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>remoteSorting</i></dd>
+                    </dl>
+
 
                     {/*====================== Paging Section ======================*/}
 
                     <section id={"paging"}/>
                     <hr width={"90%"}/>
+                    <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Paging </h5>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
@@ -668,34 +918,6 @@ class GridComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>colReorder</i></dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">toggles whether the user is allowed to reorder the columns.</dd>
-
-                        <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">boolean</dd>
-                    </dl>
-
-                    {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
-
-                    <dl className="row">
-                        <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>blockedColumns</i></dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">a list of columns that will be blocked from editing.</dd>
-
-                        <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">an array corresponding to elements in the “columns” prop</dd>
-                    </dl>
-
-                    {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
-
-                    <dl className="row">
-                        <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>remotePaging</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
@@ -705,7 +927,7 @@ class GridComponent extends Component {
                         <dd className="col-sm-9">boolean</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needs to Have</dt>
-                        <dd className="col-sm-9"><i>totalCount, currentPage, currentPageSize</i></dd>
+                        <dd className="col-sm-9"><i>totalCount, currentPage, changeCurrentPage, currentPageSize, changeCurrentPageSize</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -747,6 +969,23 @@ class GridComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>changeCurrentPage</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a function called by GridComponent whenever the user clicks to view another page. </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">callback function</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>remotePaging</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>currentPageSize</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
@@ -762,35 +1001,55 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>remotePaging</i></dd>
                     </dl>
 
-
                     {/*-----Next Entry-----*/}
                     <hr width={"85%"}/>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>editedValues</i></dd>
+                        <dd className="col-sm-9"><i>changeCurrentPageSize</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> retrieves the row that has been edited. The callback function will be
-                            called with a parameter containing an array of JSON objects where the first element is a row
-                            corresponding to one of the rows in the “row” prop, and the second element being the changes
-                            made to that row.
-                        </dd>
+                        <dd className="col-sm-9">a function called by GridComponent whenever the user clicks to view more rows per page. </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a callback function</dd>
+                        <dd className="col-sm-9">callback function</dd>
 
-                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>viewConfig = "all", "allnosearch"</i></dd>
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>remotePaging</i></dd>
                     </dl>
-
 
                     {/*====================== Styling ======================*/}
 
                     <hr width={"90%"}/>
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Grid Styling </h5>
 
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>viewConfig</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> toggles a particular grid setup.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9"> a string of either
+                            <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                <li>i. “bare” = renders only the grid with pagination & “# of entries at a time” options
+                                    available.
+                                </li>
+                                <li>ii. “simple” = similar to bare, but includes a refresh button</li>
+                                <li>iii. “search” = similar to simple, but includes search by column components</li>
+                                <li>iv. “all” = similar to search but includes the create/edit/delete components</li>
+                                <li>v. “allnosearch” = similar to all but excludes the search by column components</li>
+                            </ul>
+                        </dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9"> "bare"</dd>
+                    </dl>
+
                     {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
@@ -811,9 +1070,52 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"> 180</dd>
                     </dl>
 
+                    {/*-----Next Entry-----*/}
                     <hr width={"85%"}/>
 
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>hiddenColumns</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> a list of hidden columns on the grid.</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9"> an array of columns whose values correspond to columns in the "columns" property. </dd>
+                    </dl>
+
                     {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>buttonColors</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">allows the developer to pass in their own hex values for the colors of the button text and background in the grid.</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a JSON object that contains one or more of the following property pairs:
+
+                        </dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>gridContainerClass</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">a class name to give to the container of the GridComponent to allow for CSS manipulation</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">string</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
@@ -850,33 +1152,6 @@ class GridComponent extends Component {
                                         <br/>&emsp;&emsp;&emsp;&#60;/Table.Cell&#62;
                                     <br/>&emsp;&emsp;&#125;
                             <br/>&emsp;&#125;</dd>
-                    </dl>
-
-                    {/*-----Next Entry-----*/}
-
-                    <dl className="row">
-                        <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>viewConfig</i></dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> toggles a particular grid setup.
-                        </dd>
-
-                        <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> a string of either
-                            <ul style={{textAlign: "left", listStyleType: "none"}}>
-                                <li>i. “bare” = renders only the grid with pagination & “# of entries at a time” options
-                                    available.
-                                </li>
-                                <li>ii. “simple” = similar to bare, but includes a refresh button</li>
-                                <li>iii. “search” = similar to simple, but includes search by column components</li>
-                                <li>iv. “all” = similar to search but includes the create/edit/delete components</li>
-                                <li>v. “allnosearch” = similar to all but excludes the search by column components</li>
-                            </ul>
-                        </dd>
-
-                        <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9"> "bare"</dd>
                     </dl>
 
                     <ScrollUpButton showAtPosition={300}/>
