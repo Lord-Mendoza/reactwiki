@@ -5,27 +5,19 @@ Lord Mendoza - 4/19/19
 //============================================= IMPORTS ================================================================
 
 //React
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import '../../styling/reactcomponents/GridComponent.css';
+import './GridComponent.css';
 //DevExpress Grid
 import {
     CustomPaging,
-    CustomSummary,
-    DataTypeProvider,
     EditingState,
-    FilteringState,
-    GroupingState,
-    IntegratedFiltering,
-    IntegratedGrouping,
     IntegratedPaging,
     IntegratedSelection,
     IntegratedSorting,
-    IntegratedSummary,
     PagingState,
     SelectionState,
-    SortingState,
-    SummaryState
+    SortingState
 } from "@devexpress/dx-react-grid";
 import {
     DragDropProvider,
@@ -34,13 +26,10 @@ import {
     Table,
     TableColumnReordering,
     TableColumnResizing,
-    TableColumnVisibility,
     TableEditColumn,
     TableEditRow,
-    TableGroupRow,
     TableHeaderRow,
     TableSelection,
-    TableSummaryRow,
 } from '@devexpress/dx-react-grid-bootstrap4';
 import "@devexpress/dx-react-grid-bootstrap4/dist/dx-react-grid-bootstrap4.css";
 //React-Bootstrap
@@ -61,62 +50,9 @@ const TableComponent = ({...restProps}) => (
 //======================================================================================================================
 //=========================================== START OF CLASS ===========================================================
 
-class GridComponent extends React.Component {
+class GridComponent extends Component {
     constructor(props, context) {
         super(props, context);
-
-        let filterByColumnEnabled;
-        if (props.hasOwnProperty("filterByColumnEnabled"))
-            filterByColumnEnabled = props["filterByColumnEnabled"];
-
-        let tableCell;
-        if (props.hasOwnProperty("tableCell"))
-            tableCell = props["tableCell"];
-
-        let gridSorting;
-        if (props.hasOwnProperty("gridSorting"))
-            gridSorting = props["gridSorting"];
-
-        let summaryItems;
-        if (props.hasOwnProperty("summaryItemsEnabled") && props.hasOwnProperty("summaryItems") ) {
-            summaryItems = props["summaryItems"];
-        }
-
-        let summaryValue;
-        if (props.hasOwnProperty("summaryIsCustomized") && props.hasOwnProperty("summaryValue")) {
-            summaryValue = props["summaryValue"];
-        }
-
-        let editExternally;
-        if (props.hasOwnProperty("editExternally") && props.hasOwnProperty("editToggled"))
-            editExternally = props["editExternally"];
-
-        let sortingColumnExtensions;
-        if (props.hasOwnProperty("sortingColumnExtensions"))
-            sortingColumnExtensions = props["sortingColumnExtensions"];
-
-        let hiddenColumns;
-        if (props.hasOwnProperty("hiddenColumns") && props["hiddenColumns"]) {
-            hiddenColumns = props["hiddenColumns"];
-        }
-
-        let buttonColors;
-        if (props.hasOwnProperty("buttonColors") && props["buttonColors"])
-            buttonColors = props["buttonColors"];
-
-        let disableModifications;
-        if (props.hasOwnProperty("disableModifications") && props["disableModifications"])
-            disableModifications = props["disableModifications"];
-
-        let gridContainerClass;
-        if (props.hasOwnProperty("gridContainerClass") && props["gridContainerClass"]) {
-            gridContainerClass = props["gridContainerClass"];
-        }
-
-        let editAlways;
-        if (props.hasOwnProperty("editAlways") && props["editAlways"]) {
-            editAlways = props["editAlways"];
-        }
 
         //-------------------------------------- STATE VALUES ----------------------------------------------------------
         this.state = {
@@ -139,25 +75,10 @@ class GridComponent extends React.Component {
             nonSearchableColumns: [],
             searchValue: "",
             searchColumn: "default",
-
-            summaryItems,
-            summaryValue,
-
-            editExternally,
-
-            filterByColumnEnabled,
-            tableCell,
-            gridSorting,
-            sortingColumnExtensions,
-            hiddenColumns,
-            buttonColors,
-            disableModifications,
-            gridContainerClass,
-            editAlways
         };
 
         //In-line methods that is better to be declared here rather than outside the constructor (since its simple)
-        this.changeSorting = sorting => this.setState({sorting, gridSorting: undefined});
+        this.changeSorting = sorting => this.setState({sorting});
         this.changeColumnWidths = (colWidths) => {
             this.setState({colWidths})
         };
@@ -186,12 +107,13 @@ class GridComponent extends React.Component {
         this.handleSearchColumnChange = (event) => {
             this.setState({searchColumn: event.target.value});
         };
-        this.resetSearch = this.resetSearch.bind(this);
+        this.resetSearch = () => {
+            this.setState({searchValue: "", searchColumn: "default"})
+        };
 
         //Helper functions of this component that are more complicated to declare inside the constructor
         this.handleSelectedValues = this.handleSelectedValues.bind(this);
         this.changeEditState = this.changeEditState.bind(this);
-        this.editEntry = this.editEntry.bind(this);
         this.deleteSelected = this.deleteSelected.bind(this);
         this.commitChanges = this.commitChanges.bind(this);
         this.performRefresh = this.performRefresh.bind(this);
@@ -212,14 +134,31 @@ class GridComponent extends React.Component {
         const {
             columns, rows, pageConfig, toggleSelect, viewConfig, colReorder, blockedColumns,
             blockedSearchColumns, remotePaging, currentPage, currentPageSize, totalCount,
-            columnWidths, hideOnSubmit
+            columnWidths
         } = this.props;
-        const {
-            editingMode
-        } = this.state;
+
+        //Setting up the columns for rendering
+        let gridColumns = columns.map(v => {
+            return {name: v.replace(/\s/g, ""), title: v};
+        });
 
         //Setting up column labels to be used later by search component
         let columnLabels = columns;
+
+        //Setting up the rows (data)
+        let gridRows = [];
+        rows.forEach(v => {
+            let gridRow = {};
+
+            columns.forEach(p => {
+                let property = p.replace(/\s/g, "");
+                if (v.hasOwnProperty(property)) {
+                    gridRow[property] = v[property];
+                }
+            });
+
+            gridRows.push(gridRow);
+        });
 
         //Setting up the page sizes if the developer provides such information, but assigning default values should
         //they choose to omit it.
@@ -241,10 +180,11 @@ class GridComponent extends React.Component {
 
         //Setting up initial widths for viewing
         let colWidths = columns.map(v => {
-            if (columnWidths && columnWidths.hasOwnProperty(v["name"]))
-                return {columnName: v["name"], width: columnWidths[v["name"]]};
+            let property = v.replace(/\s/g, "");
+            if (columnWidths && columnWidths.hasOwnProperty(property))
+                return {columnName: property, width: columnWidths[property]};
             else
-                return {columnName: v["name"], width: 180};
+                return {columnName: property, width: 180};
         });
 
         //Checking if the developer opted to allow column reordering
@@ -256,7 +196,8 @@ class GridComponent extends React.Component {
         //options.
         let viewSetup = "bare";
         if (viewConfig !== undefined) {
-            if (["bare", "simple", "search", "all", "allnosearch"].includes(viewConfig))
+            if (viewConfig === "search" || viewConfig === "allnosearch" || viewConfig === "all"
+                || viewConfig === "bare")
                 viewSetup = viewConfig;
             else
                 viewSetup = "bare";
@@ -267,7 +208,7 @@ class GridComponent extends React.Component {
         if (blockedColumns !== undefined) {
             if (blockedColumns.length > 0) {
                 blockedColumns.forEach(v => {
-                    nonEditableColumns.push({columnName: v.replace(/\s/g, "").replace(/[\W_]+/g,""), editingEnabled: false});
+                    nonEditableColumns.push({columnName: v.replace(/\s/g, ""), editingEnabled: false});
                 });
             }
         }
@@ -289,40 +230,30 @@ class GridComponent extends React.Component {
             totalDataCount = totalCount;
         }
 
-        let groupBy, groupsExpanded;
-        if (this.props.hasOwnProperty("groupBy"))
-            groupBy = this.props["groupBy"];
-        if (this.props.hasOwnProperty("groupsExpanded") && this.props["groupsExpanded"])
-            groupsExpanded = this.props["groupsExpanded"];
-
-        let newEditingMode;
-        if (hideOnSubmit === "false" || hideOnSubmit === false) {
-            newEditingMode = editingMode;
-        } else {
-            newEditingMode = false;
-        }
+        //Initializing other state props
+        let editingMode = false;
+        let searchValue = "";
+        let searchColumn = "default";
 
         this.setState({
             //Required values for rendering the grid
-            columns, rows,
+            columns: gridColumns, rows: gridRows,
 
             //Additional grid configurations
             columnLabels, columnOrder: columns,
-            colWidths, columnReordering,
+            colWidths, columnReordering, editingMode,
             pageSize, pageSizes,
             selectionToggled,
-            editingMode: newEditingMode,
 
             //Tracking which grid view the developer opted for
             viewSetup,
 
             //Tracking which rows are deleted/edited/search to be passed back to parent component
             deletionSelection: [], editingRowIds: [], rowChanges: [],
+            searchValue, searchColumn,
 
             //Configuring the search component
             editingStateColumnExtensions: nonEditableColumns, nonSearchableColumns,
-
-            groupBy, groupsExpanded,
 
             //Remote paging configuration
             remotePagingToggled, totalDataCount,
@@ -333,21 +264,36 @@ class GridComponent extends React.Component {
     If changes occur in the parent component involving the required sections of the grid
     (new data is loaded, new columns) then the GridComponent's state is re-initialized again
      */
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.columns !== prevProps.columns || this.props.rows !== prevProps.rows || (this.props.filterByColumnEnabled && this.props.filterArray !== prevProps.filterArray)
-            || (this.props.gridSorting !== prevProps.gridSorting)
-            || (this.props.summaryItemsEnabled && (JSON.stringify(this.props.summaryItems) !== JSON.stringify(prevProps.summaryItems) || this.props.summaryValue !== prevProps.summaryValue) ) ) {
+    componentDidUpdate(prevProps) {
+        if (this.props.columns !== prevProps.columns || this.props.rows !== prevProps.rows) {
             const {
                 columns, rows, pageConfig, toggleSelect, viewConfig, colReorder, blockedColumns,
                 blockedSearchColumns, remotePaging, currentPage, currentPageSize, totalCount,
-                columnWidths, gridSorting, hideOnSubmit
+                columnWidths
             } = this.props;
-            const {
-                editingMode
-            } = this.state;
+
+            //Setting up the columns for rendering
+            let gridColumns = columns.map(v => {
+                return {name: v.replace(/\s/g, ""), title: v};
+            });
 
             //Setting up column labels to be used later by search component
             let columnLabels = columns;
+
+            //Setting up the rows (data)
+            let gridRows = [];
+            rows.forEach(v => {
+                let gridRow = {};
+
+                columns.forEach(p => {
+                    let property = p.replace(/\s/g, "");
+                    if (v.hasOwnProperty(property)) {
+                        gridRow[property] = v[property];
+                    }
+                });
+
+                gridRows.push(gridRow);
+            });
 
             //Setting up the page sizes if the developer provides such information, but assigning default values should
             //they choose to omit it.
@@ -369,10 +315,11 @@ class GridComponent extends React.Component {
 
             //Setting up initial widths for viewing
             let colWidths = columns.map(v => {
-                if (columnWidths && columnWidths.hasOwnProperty(v["name"]))
-                    return {columnName: v["name"], width: columnWidths[v["name"]]};
+                let property = v.replace(/\s/g, "");
+                if (columnWidths && columnWidths.hasOwnProperty(property))
+                    return {columnName: property, width: columnWidths[property]};
                 else
-                    return {columnName: v["name"], width: 180};
+                    return {columnName: property, width: 180};
             });
 
             //Checking if the developer opted to allow column reordering
@@ -384,7 +331,8 @@ class GridComponent extends React.Component {
             //options.
             let viewSetup = "bare";
             if (viewConfig !== undefined) {
-                if (["bare", "simple", "search", "all", "allnosearch"].includes(viewConfig))
+                if (viewConfig === "search" || viewConfig === "allnosearch" || viewConfig === "all"
+                    || viewConfig === "bare")
                     viewSetup = viewConfig;
                 else
                     viewSetup = "bare";
@@ -395,7 +343,7 @@ class GridComponent extends React.Component {
             if (blockedColumns !== undefined) {
                 if (blockedColumns.length > 0) {
                     blockedColumns.forEach(v => {
-                        nonEditableColumns.push({columnName: v.replace(/\s/g, "").replace(/[\W_]+/g,""), editingEnabled: false});
+                        nonEditableColumns.push({columnName: v.replace(/\s/g, ""), editingEnabled: false});
                     });
                 }
             }
@@ -417,150 +365,34 @@ class GridComponent extends React.Component {
                 totalDataCount = totalCount;
             }
 
-            //Retrieving the search value as the user types
-            let filterArray;
-            if (this.props.filterArray)
-                filterArray = this.props.filterArray;
-            else
-                filterArray = [];
-
-            let summaryItems = [];
-            if (this.props.summaryItems)
-                summaryItems = this.props.summaryItems;
-
-            let summaryValue = 0;
-            if (this.props.summaryValue)
-                summaryValue = this.props.summaryValue;
-
-            let newEditingMode;
-            if (hideOnSubmit === "false" || hideOnSubmit === false) {
-                newEditingMode = editingMode;
-            } else {
-                newEditingMode = false;
-            }
-
-            let callbackFunction;
-            if (this.props.hasOwnProperty("selectionsWereReset"))
-                callbackFunction = () => this.props["selectionsWereReset"](true);
+            //Initializing other state props
+            let editingMode = false;
+            let searchValue = "";
+            let searchColumn = "default";
 
             this.setState({
                 //Required values for rendering the grid
-                columns, rows,
+                columns: gridColumns, rows: gridRows,
 
                 //Additional grid configurations
                 columnLabels, columnOrder: columns,
-                colWidths, columnReordering,
+                colWidths, columnReordering, editingMode,
                 pageSize, pageSizes,
-                selectionToggled, gridSorting,
-                editingMode: newEditingMode,
-                currentPage: currentPage,
-                currentPageSize: currentPageSize,
+                selectionToggled,
 
                 //Tracking which grid view the developer opted for
                 viewSetup,
 
                 //Tracking which rows are deleted/edited/search to be passed back to parent component
                 deletionSelection: [], editingRowIds: [], rowChanges: [],
-                filterArray,
-
-                summaryItems, summaryValue,
-
-                //Cleaning up selections again
-                selection: [],
+                searchValue, searchColumn,
 
                 //Configuring the search component
                 editingStateColumnExtensions: nonEditableColumns, nonSearchableColumns,
 
                 //Remote paging configuration
                 remotePagingToggled, totalDataCount,
-            }, callbackFunction);
-        } else if (this.props.hasOwnProperty("toggleSelect") && this.props.toggleSelect !== prevProps.toggleSelect) {
-            this.setState({selectionToggled: this.props.toggleSelect});
-        } else if (this.props.hasOwnProperty("selectionsWereReset") && this.props.resetSelections !== prevProps.resetSelections) {
-            if (this.props["resetSelections"])
-                this.setState({selections: []}, () => this.props["selectionsWereReset"](true));
-        } else if (this.props.hasOwnProperty("remotePaging") && this.props.remotePaging === true
-            && (this.props.currentPage !== prevProps.currentPage || this.props.pageSize !== prevProps.pageSize)) {
-            if (this.props.currentPage !== prevProps.currentPage) {
-                this.setState({currentPage: this.props.currentPage});
-            } else if (this.props.pageSize !== prevProps.pageSize) {
-                this.setState({pageSize: this.props.pageSize});
-            }
-        } else if (this.props.hasOwnProperty("clearDeletedRows")
-            && this.props.clearDeletedRows !== prevProps.clearDeletedRows && this.props.clearDeletedRows) {
-            this.setState({deletionSelection: []})
-        } else if (this.props.hasOwnProperty("resetSearch") && this.props.hasOwnProperty("revertResetSearch")
-            && this.props.resetSearch !== prevProps.resetSearch && this.props.resetSearch === true) {
-            this.props.revertResetSearch();
-            this.setState({
-                searchValue: "",
-                searchColumn: "default"
             });
-        } else if (this.props.hasOwnProperty("disableModifications")
-            && this.props.disableModifications !== prevProps.disableModifications
-            && this.props.disableModifications) {
-
-            this.setState({
-                disableModifications: this.props.disableModifications
-            });
-        }
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        for (let prop in nextProps) {
-            if (Array.isArray(nextProps[prop]) && Array.isArray(this.props[prop])) {
-                if (this.arraysNotEqual(nextProps[prop], this.props[prop]))
-                    return true;
-            } else if (typeof nextProps[prop] === "object" && typeof this.props[prop] === "object") {
-                if (this.objectsNotEqual(nextProps[prop], this.props[prop]))
-                    return true;
-            } else if (typeof nextProps[prop] !== typeof this.props[prop]) {
-                return true;
-            } else if (typeof nextProps[prop] !== "function" && typeof this.props[prop] !== "function"
-                && nextProps[prop] !== this.props[prop]) {
-                return true;
-            }
-        }
-
-        for (let prop in nextState) {
-            if (Array.isArray(nextState[prop]) && Array.isArray(this.state[prop])) {
-                if (this.arraysNotEqual(nextState[prop], this.state[prop]))
-                    return true;
-            } else if (typeof nextState[prop] === "object" && typeof this.state[prop] === "object") {
-                if (this.objectsNotEqual(nextState[prop], this.state[prop]))
-                    return true;
-            } else if (typeof nextState[prop] !== typeof this.state[prop]) {
-                return true;
-            } else if (typeof nextState[prop] !== "function" && typeof this.state[prop] !== "function"
-                && nextState[prop] !== this.state[prop]) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    objectsNotEqual(objOne, objTwo) {
-        let objString = JSON.stringify(objOne, Object.keys(objOne).sort());
-        let currentObjString = JSON.stringify(objTwo, Object.keys(objTwo).sort());
-
-        return objString !== currentObjString;
-    }
-
-    arraysNotEqual(arrayOne, arrayTwo) {
-        if (arrayOne.length !== arrayTwo.length)
-            return true;
-        else {
-            for (let i = 0; i < arrayOne.length; i++) {
-                if (typeof arrayOne[i] === "object" && typeof arrayTwo[i] === "object") {
-                    if (this.objectsNotEqual(arrayOne[i], arrayTwo[i]))
-                        return true;
-                } else if (typeof arrayOne[i] !== typeof arrayTwo[i])
-                    return true;
-                else if (arrayOne[i] !== arrayTwo[i])
-                    return true;
-            }
-            return false;
         }
     }
 
@@ -612,6 +444,8 @@ class GridComponent extends React.Component {
             });
 
             this.props.deletedValues(deletedRows);
+
+            this.setState({deletionSelection: []})
         }
     }
 
@@ -674,22 +508,12 @@ class GridComponent extends React.Component {
         if (this.props.searchValue !== undefined) {
             const {searchValue, searchColumn} = this.state;
 
-            if (searchValue && searchColumn && searchColumn !== "default") {
+            if (searchValue !== "" && searchColumn !== "") {
                 let searchObject = {};
                 searchObject[searchColumn] = searchValue;
                 this.props.searchValue(searchObject);
-            } else {
-                this.props.searchValue(null);
             }
         }
-    }
-
-    resetSearch() {
-        this.setState({searchValue: "", searchColumn: "default"}, () => {
-            if (this.props.searchValue !== undefined) {
-                this.props.searchValue(null);
-            }
-        })
     }
 
     /*
@@ -705,30 +529,16 @@ class GridComponent extends React.Component {
     }
 
     /*
-    Triggering the callback for clicking the edit button on a row when editExternally prop is set to true.
-
-    Note that GridComponent will NOT handle the data creation. You can choose to handle this creation phase as
-    you desire, whether you'll respond with a modal that includes the form or however else you wish.
-    */
-    editEntry(rowIndex) {
-        const {rows} = this.state
-        const {editExternally, editToggled} = this.props;
-
-        if (editExternally && editToggled) {
-            this.setState({editingRowIds: []}, () => editToggled(rows[rowIndex], rowIndex));
-        }
-    }
-
-    /*
     Changes the page based on user interaction
 
     If remotePaging is toggled to true, then the current page value is sent back to the parent prop.
     */
     changeCurrentPage = currentPage => {
         if (this.state.remotePagingToggled)
-            this.props.changeCurrentPage(currentPage);
+            this.setState({currentPage}, this.props.currentPage(currentPage));
         else
             this.setState({currentPage});
+
     };
 
     /*
@@ -738,7 +548,7 @@ class GridComponent extends React.Component {
     */
     changePageSize = pageSize => {
         if (this.state.remotePagingToggled)
-            this.props.changeCurrentPageSize(pageSize);
+            this.setState({pageSize}, this.props.currentPageSize(pageSize));
         else
             this.setState({pageSize});
     };
@@ -749,10 +559,7 @@ class GridComponent extends React.Component {
         const {
             rows, columns, columnLabels, sorting, colWidths, pageSize, pageSizes, currentPage,
             selection, selectionToggled, viewSetup, columnReordering, columnOrder, editingMode,
-            deletionSelection, nonSearchableColumns, totalDataCount, filterByColumnEnabled, filterArray,
-            tableCell, gridSorting, summaryItems, summaryValue, groupBy, groupsExpanded,
-            sortingColumnExtensions, hiddenColumns, buttonColors, editExternally, disableModifications,
-            gridContainerClass, editAlways
+            deletionSelection, nonSearchableColumns, totalDataCount
         } = this.state;
 
         //Determining whether to display the select checkboxes to the left of the rows or not
@@ -784,61 +591,8 @@ class GridComponent extends React.Component {
                 onOrderChange={this.changeColumnOrder}/>;
         }
 
-        let createStyle = {marginRight: 5, borderLeft: 0};
-        let editStyle = {marginRight: 15, borderLeft: 0};
-        let refreshStyle = {};
-        let deleteStyle = {};
-        let createVariant = "success", editVariant = "info", deleteVariant = "danger", refreshVariant = "primary";
-        if (buttonColors) {
-            if (typeof buttonColors === "object") {
-                const {
-                    createColor, editColor, deleteColor, refreshColor,
-                    createTextColor, editTextColor, deleteTextColor, refreshTextColor
-                } = buttonColors;
-
-                if (createColor)
-                    createStyle["backgroundColor"] = createColor;
-                if (createTextColor)
-                    createStyle["color"] = createTextColor;
-
-                if (editColor)
-                    editStyle["backgroundColor"] = editColor;
-                if (editTextColor)
-                    editStyle["color"] = editTextColor;
-
-                if (deleteColor)
-                    deleteStyle["backgroundColor"] = deleteColor;
-                if (deleteTextColor)
-                    deleteStyle["color"] = deleteTextColor;
-
-                if (refreshColor)
-                    refreshStyle["backgroundColor"] = refreshColor;
-                if (refreshTextColor)
-                    refreshStyle["color"] = refreshTextColor;
-
-                createVariant = "";
-                editVariant = "";
-                deleteVariant = "";
-                refreshVariant = "";
-            } else if (typeof buttonColors === "string" && buttonColors === "muted") {
-                createVariant = "secondary";
-                editVariant = "secondary";
-                deleteVariant = "secondary";
-                refreshVariant = "secondary";
-            }
-        }
-
-        let isModDisabled = false;
-        if ((disableModifications !== null || true) && disableModifications === true) {
-            isModDisabled = true;
-            createStyle["cursor"] = "default";
-            editStyle["cursor"] = "default";
-            deleteStyle["cursor"] = "default";
-        }
-
         //Declaring the add button
-        let btnAdd = <Button variant={createVariant} style={createStyle}
-                             disabled={isModDisabled}
+        let btnAdd = <Button variant="success" style={{marginRight: 5, borderLeft: 0}}
                              onClick={this.createEntry}>
             <FaPlus/> Create Entry
         </Button>;
@@ -846,15 +600,13 @@ class GridComponent extends React.Component {
         //Declaring the Show/Hide Edit/Delete button based on editing state
         let btnEdit, options, multiSelect, deleteSelected, deleteHint;
         if ((viewSetup === "all" || viewSetup === "allnosearch") && !editingMode) {
-            btnEdit = <Button variant={editVariant} style={editStyle}
-                              disabled={isModDisabled}
+            btnEdit = <Button variant="info" style={{marginRight: 15, borderLeft: 0}}
                               onClick={this.changeEditState}>
                 <FaSlidersH/> Show Edit/Delete
             </Button>;
             options = <TableEditColumn width={0}/>;
         } else if ((viewSetup === "all" || viewSetup === "allnosearch") && editingMode) {
-            btnEdit = <Button variant={editVariant} style={editStyle}
-                              disabled={isModDisabled}
+            btnEdit = <Button variant="info" style={{marginRight: 15, borderLeft: 0}}
                               onClick={this.changeEditState}>
                 <FaSlidersH/> Hide Edit/Delete
             </Button>;
@@ -868,7 +620,7 @@ class GridComponent extends React.Component {
             />;
             integratedSelection = <IntegratedSelection/>;
 
-            deleteSelected = <Button variant={deleteVariant} onClick={this.deleteSelected} style={deleteStyle} disabled={isModDisabled}>
+            deleteSelected = <Button variant="danger" onClick={this.deleteSelected}>
                 <FaTrash/> Delete Selected </Button>;
             deleteHint = <ButtonToolbar>
                 <OverlayTrigger trigger="hover" key="right" placement="right"
@@ -882,7 +634,7 @@ class GridComponent extends React.Component {
                                 }
                 >
 
-                    <Button variant="light" style={{marginLeft: 5, height: '30px'}}><FaQuestion/></Button>
+                    <Button variant="light" style={{marginLeft: 5}}><FaQuestion/></Button>
 
                 </OverlayTrigger>
             </ButtonToolbar>;
@@ -891,7 +643,7 @@ class GridComponent extends React.Component {
         //Declaring the refresh button; note that it checks if the viewSetup is bare & avoids rendering if so.
         let refresh;
         if (viewSetup !== "bare")
-            refresh = <Button variant={refreshVariant} onClick={this.performRefresh} style={refreshStyle}>
+            refresh = <Button variant="primary" onClick={this.performRefresh}>
                 <FaSync/> Refresh
             </Button>;
 
@@ -899,9 +651,9 @@ class GridComponent extends React.Component {
         let menuOptions;
         let count = 0;
         let searchColumns = [<option disabled value={"default"} key={0}>Select Column...</option>];
-        columnLabels.filter(v => (!nonSearchableColumns.includes(v["name"])))
+        columnLabels.filter(v => (!nonSearchableColumns.includes(v)))
             .forEach(v => {
-                searchColumns.push(<option value={v["name"]} key={count+1}> {v["title"]} </option>);
+                searchColumns.push(<option value={v} key={count+1}> {v} </option>);
                 count++;
             });
 
@@ -985,11 +737,11 @@ class GridComponent extends React.Component {
         if (viewSetup !== "bare"){
             menuBar = <Container fluid={true} style={{marginRight: 1}}>
                 <Row noGutters={true}>
-                    <Col xs="auto">
+                    <Col>
                         {menuOptions}
                     </Col>
 
-                    <Col style={{float: 'right', textAlign: 'right', margin: '0', padding: '0'}}>
+                    <Col xs="auto" style={{float: 'right', textAlign: 'right', marginRight: '0px'}}>
                         {refresh}
                     </Col>
                 </Row>
@@ -1000,115 +752,9 @@ class GridComponent extends React.Component {
             </Container>;
         }
 
-        let filteringState, integratedFiltering;
-        if (filterByColumnEnabled) {
-            filteringState = <FilteringState
-                filters={filterArray}
-            />;
-            integratedFiltering = <IntegratedFiltering />;
-        }
-
-        let table = <Table
-            tableComponent={TableComponent}
-        />;
-
-        if (tableCell) {
-            table = <Table
-                tableComponent={TableComponent}
-                cellComponent={tableCell}
-            />;
-        }
-
-        let sortingConfig;
-        if (gridSorting) {
-            let sortingArray = [];
-
-            gridSorting.forEach(sortingObj => {
-                let sortingObject = {};
-                let prop = Object.keys(sortingObj)[0];
-
-                sortingObject["columnName"] = prop;
-                sortingObject["direction"] = sortingObj[prop];
-
-                sortingArray.push(sortingObject);
-            });
-
-            sortingConfig = sortingArray;
-        } else {
-            sortingConfig = sorting;
-        }
-
-        let integratedSorting = <IntegratedSorting />;
-        if (sortingColumnExtensions) {
-            integratedSorting = <IntegratedSorting columnExtensions={sortingColumnExtensions}/>;
-        }
-
-        let tableColumnVisibility;
-        if (hiddenColumns) {
-            tableColumnVisibility = <TableColumnVisibility defaultHiddenColumnNames={hiddenColumns}/>;
-        }
-
-        let groupingState, integratedGrouping, tableGroupRow, groupKeyArray = [];
-        if (groupBy) {
-            if (groupsExpanded && rows) {
-                groupKeyArray = rows.filter(row => (!groupKeyArray.includes(row[groupBy])))
-                    .map(v => {
-                        return v[groupBy];
-                    });
-            }
-
-            if (groupsExpanded)
-                groupingState = <GroupingState grouping={[{columnName: groupBy}]} expandedGroups={groupKeyArray}/>;
-            else
-                groupingState = <GroupingState grouping={[{columnName: groupBy}]}/>;
-
-            integratedGrouping = <IntegratedGrouping />;
-            tableGroupRow = <TableGroupRow />;
-        }
-
-        let summaryState, summaryRow, currencyType;
-        let summaryPlugin;
-        if (summaryItems) {
-            let columnName = [];
-            if (summaryItems.length > 0)
-                columnName = summaryItems[0]['columnName'];
-
-            summaryState = <SummaryState totalItems={summaryItems} />;
-            summaryRow = <TableSummaryRow messages={{sum: 'Total Cost'}}/>;
-            currencyType = <DataTypeProvider formatterComponent={({value}) => `$${value}`} for={[columnName]}/>;
-
-            if (summaryValue !== undefined)
-                summaryPlugin = <CustomSummary totalValues={[summaryValue]} />;
-            else
-                summaryPlugin =  <IntegratedSummary />;
-        }
-
-        let editingState, tableEditRow;
-        if (editExternally) {
-            editingState = <EditingState
-                editingRowIds={this.state.editingRowIds}
-                onEditingRowIdsChange={(row) => this.editEntry(row[0])}
-                onCommitChanges={() => {}}
-            />;
-        } else {
-            editingState = <EditingState
-                editingRowIds={this.state.editingRowIds}
-                onEditingRowIdsChange={this.changeEditingRowIds}
-                rowChanges={this.state.rowChanges}
-                onRowChangesChange={this.changeRowChanges}
-                onCommitChanges={this.commitChanges}
-
-                columnExtensions={this.state.editingStateColumnExtensions}
-            />;
-            tableEditRow = <TableEditRow/>;
-        }
-
-        if (editAlways) {
-            options = <TableEditColumn showEditCommand/>;
-        }
 
         return (
-            <div style={{fontSize: '12px'}} className={gridContainerClass}>
+            <div style={{fontSize: '12px'}}>
                 {/*=============================== Menu Bar Portion ===============================*/}
                 {menuBar}
 
@@ -1118,11 +764,19 @@ class GridComponent extends React.Component {
                     columns={columns}
                 >
                     <SortingState
-                        sorting={sortingConfig}
+                        sorting={sorting}
                         onSortingChange={this.changeSorting}
                     />
 
-                    {editingState}
+                    <EditingState
+                        editingRowIds={this.state.editingRowIds}
+                        onEditingRowIdsChange={this.changeEditingRowIds}
+                        rowChanges={this.state.rowChanges}
+                        onRowChangesChange={this.changeRowChanges}
+                        onCommitChanges={this.commitChanges}
+
+                        columnExtensions={this.state.editingStateColumnExtensions}
+                    />
 
                     <PagingState
                         currentPage={currentPage}
@@ -1134,22 +788,13 @@ class GridComponent extends React.Component {
                     {selectionState}
                     {dragDropProvider}
 
-                    {filteringState}
-                    {integratedFiltering}
-
-                    {groupingState}
-                    {integratedGrouping}
-
                     {integratedSelection}
-                    {integratedSorting}
-
                     {pagingPlugin}
 
-                    {currencyType}
-                    {summaryState}
-                    {summaryPlugin}
-
-                    {table}
+                    <IntegratedSorting/>
+                    <Table
+                        tableComponent={TableComponent}
+                    />
 
                     <TableColumnResizing
                         columnWidths={colWidths}
@@ -1157,16 +802,14 @@ class GridComponent extends React.Component {
                     />
 
                     <TableHeaderRow showSortingControls/>
-                    {tableColumnVisibility}
-                    {tableEditRow}
+                    <TableEditRow/>
                     {options}
                     {multiSelect}
 
                     {tableColumnReordering}
 
                     {tableSelection}
-                    {summaryRow}
-                    {tableGroupRow}
+
                     <PagingPanel
                         pageSizes={pageSizes}
                     />
@@ -1190,7 +833,7 @@ GridComponent.propTypes = {
     columns: PropTypes.array.isRequired,
 
     /**
-     <b>Description:</b> The list of rows (data) for the given grid. <b><i> Object keys must match the column names (case-sensitive) without spaces. Also symbols must be omitted from the keys.</i></b>
+     <b>Description:</b> The list of rows (data) for the given grid. <b><i> Object keys must match the column names (case-sensitive) without spaces. </i></b>
      <i> Note: for proper sorting behavior, ensure to pass numbers as column values for number-typed columns. </i>
 
      <b>Value:</b> Json array whose keys corresponds to the columns prop.
@@ -1207,7 +850,7 @@ GridComponent.propTypes = {
     rows: PropTypes.array.isRequired,
 
     /**
-     <b>Description:</b> The specified column widths for each column. If not specified, the default will be applied. <b><i> Object keys must match the column names (case-sensitive) without spaces. Also symbols must be omitted from the keys.</i></b>
+     <b>Description:</b> The specified column widths for each column. If not specified, the default will be applied.
 
      <b>Value:</b> Json object whose keys corresponds to the columns prop.
      [
@@ -1220,7 +863,7 @@ GridComponent.propTypes = {
      <b>Example: </b>
      {"FirstName": 150, "LastName": 150, "Age": 50},
      */
-    columnWidths: PropTypes.object,
+    columnWidths: PropTypes.number,
 
     /**
      <b>Description:</b> Toggles a particular grid setup such as showing the grid only/grid + refresh button/grid + refresh + search, etc.
