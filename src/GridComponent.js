@@ -38,9 +38,6 @@ class GridComponent extends Component {
                         <li className="nav-item">
                             <a className="nav-link" href="#configs">Available Configurations</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#implementation">Sample Implementation</a>
-                        </li>
 
                         <li className="nav-item">
                             <a className="nav-link" href="#api">APIs</a>
@@ -180,45 +177,6 @@ class GridComponent extends Component {
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>
-                </section>
-
-                {/*=======================================================
-                ====================== Next Section ======================
-                =======================================================*/}
-                <section id={"implementation"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                    <hr/>
-
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
-
-                    <pre class="prettyprint lang-html">
-                    <code>
-                        <br/>
-                        <p> &lt;GridComponent </p>
-                        <p>     &#47;&#47;Required Ones </p>
-                        <p>     columns=&#123;this.state.labels&#125;</p>
-                        <p>     rows=&#123;this.state.data&#125;</p>
-                        <br/>
-
-                        <p>     &#47;&#47;Optional Ones </p>
-                        <p>     viewConfig="all"</p>
-                        <p>     toggleSelect=&#123;false&#125;</p>
-                        <p>     selectedValues=&#123;this.handleSelectedValues&#125;</p>
-                        <p>     pageConfig=&#123;[ [25], [25, 50, 100] ]&#125;</p>
-                        <p>     colReorder=&#123;true&#125;</p>
-                        <p>     blockedColumns=&#123;this.state.blockedColumns&#125;</p>
-                        <p>     blockedSearchColumns=&#123;this.state.blockedSearchColumns&#125;</p>
-                        <p>     remotePaging=&#123;false&#125;</p>
-                        <p>     totalCount=&#123;this.state.totalDataCount&#125;</p>
-                        <p>     currentPage=&#123;this.handlePageChange&#125;</p>
-                        <p>     currentPageSize=&#123;this.handlePageSizeChange&#125;</p>
-                        <p>     searchValue=&#123;this.handleSearchValues&#125;</p>
-                        <p>     deletedValues=&#123;this.handleDeletedValues&#125;</p>
-                        <p>     editedValues=&#123;this.handleEditedValues&#125;</p>
-                        <p>     refreshToggled=&#123;this.handleRefresh&#125;</p>
-                        <p>     createToggled=&#123;this.handleCreate&#125; </p>
-                        /&gt;
-                    </code>
-                </pre>
                 </section>
 
                 {/*=======================================================
@@ -855,6 +813,46 @@ class GridComponent extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>sortingColumnExtensions</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">allows the developer to specify how data should be sorted for specified column(s).</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">an array of JSON objects that contain the following properties:
+                            <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                <li>i. "columnName", which corresponds to a value in the "columns" property</li>
+                                <li>ii. "compare", which is a callback compare function that takes two parameters, and returns 0, 1, or -1.
+                                    <br/><br/><i><b>Here's an example for comparing dates:</b></i>
+                                    <br/>&emsp;const compareDates = (a,b) => &#123;
+                                    <br/>&emsp;&emsp;if (&nbsp;(a === null && b === null) &nbsp; || &nbsp;(a === undefined && b === undefined)&nbsp;) <br/>
+                                    &emsp;&emsp;&emsp;return 1;
+                                    <br/>&emsp;&emsp;else if (a === null &nbsp; || &nbsp;a === undefined) <br/>
+                                    &emsp;&emsp;&emsp;return -1;
+                                    <br/>&emsp;&emsp;else if (b === null &nbsp; || &nbsp;b === undefined) <br/>
+                                    &emsp;&emsp;&emsp;return 1;
+                                    <br/>&emsp;&emsp;else &#123; <br/>
+                                    &emsp;&emsp;&emsp;const dateA = Date.parse(a);<br/>
+                                    &emsp;&emsp;&emsp;const dateB = Date.parse(b);<br/>
+                                    <br/>
+                                    &emsp;&emsp;&emsp;if (dateA === dateB)<br/>
+                                    &emsp;&emsp;&emsp;&emsp;return 0;<br/>
+                                    &emsp;&emsp;&emsp;return (dateA &lt; dateB) ? -1 : 1;
+                                    <br/>&emsp;&emsp;&#125;
+                                    <br/>&emsp;&#125;
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">sortingColumnExtensions=&nbsp;[&nbsp;&#123;columnName: "name", compare: compareDates&#125;&nbsp;]</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>remoteSorting</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
@@ -1021,8 +1019,9 @@ class GridComponent extends Component {
                     {/*====================== Styling ======================*/}
 
                     <hr width={"90%"}/>
-                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Grid Styling </h5>
+                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Styling </h5>
 
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Grid Appearance </h6>
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>viewConfig</i></dd>
@@ -1092,16 +1091,65 @@ class GridComponent extends Component {
                         <dd className="col-sm-9"><i>buttonColors</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">allows the developer to pass in their own hex values for the colors of the button text and background in the grid.</dd>
+                        <dd className="col-sm-9">allows the developer to pass in their own values for the colors of the button text and background in the grid.</dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">a JSON object that contains one or more of the following property pairs:
+                            <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                <li>-Create Button:
+                                    <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                        <li>i. "createColor" = the background color of create button</li>
+                                        <li>ii. "createTextColor" = the text color of create button</li>
+                                    </ul>
+                                </li>
+                                <li>-Edit Button:
+                                    <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                        <li>i. "editColor" = the background color of edit button</li>
+                                        <li>ii. "editTextColor" = the text color of edit button</li>
+                                    </ul>
+                                </li>
+                                <li>-Delete Button:
+                                    <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                        <li>i. "deleteColor" = the background color of delete button</li>
+                                        <li>ii. "deleteTextColor" = the text color of delete button</li>
+                                    </ul>
+                                </li>
+                                <li>-Refresh Button:
+                                    <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                        <li>i. "refreshColor" = the background color of refresh button</li>
+                                        <li>ii. "refreshTextColor" = the text color of refresh button</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </dd>
 
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9"> buttonColors=&nbsp;&#123; <br/>
+                            &emsp;&emsp;createColor: "#849AB3"<br/>
+                            &emsp;&emsp;createTextColor: "white"<br/>
+
+                            <br/>
+
+                            &emsp;&emsp;editColor: "#849AB3"<br/>
+                            &emsp;&emsp;editTextColor: "white"<br/>
+
+                            <br/>
+
+                            &emsp;&emsp;deleteColor: "#849AB3"<br/>
+                            &emsp;&emsp;deleteTextColor: "white"<br/>
+
+                            <br/>
+
+                            &emsp;&emsp;refreshColor: "#849AB3"<br/>
+                            &emsp;&emsp;refreshTextColor: "white"<br/>
+
+                            &nbsp; &#125;
                         </dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
                     <hr width={"85%"}/>
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Grid Customizations </h6>
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
