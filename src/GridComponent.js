@@ -40,12 +40,12 @@ class GridComponent extends Component {
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#api">APIs</a>
+                            <a className="nav-link" href="#props">Props</a>
                         </li>
                         <ul className="nav flex-column" style={{textAlign: "left", paddingLeft: 50, lineHeight: "10px"}}>
                             <p style={{marginBottom: 5, marginTop: 5}}><b>Jump To: </b></p>
                             <li className="nav-item">
-                                <a className="nav-link" href="#api">Required</a>
+                                <a className="nav-link" href="#props">Required</a>
                             </li>
 
                             <li className="nav-item">
@@ -182,10 +182,10 @@ class GridComponent extends Component {
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
-                <section id={"api"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                <section id={"props"} data-aos={"fade-right"} data-aos-delay={"300"}>
                     <hr/>
 
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Props </h3>
 
                     <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl class="row">
@@ -1018,6 +1018,7 @@ class GridComponent extends Component {
 
                     {/*====================== Styling ======================*/}
 
+                    <section id={"styling"}/>
                     <hr width={"90%"}/>
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Styling </h5>
 
@@ -1160,6 +1161,20 @@ class GridComponent extends Component {
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">string</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>showPagingPanel</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">specifies whether the paging panel (page size, current/next/previous page) at the bottom of the grid is shown</dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}

@@ -36,7 +36,7 @@ class FileUploadComponent extends Component {
                             <a className="nav-link" href="#implementation">Sample Implementation</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#api">APIs</a>
+                            <a className="nav-link" href="#props">Props</a>
                         </li>
                     </ul>
                 </section>
@@ -141,9 +141,9 @@ class FileUploadComponent extends Component {
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
-                <section id={"api"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                <section id={"props"} data-aos={"fade-right"} data-aos-delay={"300"}>
                     <hr/>
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
+                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Props </h3>
 
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl className="row">

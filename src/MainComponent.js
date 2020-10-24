@@ -47,9 +47,10 @@ class MainComponent extends Component{
         if(this.state.selection === "grid-component"){
             window.scrollTo(0,0);
             mainComponent = <GridComponent />;
-        } else if (this.state.selection === "form-component"){
-            window.scrollTo(0,0);
-            mainComponent = <FormComponent />;
+        //TODO: Uncomment later
+        // } else if (this.state.selection === "form-component"){
+        //     window.scrollTo(0,0);
+        //     mainComponent = <FormComponent />;
         } else if (this.state.selection === "popup-component"){
             window.scrollTo(0,0);
             mainComponent = <PopUpComponent />;
@@ -72,7 +73,9 @@ class MainComponent extends Component{
                         <Nav className="mr-auto">
                             <NavDropdown title = "Components">
                                 <NavDropdown.Item id='file-component' onClick = {this.handleSelection}> File Upload Component </NavDropdown.Item>
-                                <NavDropdown.Item id='form-component' onClick = {this.handleSelection}> Form Component </NavDropdown.Item>
+
+                                {/*TODO: Uncomment later*/}
+                                {/*<NavDropdown.Item id='form-component' onClick = {this.handleSelection}> Form Component </NavDropdown.Item>*/}
                                 <NavDropdown.Item id="grid-component" onClick = {this.handleSelection} > Grid Component </NavDropdown.Item>
                                 <NavDropdown.Item id='loader-component' onClick = {this.handleSelection}> Loader Component </NavDropdown.Item>
                                 <NavDropdown.Item id='mask-component' onClick = {this.handleSelection}> Mask Component </NavDropdown.Item>
