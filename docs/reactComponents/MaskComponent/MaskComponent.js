@@ -5,17 +5,22 @@ Lord Mendoza - 4/23/19
 //============================================= IMPORTS ================================================================
 
 //React
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
-import './MaskComponent.css'
-
+import loading from '../../../images/loading.gif';
+// import loading from '../../images/loading.png';
+import '../../../styling/reusables/MaskComponent.css'
 //React-Bootstrap
-import {Image, Modal} from "react-bootstrap";
+import {Col, Container, Image, Modal, Row} from "react-bootstrap";
+
+//======================================================================================================================
+//=================================== Constant Used for IE Compatibility ===============================================
+const isIE = /*@cc_on!@*/false || !!document.documentMode;
 
 //======================================================================================================================
 //=========================================== START OF CLASS ===========================================================
 
-class MaskComponent extends Component {
+class MaskComponent extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -25,12 +30,31 @@ class MaskComponent extends Component {
                 loadingIcon = this.props.loadingIcon;
         }
 
+        let givenClassName;
+        if (this.props.givenClassName !== undefined) {
+            givenClassName = this.props.givenClassName;
+        }
+
+        let allowAnimation = !isIE;
+
+        let textOnlyContent = true;
+        if (this.props.hasOwnProperty("textOnlyContent") && this.props["textOnlyContent"] === false) {
+            textOnlyContent = false;
+        }
+
+        let show = false;
+        if (this.props.hasOwnProperty("show") && this.props["show"] === true)
+            show = true;
+
         //-------------------------------------- STATE VALUES ----------------------------------------------------------
         this.state = {
             header: "",
             content: "",
-            show: true,
-            loadingIcon
+            show,
+            loadingIcon,
+            givenClassName,
+            allowAnimation,
+            textOnlyContent
         };
     }
 
@@ -53,32 +77,54 @@ class MaskComponent extends Component {
     /*
     If the loading mask is set to hide, then this will respond to those changes accordingly.
      */
-    componentDidUpdate(prevProps) {
-        if (this.props.show !== prevProps.show) {
-            const {show} = this.props;
-            this.setState({show});
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.show !== prevProps.show || this.props.content !== prevProps.content) {
+            const {show, content} = this.props;
+            this.setState({show, content});
+        }
+
+        if (this.props.hasOwnProperty("textOnlyContent")
+            && this.props["textOnlyContent"] !== prevProps["textOnlyContent"]
+            && typeof this.props["textOnlyContent"] === "boolean") {
+            this.setState({
+                textOnlyContent: this.props["textOnlyContent"]
+            });
         }
     }
 
     //=========================================== RENDER ===============================================================
 
     render() {
-        const {header, content, show, loadingIcon} = this.state;
+        const {header, content, show, loadingIcon, givenClassName, allowAnimation, textOnlyContent} = this.state;
 
         let body;
         if (loadingIcon) {
-            body = <h4 className="text-center"><Image className="App-logo" src="loading.png"/> {content} </h4>;
+            if (textOnlyContent) {
+                body = <h3 className="text-center"><Image src={loading} className={'loadingIcon'}/> {content} </h3>;
+            } else {
+                body = <Container>
+                    <Row>
+                        <Col xs={2}>
+                            <Image src={loading} className={'loadingIcon'}/>
+                        </Col>
+
+                        <Col xs={10}>
+                            {content}
+                        </Col>
+                    </Row>
+                </Container>;
+            }
         } else {
-            body = <h4 className="text-center"> {content} </h4>;
+            body = <h3 className="text-center"> {content} </h3>;
         }
 
         //Rendering the modal
         return (
             <div>
-                <Modal show={show} centered>
+                <Modal show={show} centered className={givenClassName} backdrop="static" animation={allowAnimation} backdropClassName={"maskComponentBackdrop"}>
 
                     <Modal.Header>
-                        <Modal.Title> {header} </Modal.Title>
+                        <Modal.Title> <b> {header} </b> </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>

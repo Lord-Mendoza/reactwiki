@@ -5,28 +5,38 @@ Lord Mendoza - 4/23/19
 //============================================= IMPORTS ================================================================
 
 //React
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
-
 //React-Bootstrap
 import {Button, Modal} from "react-bootstrap";
-
 //React-Icons
 import {FaCheck, FaRedo, FaTimes} from "react-icons/fa";
 
 //======================================================================================================================
+//=================================== Constant Used for IE Compatibility ===============================================
+const isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+//======================================================================================================================
 //=========================================== START OF CLASS ===========================================================
 
-class PopupComponent extends Component {
+class PopupComponent extends React.PureComponent {
     constructor(props) {
         super(props);
+
+        let className;
+        if (props.hasOwnProperty("className"))
+            className = props["className"];
+
+        let allowAnimation = !isIE;
 
         //-------------------------------------- STATE VALUES ----------------------------------------------------------
         this.state = {
             header: "",
             content: "",
             footerConfig: "",
-            show: true
+            show: true,
+            className,
+            allowAnimation
         };
 
         //Helper functions for handling interactions with the modal (such as submit, reset, & closing)
@@ -71,26 +81,27 @@ class PopupComponent extends Component {
     /*
     If any changes occur in the body of the modal, then the modal gets rendered accordingly.
      */
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.content !== prevProps.content){
             const {content} = this.props;
             this.setState({content});
+        }
+
+        if (this.props.hasOwnProperty("className") && prevProps.hasOwnProperty("className")
+            && prevProps["className"] !== this.props["className"]) {
+            this.setState({className: this.props["className"]});
         }
     }
 
     //=========================================== RENDER ===============================================================
 
     render() {
-        const {header, content, footerConfig, show} = this.state;
+        const {header, content, footerConfig, show, className, allowAnimation} = this.state;
 
         //Based on the selected footerConfig, then certain buttons will get rendered in the footer of the modal.
         let btnOptions;
         if (footerConfig === "all") {
             btnOptions = <Modal.Footer>
-                <Button variant="secondary" onClick={this.closePopup}>
-                    <FaTimes/> Close
-                </Button>
-
                 <Button variant="danger" onClick={this.toggleReset}>
                     <FaRedo/> Reset
                 </Button>
@@ -98,16 +109,20 @@ class PopupComponent extends Component {
                 <Button variant="success" onClick={this.toggleSubmit}>
                     <FaCheck/> Submit
                 </Button>
+
+                <Button variant="secondary" onClick={this.closePopup}>
+                    <FaTimes/> Close
+                </Button>
             </Modal.Footer>;
 
         } else if (footerConfig === "submit") {
             btnOptions = <Modal.Footer>
-                <Button variant="secondary" onClick={this.closePopup}>
-                    <FaTimes/> Close
-                </Button>
-
                 <Button variant="success" onClick={this.toggleSubmit}>
                     <FaCheck/> Submit
+                </Button>
+
+                <Button variant="secondary" onClick={this.closePopup}>
+                    <FaTimes/> Close
                 </Button>
             </Modal.Footer>;
         } else if (footerConfig === "closeOnly") {
@@ -124,10 +139,10 @@ class PopupComponent extends Component {
         //Rendering the modal
         return (
             <div>
-                <Modal show={show} onHide={this.closePopup} centered>
+                <Modal show={show} onHide={this.closePopup} centered className={className} backdrop="static" animation={allowAnimation}>
 
                     <Modal.Header closeButton>
-                        <Modal.Title> {header} </Modal.Title>
+                        <Modal.Title> <b> {header} </b> </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -154,7 +169,7 @@ PopupComponent.propTypes = {
      <b>Description:</b> The content of the popup. PopupComponent offers flexibility on the content, such as placing another component (ex. FormComponent) inside.
      <b>Value:</b> An object.
      */
-    content: PropTypes.object.isRequired,
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 
     /**
      <b>Description:</b> The buttons to appear at the foot of the popup.
@@ -167,10 +182,6 @@ PopupComponent.propTypes = {
      */
     footerConfig: PropTypes.string.isRequired,
 
-    /**
-     <b> Description: </b> A callback function to call in the parent component when the popup is closed.
-     <b> Value: </> A callback function.
-     */
     closeToggled: PropTypes.func.isRequired,
 
     /**
@@ -224,6 +235,8 @@ PopupComponent.propTypes = {
             );
         }
     },
+
+    className: PropTypes.string,
 };
 
 export default PopupComponent;

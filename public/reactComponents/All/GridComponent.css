@@ -1,5 +1,6 @@
 table.table.dx-g-bs4-table.table-striped{
-    margin: 0
+    margin: 0;
+    min-width: inherit !important;
 }
 
 thead{
@@ -40,10 +41,6 @@ td.text-center.align-middle{
 }
 
 button#edit.btn.btn-link.dx-g-bs4-table-edit-command-cell{
-    background-image: url('edit.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    color: transparent;
     border: 0;
     padding: 0;
 }
@@ -58,5 +55,21 @@ td.text-center.p-0.text-nowrap{
 }
 
 th.position-relative.dx-g-bs4-header-cell.text-nowrap{
-    line-height: 1;
+    line-height: normal !important;
+}
+
+.ml-2, .mx-2 {
+    font-weight: bold;
+}
+
+i.oi.p-2.text-center.dx-g-bs4-toggle-button.oi-chevron-bottom {
+    background: url('chevron-down-solid.png') no-repeat;
+    padding: 7px 0 !important;
+    margin-bottom: -6px !important;
+}
+
+i.oi.p-2.text-center.dx-g-bs4-toggle-button.oi-chevron-right {
+    background: url('chevron-right-solid.png') no-repeat;
+    padding: 7px 0 !important;
+    margin-bottom: -8px !important;
 }

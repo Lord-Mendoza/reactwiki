@@ -1,5 +1,5 @@
 To use all of the available components:
--copy *.js files to your src folder
+-copy *.js and *.css files to your src folder
 
 -You need to include the following on your package.json
 "dependencies": {
@@ -21,4 +21,4 @@ import 'semantic-ui-css/semantic.min.css';
 
 -Lastly, import any of the components for use. For example:
 import FileUploadComponent from "./FileUploadComponent";
-import FormComponent from './FormComponent'
+import FormFieldsComponent from './FormFieldsComponent'
