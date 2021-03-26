@@ -30,11 +30,6 @@ section[id]:before {
     content: "";
 }
 
-
-pre.prettyprint.lang-html.prettyprinted{
-    width: 50%;
-}
-
 a.nav-link.glossary {
     padding: 5px 1rem;
     max-width: 250px;
@@ -45,49 +40,107 @@ a.nav-link.glossary {
     margin: auto;
 }
 
-/* Pretty printing styles. Used with prettify.js. */
-/* Vim sunburst theme by David Leibovic */
-
-pre .str, code .str { color: #65B042; } /* string  - green */
-pre .kwd, code .kwd { color: #E28964; } /* keyword - dark pink */
-pre .com, code .com { color: #AEAEAE; font-style: italic; } /* comment - gray */
-pre .typ, code .typ { color: #89bdff; } /* type - light blue */
-pre .lit, code .lit { color: #3387CC; } /* literal - blue */
-pre .pun, code .pun { color: #fff; } /* punctuation - white */
-pre .pln, code .pln { color: #fff; } /* plaintext - white */
-pre .tag, code .tag { color: #89bdff; } /* html/xml tag    - light blue */
-pre .atn, code .atn { color: #bdb76b; } /* html/xml attribute name  - khaki */
-pre .atv, code .atv { color: #65B042; } /* html/xml attribute value - green */
-pre .dec, code .dec { color: #3387CC; } /* decimal - blue */
-
-pre.prettyprint, code.prettyprint {
-    background-color: #272B33;
-    border-radius: 8px;
+section.codeSampleImplementation {
+    margin: 0 100px;
 }
 
-pre.prettyprint {
-    width: 95%;
-    margin: 1em auto;
-    padding: 1em;
-    white-space: pre-wrap;
+section.codeSample,
+section.codeSampleImplementation {
+    width: fit-content;
 }
 
+/*aside.ScrollUpButton__Container.ScrollUpButton__Toggled {*/
+/*    bottom: 20px;*/
+/*    transform: translate(-50%, -50%);*/
+/*    margin: 0 auto;*/
+/*    left: 100px;*/
+/*    z-index: 1000;*/
+/*}*/
 
-/* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */
-li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
-/* Alternate shading for lines */
-li.L1,li.L3,li.L5,li.L7,li.L9 { }
+.darkMode hr {
+    border-color: white;
+}
 
-@media print {
-    pre .str, code .str { color: #060; }
-    pre .kwd, code .kwd { color: #006; font-weight: bold; }
-    pre .com, code .com { color: #600; font-style: italic; }
-    pre .typ, code .typ { color: #404; font-weight: bold; }
-    pre .lit, code .lit { color: #044; }
-    pre .pun, code .pun { color: #440; }
-    pre .pln, code .pln { color: #000; }
-    pre .tag, code .tag { color: #006; font-weight: bold; }
-    pre .atn, code .atn { color: #404; }
-    pre .atv, code .atv { color: #060; }
+.darkMode div.carousel-caption {
+    color: white;
+}
+
+.ant-switch {
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    -webkit-font-feature-settings: 'tnum';
+    font-feature-settings: 'tnum', "tnum";
+    position: relative;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 44px;
+    height: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 0;
+    border-radius: 100px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ant-switch-handle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background-color: white;
+    border-radius: 100%;
+}
+
+.ant-switch-checked .ant-switch-inner {
+    margin: 0 25px 0 7px;
+}
+
+.ant-switch-checked .ant-switch-handle {
+    left: calc(100% - 18px - 2px);
+}
+
+.ant-switch-inner {
+    display: block;
+    margin: 0 7px 0 25px;
+    color: #fff;
+    font-size: 12px;
+    -webkit-transition: margin 0.2s;
+    transition: margin 0.2s;
+}
+
+.ant-switch-checked {
+    background-color: #1890ff;
+}
+
+.darkModeLabel {
+    color: rgba(255,255,255,.5);
+    vertical-align: middle !important;
+}
+
+.carousel-caption {
+    padding-top: 30px;
+}
+
+.darkMode a {
+    color: #52A4F7;
+}
+
+.darkMode h6 {
+    color: #CCCCCC !important;
 }

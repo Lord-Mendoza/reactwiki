@@ -1,26 +1,41 @@
 import React, {Component} from 'react';
-import FormFieldsComponent from './FormFieldsComponent';
-import GridComponent from './GridComponent';
-import PopUpComponent from './PopUpComponent';
-import MaskComponent from './MaskComponent';
-import FileUploadComponent from './FileUploadComponent';
-import LoaderComponent from "./LoaderComponent";
+import FormFieldsComponentInfo from './info/FormFieldsComponentInfo';
+import GridComponentInfo from './info/GridComponentInfo';
+import PopUpComponentInfo from './info/PopUpComponentInfo';
+import MaskComponentInfo from './info/MaskComponentInfo';
+import FileUploadComponentInfo from './info/FileUploadComponentInfo';
+import LoaderComponentInfo from "./info/LoaderComponentInfo";
+import SearchFormComponentInfo from "./info/SearchFormComponentInfo";
 
-import {Navbar, NavDropdown, Nav, Image} from 'react-bootstrap';
+import {Navbar, NavDropdown, Nav, Image,} from 'react-bootstrap';
 import '../styling/MainComponent.css';
 import 'aos/dist/aos.css';
 import AOS from "aos";
+import Prism from "prismjs";
+import "../styling/prism.css"
+import {Icon} from "semantic-ui-react";
+import {Switch} from "antd";
 
-class MainComponent extends Component{
+class MainComponent extends Component {
     constructor(props){
         super(props);
 
+        let darkMode;
+        if (localStorage.getItem("isDarkMode") === "true")
+            darkMode = true;
+
         this.state = {
+            darkMode,
             copySuccess:""
         };
 
         this.handleSelection = this.handleSelection.bind(this);
         this.copyToClipboard = this.copyToClipboard.bind(this);
+        this.setDarkModeToLocalStorage = this.setDarkModeToLocalStorage.bind(this);
+    }
+
+    componentDidMount() {
+        Prism.highlightAll();
     }
 
     handleSelection(e){
@@ -38,9 +53,14 @@ class MainComponent extends Component{
         })
     };
 
+    setDarkModeToLocalStorage() {
+        const {darkMode} = this.state;
+        localStorage.setItem('isDarkMode', darkMode === true ? "true" : "false");
+    }
+
 
     render(){
-        const {selection} = this.state;
+        const {selection, darkMode} = this.state;
 
         AOS.init();
 
@@ -48,33 +68,48 @@ class MainComponent extends Component{
         switch (selection) {
             case "form-fields-component":
                 window.scrollTo(0,0);
-                mainComponent = <FormFieldsComponent />;
+                mainComponent = <FormFieldsComponentInfo />;
                 break;
             case "grid-component":
                 window.scrollTo(0,0);
-                mainComponent = <GridComponent />;
+                mainComponent = <GridComponentInfo />;
                 break;
             case "loader-component":
                 window.scrollTo(0,0);
-                mainComponent = <LoaderComponent />;
+                mainComponent = <LoaderComponentInfo />;
                 break;
             case "mask-component":
                 window.scrollTo(0,0);
-                mainComponent = <MaskComponent />;
+                mainComponent = <MaskComponentInfo />;
                 break;
             case "popup-component":
                 window.scrollTo(0,0);
-                mainComponent = <PopUpComponent />;
+                mainComponent = <PopUpComponentInfo />;
+                break;
+            case "search-component":
+                window.scrollTo(0,0);
+                mainComponent = <SearchFormComponentInfo />;
                 break;
             case "file-component":
             default:
                 window.scrollTo(0,0);
-                mainComponent = <FileUploadComponent />;
+                mainComponent = <FileUploadComponentInfo />;
+                // mainComponent = <SearchFormComponentInfo />;
                 break;
         }
 
+        let availHeight = window.screen.availHeight;
+        let availWidth = window.screen.availWidth;
+
+        let style = {};
+        if (darkMode === true)
+            style = {backgroundColor: "#222222", color: "white"};
+
         return(
-            <div>
+            <div style={{
+                height: availHeight,
+                width: availWidth,
+            }}>
                 <Navbar sticky="top" collapseOnSelect expand ="lg" bg="dark" variant="dark">
                     <Navbar.Brand> <Image src={"logo.png"} style={{marginBottom: "4px", marginRight: "4px"}}/> React Wiki </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -86,14 +121,29 @@ class MainComponent extends Component{
                                 <NavDropdown.Item id="grid-component" onClick = {this.handleSelection} > Grid Component </NavDropdown.Item>
                                 <NavDropdown.Item id='loader-component' onClick = {this.handleSelection}> Loader Component </NavDropdown.Item>
                                 <NavDropdown.Item id='mask-component' onClick = {this.handleSelection}> Mask Component </NavDropdown.Item>
-                                <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> PopUp Component </NavDropdown.Item>
+                                <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> Popup Component </NavDropdown.Item>
+                                <NavDropdown.Item id='search-component' onClick = {this.handleSelection}> Search Form Component </NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href={"./reactComponents.zip"}> Get Package </Nav.Link>
                         </Nav>
+
+                        <div style={{padding: ".5rem 1rem"}}>
+                            <span className={"darkModeLabel"}> Dark Mode: &nbsp;</span>
+                            <Switch
+                                checkedChildren={<Icon name='moon'/>}
+                                unCheckedChildren={<Icon name='sun' inverted/>}
+                                checked={darkMode}
+                                onChange={() => this.setState({
+                                    darkMode: !darkMode
+                                }, this.setDarkModeToLocalStorage)}
+                            />
+                        </div>
                     </Navbar.Collapse>
                 </Navbar>
-                {mainComponent}
 
+                <div style={{...style}} className={darkMode === true ? "darkMode" : ""}>
+                    {mainComponent}
+                </div>
             </div>
 
 
