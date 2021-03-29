@@ -12,17 +12,18 @@ class FormFieldsComponentInfo extends Component {
         return (
             <div>
                 <div>
-
                     <h1 className="display-4" style={{textAlign: "center"}}>Form Fields Component</h1>
 
                     <section data-aos={"fade-right"} data-aos-delay={"300"}>
                         <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
 
-                        <p style={{textAlign: "left", paddingLeft: 50}}>
-                            <a className="nav-link glossary" href="#prereq">Pre-Requisites</a>
-                            <a className="nav-link glossary" href="#implementation">Sample Implementation</a>
-                            <a className="nav-link glossary" href="#api">APIs</a>
-                        </p>
+                        <div style={{textAlign: "left", paddingLeft: 30}}>
+                            <ol>
+                                <li><a className="nav-link glossary" href="#prereq">Pre-Requisites</a></li>
+                                <li><a className="nav-link glossary" href="#implementation">Sample Implementation</a></li>
+                                <li><a className="nav-link glossary" href="#api">Props</a></li>
+                            </ol>
+                        </div>
                     </section>
 
                     {/*=======================================================
@@ -83,9 +84,9 @@ class FormFieldsComponentInfo extends Component {
                     {/*=======================================================
                     ====================== Next Section ======================
                     =======================================================*/}
+                    <hr/>
                     <section id={"api"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                        <hr/>
-                        <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
+                        <h3 style={{textAlign: "left", paddingLeft: 50}}> Props </h3>
 
                         <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
 
@@ -233,13 +234,11 @@ class FormFieldsComponentInfo extends Component {
 
                         {/*====================== Additional Section ======================*/}
 
-                        <hr width={"90%"}/>
+                        <hr width={"95%"}/>
                         <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional
                             Customizations </h5>
 
                         {/*-----Next Entry-----*/}
-                        <hr width={"85%"}/>
-
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
                             <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> requiredFields
@@ -365,10 +364,9 @@ const formFieldsSampleCode = `<FormFieldsComponent
     },
     extracurricularActivities: {
         label: "Extracurricular Activities",
-        type: {dropdown: <GetActivitiesOptions/>};,
+        type: {dropdown: <GetActivitiesOptions/>},
         isClearable: true,
         isMultiSelect: true
-        }
     },
     formFieldsData = {
         name: "John",
@@ -387,27 +385,27 @@ const formFieldsSampleCode = `<FormFieldsComponent
 `;
 
 const formFieldsCode = `formFields = {
-name: {label: "Name", type: "text"},
-dateOfBirth: {label: "Date of Birth", type: "date"},
-collegeYear: {
-    label: "College Year",
-    type: {
-        dropdown: [
-            {label: "Freshman", value: 1}
-            {label: "Sophomore", value: 2}
-            {label: "Junior", value: 3}
-            {label: "Senior", value: 4}
-        ]
+    name: {label: "Name", type: "text"},
+    dateOfBirth: {label: "Date of Birth", type: "date"},
+    collegeYear: {
+        label: "College Year",
+        type: {
+            dropdown: [
+                {label: "Freshman", value: 1}
+                {label: "Sophomore", value: 2}
+                {label: "Junior", value: 3}
+                {label: "Senior", value: 4}
+            ]
+        }
     }
-},
-`
+}`
 
 const formFieldsDataCode = `formFieldsData = {
     name: "John",
     dateOfBirth: "11/19/1983",
     collegeYear: 1,
     extracurricularActivities: ["baseball", "soccer", "chess"]
-},`;
+}`;
 
 const handlerCode = `handlerFunction={this.state.handleFormFieldValue}`;
 const handlerHelperCode = `let dropdownFields = Object.keys(searchFormFields).filter(field => (typeof searchFormFields[field]["type"] === "object"));

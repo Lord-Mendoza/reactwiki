@@ -31,21 +31,22 @@ class GridComponentInfo extends Component {
                 <section data-aos={"fade-right"} data-aos-delay={"300"}>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
 
-                    <p style={{textAlign: "left", paddingLeft: 50}}>
-                        <a className="nav-link glossary" href="#prereq">Pre-Requisites</a>
-                        <a className="nav-link glossary" href="#configs">Available Configurations</a>
-                        <a className="nav-link glossary" href="#props">Props</a>
+                    <div style={{textAlign: "left", paddingLeft: 30}}>
+                        <ol>
+                            <li><a className="nav-link glossary" href="#prereq">Pre-Requisites</a></li>
+                            <li><a className="nav-link glossary" href="#configs">Available Configurations</a></li>
+                            <li><a className="nav-link glossary" href="#props">Props</a></li>
 
-                        <p style={{textAlign: "left", paddingLeft: 50}}>
-                        <p style={{marginBottom: 5, marginTop: 5}}><b>Jump To: </b></p>
-                            <a className="nav-link glossary" href="#props">Required</a>
-                            <a className="nav-link glossary" href="#interactions">Interacting With Data</a>
-                            <a className="nav-link glossary" href="#displaying">Displaying Data</a>
-                            <a className="nav-link glossary" href="#sorting">Sorting</a>
-                            <a className="nav-link glossary" href="#paging">Paging</a>
-                            <a className="nav-link glossary" href="#styling">Styling</a>
-                        </p>
-                    </p>
+                            <ul>
+                                <li><a className="nav-link glossary" href="#props">Required</a></li>
+                                <li><a className="nav-link glossary" href="#interactions">Interacting With Data</a></li>
+                                <li><a className="nav-link glossary" href="#displaying">Displaying Data</a></li>
+                                <li><a className="nav-link glossary" href="#sorting">Sorting</a></li>
+                                <li><a className="nav-link glossary" href="#paging">Paging</a></li>
+                                <li><a className="nav-link glossary" href="#styling">Styling</a></li>
+                            </ul>
+                        </ol>
+                    </div>
                 </section>
 
                 {/*=======================================================
@@ -159,8 +160,8 @@ class GridComponentInfo extends Component {
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
+                <hr/>
                 <section id={"props"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                    <hr/>
 
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Props </h3>
 
@@ -206,7 +207,7 @@ class GridComponentInfo extends Component {
 
                     <section id={"interactions"}/>
 
-                    <hr width={"90%"}/>
+                    <hr width={"95%"}/>
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Interacting With Data: </h5>
 
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Disabling </h6>
@@ -618,8 +619,8 @@ class GridComponentInfo extends Component {
 
                     {/*====================== Displaying Data Section ======================*/}
 
+                    <hr width={"95%"}/>
                     <section id={"displaying"}/>
-                    <hr width={"90%"}/>
                     <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Displaying Data </h5>
 
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Grouping </h6>
@@ -765,8 +766,8 @@ class GridComponentInfo extends Component {
 
                     {/*====================== Sorting Section ======================*/}
 
+                    <hr width={"95%"}/>
                     <section id={"sorting"}/>
-                    <hr width={"90%"}/>
                     <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Sorting </h5>
 
                     <dl className="row">
@@ -865,8 +866,8 @@ class GridComponentInfo extends Component {
 
                     {/*====================== Paging Section ======================*/}
 
+                    <hr width={"95%"}/>
                     <section id={"paging"}/>
-                    <hr width={"90%"}/>
                     <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Paging </h5>
 
                     <dl className="row">
@@ -995,8 +996,8 @@ class GridComponentInfo extends Component {
 
                     {/*====================== Styling ======================*/}
 
+                    <hr width={"95%"}/>
                     <section id={"styling"}/>
-                    <hr width={"90%"}/>
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Styling </h5>
 
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Grid Appearance </h6>
@@ -1126,7 +1127,7 @@ class GridComponentInfo extends Component {
                     </dl>
 
                     {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
+                    <hr width={"90%"}/>
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Grid Customizations </h6>
 
                     <dl className="row">

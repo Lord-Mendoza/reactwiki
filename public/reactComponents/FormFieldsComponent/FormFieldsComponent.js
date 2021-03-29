@@ -8,6 +8,7 @@ import PopupComponent from "./PopupComponent";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Moment from 'moment';
+import {isNotAnEmptyObject} from "./ObjectVariableValidators";
 
 function FormFieldsComponent(props) {
     let {
@@ -322,7 +323,7 @@ function FormFieldsComponent(props) {
     }
 
     let wildCardMessage;
-    if (showWildCardMessage === true)
+    if (showWildCardMessage === true && isNotAnEmptyObject(formFields))
         wildCardMessage = <p style={{fontStyle: "italic", fontSize: "small", marginBottom: "10px", marginTop: "10px"}}>
             Use '*' for Wild Card & Left Justification searches (e.g. '123*', '*123*').
         </p>;

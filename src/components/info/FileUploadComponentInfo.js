@@ -17,12 +17,14 @@ class FileUploadComponentInfo extends Component {
                 <section data-aos={"fade-right"} data-aos-delay={"300"}>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Glossary </h3>
 
-                    <p style={{textAlign: "left", paddingLeft: 50}}>
-                        <a className="nav-link glossary" href="#prereq">Pre-Requisites</a>
-                        <a className="nav-link glossary" href="#demo">Available Configurations</a>
-                        <a className="nav-link glossary" href="#implementation">Sample Implementation</a>
-                        <a className="nav-link glossary" href="#props">Props</a>
-                    </p>
+                    <div style={{textAlign: "left", paddingLeft: 30}}>
+                        <ol>
+                            <li><a className="nav-link glossary" href="#prereq">Pre-Requisites</a></li>
+                            <li><a className="nav-link glossary" href="#demo">Available Configurations</a></li>
+                            <li><a className="nav-link glossary" href="#implementation">Sample Implementation</a></li>
+                            <li><a className="nav-link glossary" href="#props">Props</a></li>
+                        </ol>
+                    </div>
                 </section>
 
                 {/*=======================================================
@@ -99,8 +101,8 @@ class FileUploadComponentInfo extends Component {
                 {/*=======================================================
                    ====================== Next Section ===================
                    =======================================================*/}
+                <hr/>
                 <section id={"implementation"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                    <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Implementation </h3>
 
                     <section className={"codeSampleImplementation"}>
@@ -115,8 +117,8 @@ class FileUploadComponentInfo extends Component {
                 {/*=======================================================
                 ====================== Next Section ======================
                 =======================================================*/}
+                <hr/>
                 <section id={"props"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                    <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Props </h3>
 
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
@@ -133,7 +135,7 @@ class FileUploadComponentInfo extends Component {
 
                     {/*====================== Additional Section ======================*/}
 
-                    <hr width={"85%"}/>
+                    <hr width={"95%"}/>
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customization </h5>
 
                     <dl className="row">

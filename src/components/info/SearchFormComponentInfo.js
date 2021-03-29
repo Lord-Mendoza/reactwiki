@@ -16,6 +16,7 @@ import {
     searchGridHiddenColumnsSampleCode, searchGridWidthSampleCode,
     searchMenuOptionsSampleCode
 } from "../../utilities/constants/SearchFormCodeConstants";
+import {Carousel} from "react-bootstrap";
 
 class SearchFormComponentInfo extends Component {
     componentDidMount() {
@@ -35,7 +36,9 @@ class SearchFormComponentInfo extends Component {
                         <div style={{textAlign: "left", paddingLeft: 30}}>
                             <ol>
                                 <li><a className="nav-link glossary" href="#prereq">Pre-Requisites</a></li>
-                                <li><a className="nav-link glossary" href="#implementation">How To Implement</a></li>
+                                <li><a className="nav-link glossary" href="#implementation">How-To Implement</a></li>
+                                <li><a className="nav-link glossary" href="#sample-implementation">Sample
+                                    Implemention</a></li>
                                 <li><a className="nav-link glossary" href="#api">Props</a></li>
                                 <li><a className="nav-link glossary" href="#configProps">Configuration Props</a></li>
 
@@ -51,7 +54,7 @@ class SearchFormComponentInfo extends Component {
                                     <li><a className="nav-link glossary" href="#gridSetup">Setting Up The Grid</a></li>
                                     <li><a className="nav-link glossary" href="#gridCustomization">Customizing the
                                         Grid</a></li>
-                                    <li><a className="nav-link glossary" href="#grdiStyling">Styling The Grid</a></li>
+                                    <li><a className="nav-link glossary" href="#gridStyling">Styling The Grid</a></li>
                                 </ul>
                             </ol>
                         </div>
@@ -103,9 +106,9 @@ class SearchFormComponentInfo extends Component {
                     {/*=======================================================
                     ====================== Next Section ======================
                     =======================================================*/}
+                    <hr/>
                     <section id={"implementation"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                        <hr/>
-                        <h3 style={{textAlign: "left", paddingLeft: 50}}> How To Implement </h3>
+                        <h3 style={{textAlign: "left", paddingLeft: 50}}> How-To Implement </h3>
 
                         <p style={{textAlign: "left", paddingLeft: 70}}> 1. Create the configuration constant and add
                             all necessary properties. </p>
@@ -133,8 +136,56 @@ class SearchFormComponentInfo extends Component {
                     {/*=======================================================
                     ====================== Next Section ======================
                     =======================================================*/}
+                    <hr/>
+                    <section id={"sample-implementation"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                        <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Configurations </h3>
+
+                        <Carousel pauseOnHover={true}>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="./searchForm-regular-sample.png"
+                                    alt="Render for regular search form view"
+                                />
+                                <Carousel.Caption>
+                                    <h3>Standard View Based on Config</h3>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="./searchForm-isMetrics-sample.png"
+                                    alt="Render for search form where isMetrics === true"
+                                />
+
+                                <Carousel.Caption>
+                                    <h3><i>isMetrics</i> === true</h3>
+                                    <p>Grid loads data upon load, refresh available, filtering results available.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="./searchForm-isMetrics-noNav-sample.png"
+                                    alt="Render for search form where hasNav === false"
+                                />
+
+                                <Carousel.Caption>
+                                    <h3><i>hasNav</i> === false</h3>
+                                    <p>Navigation bar does not get rendered.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+
+                        </Carousel>
+                    </section>
+
+                    {/*=======================================================
+                    ====================== Next Section ======================
+                    =======================================================*/}
+                    <hr/>
                     <section id={"api"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                        <hr/>
                         <h3 style={{textAlign: "left", paddingLeft: 50}}> APIs </h3>
 
                         <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
@@ -174,8 +225,8 @@ class SearchFormComponentInfo extends Component {
                         </dl>
                     </section>
 
-                    <section id={"configProps"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                        <hr/>
+                    <hr/>
+                    <section id={"configProps"}>
                         <h3 style={{textAlign: "left", paddingLeft: 50}}> Configuration Props </h3>
 
                         <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Form Fields </h5>
@@ -258,7 +309,7 @@ class SearchFormComponentInfo extends Component {
                     </section>
 
                     {/*=============================  Customizing The Fields  ===================================*/}
-                    <section id={"customizingFields"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                    <section id={"customizingFields"}>
                         <hr width={"90%"}/>
 
                         <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Customizing The Fields </h6>
@@ -352,7 +403,7 @@ class SearchFormComponentInfo extends Component {
                     {/*============================= Search Fields Navigation Bar ===================================*/}
                     <hr width={"90%"}/>
 
-                    <section id={"fieldNavBar"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                    <section id={"fieldNavBar"}>
                         <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Navigation Bar </h6>
                         <dl className="row">
                             <dt className="col-sm-3">Name</dt>
@@ -479,7 +530,7 @@ class SearchFormComponentInfo extends Component {
                     {/*-----Next Entry-----*/}
                     <hr width={"90%"}/>
 
-                    <section id={"alternateSetup"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                    <section id={"alternateSetup"}>
                         <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Alternate Setup </h6>
                         <dl className="row">
                             <dt className="col-sm-3">Name</dt>
@@ -511,7 +562,7 @@ class SearchFormComponentInfo extends Component {
 
                     {/*================================= Grid Section ======================================*/}
                     <hr width={"95%"}/>
-                    <section id={"reduxSetup"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                    <section id={"reduxSetup"}>
                         <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Grid </h5>
 
                         <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Redux Setup For Search
@@ -594,7 +645,7 @@ class SearchFormComponentInfo extends Component {
                     {/*================================ Setting Up the Grid =====================================*/}
                     <hr width={"90%"}/>
 
-                    <section id={"gridSetup"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                    <section id={"gridSetup"}>
                         <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Setting Up The Grid </h6>
 
                         <dl className="row">
@@ -672,7 +723,7 @@ class SearchFormComponentInfo extends Component {
                     {/*=============================== Customizing the Grid =====================================*/}
                     <hr width={"90%"}/>
 
-                    <section id={"gridCustomization"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                    <section id={"gridCustomization"}>
                         <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Customizing the Grid</h6>
 
                         {/*-----Next Entry-----*/}
@@ -870,7 +921,7 @@ class SearchFormComponentInfo extends Component {
                     {/*================================ Styling the Grid =====================================*/}
                     <hr width={"90%"}/>
 
-                    <section id={"grdiStyling"} data-aos={"fade-right"} data-aos-delay={"300"}>
+                    <section id={"gridStyling"}>
                         <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Styling The Grid </h6>
 
                         {/*-----Next Entry-----*/}

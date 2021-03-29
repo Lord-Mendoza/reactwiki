@@ -6,7 +6,7 @@ import ReactExport from "react-data-export";
 import GridComponent from "../GridComponent/GridComponent";
 import MaskComponent from "../MaskComponent/MaskComponent";
 import {isANumber} from "/NumberVariableValidator";
-import {isNotAnEmptyObject} from "ObjectVariableValidators";
+import {isNotAnEmptyObject} from "public/reactComponents/FormFieldsComponent/ObjectVariableValidators";
 import {isNotAnEmptyArray} from "ArrayVariableValidators";
 import FormFieldsComponent from "../FormFieldsComponent/FormFieldsComponent";
 import "../../../styling/reusables/SearchFormComponent.css";
@@ -91,7 +91,7 @@ class SearchFormComponent extends React.Component {
             rowDetailsContent: rowDetailsContent,
             showWildCardMessage: showWildCardMessage !== false,
 
-            searchGridColumns,
+            searchGridColumns: isNotAnEmptyArray(searchGridColumns) ? searchGridColumns : [],
             searchGridColumnWidths: isNotAnEmptyObject(searchGridColumnWidths) ? searchGridColumnWidths : {},
             allowRowSelection: allowRowSelection === true ? allowRowSelection : false,
             tableCellConfig: tableCellConfig ? tableCellConfig : undefined,
@@ -261,7 +261,7 @@ class SearchFormComponent extends React.Component {
                 allowRowDetails: allowRowDetails === true,
                 rowDetailsContent: rowDetailsContent,
 
-                searchGridColumns,
+                searchGridColumns: isNotAnEmptyArray(searchGridColumns) ? searchGridColumns : [],
                 searchGridColumnWidths: isNotAnEmptyObject(searchGridColumnWidths) ? searchGridColumnWidths : {},
                 allowRowSelection: allowRowSelection === true ? allowRowSelection : false,
                 tableCellConfig: tableCellConfig ? tableCellConfig : undefined,
@@ -796,6 +796,10 @@ class SearchFormComponent extends React.Component {
             />
         }
 
+        let searchHandlerElement;
+        if (typeof searchHandler === "function")
+            searchHandlerElement = searchHandler(searchID, searchCriteria, refreshToggled);
+
         return (
             <div style={{padding: '5px 10px', fontSize: '12px'}}>
                 <Card>
@@ -805,7 +809,7 @@ class SearchFormComponent extends React.Component {
                         {alertMessage}
                         {searchFields}
 
-                        <Divider className={searchFormFieldsColumnCount === 3 ? "searchDivider-3" : "searchDivider-2"}/>
+                        {isNotAnEmptyObject(searchFormFields) && <Divider className={searchFormFieldsColumnCount === 3 ? "searchDivider-3" : "searchDivider-2"}/>}
 
                         <Row style={{paddingLeft: '10px', maxWidth: searchGridWidth}}>
                             <Container fluid style={{overflow: 'auto'}}>
@@ -867,8 +871,8 @@ class SearchFormComponent extends React.Component {
                                show={showLoadingMask}
                                loadingIcon={true}/>
 
+                {searchHandlerElement}
                 {exportPrompt}
-                {searchHandler(searchID, searchCriteria, refreshToggled)}
                 {downloadFileCallback && downloadFileCallback(downloadFileData, this.resetDownloadFileCallback)}
                 {tableCellPopup}
             </div>

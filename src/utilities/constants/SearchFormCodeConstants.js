@@ -2,16 +2,20 @@ export const configFileSampleCode = `const searchFormConfigurations = {
     searchFormFields: {
         name: {label: "Name", type: "text"},
         dateOfBirth: {label: "Date of Birth", type: "date"},
-        yearLevel: {label: "Year Level", 
-                    type: {dropdown: [
-                        {label: "Freshman", value: 1},
-                        {label: "Sophomore", value: 2},
-                        {label: "Junior", value: 3},
-                        {label: "Senior", value: 4},
-                    ]
-        }
+        yearLevel: {
+            label: "Year Level",
+            type: {
+                dropdown: [
+                    {label: "Freshman", value: 1},
+                    {label: "Sophomore", value: 2},
+                    {label: "Junior", value: 3},
+                    {label: "Senior", value: 4},
+                ]
+            }
+        },
     },
-   
+    searchFormFieldsContainerWidth: '600px',
+
     searchGridColumns: [
         {name: "studentID", title: ""},
         {name: "name", title: "Name"},
@@ -21,8 +25,40 @@ export const configFileSampleCode = `const searchFormConfigurations = {
         {name: "gradesDropdown", title: "Grades"},
         {name: "transcript", title: "Transcript"},
         {name: "activities", title: "Activities"},
-    ]
-   }
+    ],
+    searchGridHiddenColumns: ["studentID"],
+    searchGridWidth: '1280px',
+
+    tableCellConfig: {
+        transcript: {
+            action: "downloadFile",
+            onClickHandler: this.downloadTranscript
+        },
+        attendance: {
+            action: "openPopup",
+            popupHeader: "Attendance History",
+            popupContent: this.getAttendanceHistoryContent,
+            popupClassName: "attendanceHistory"
+        },
+        gradesDropdown: {
+            action: "openDropdown",
+            dropdownOptions: [
+                {
+                    key: "viewCurrentGrades",
+                    title: "View Current Grades",
+                    image: cross,
+                    action: "transferTab",
+                    targetTab: "viewGradesTab"
+                },
+                {
+                    key: "getGradesReport", title: "Generate Grades Report", image: pdf,
+                    action: "downloadFile",
+                    onClickHandler: this.generateGradesReport
+                },
+            ]
+        },
+        activities: {action: "transferTab", targetTab: "View Student Activities"}
+    }
 }
 `;
 
@@ -42,9 +78,9 @@ export const searchFormFieldsCode = `searchFormFields: {
         label: "Year Level",
         type: {
             dropdown: [
-                {label: "Freshman", value: 1}
-                {label: "Sophomore", value: 2}
-                {label: "Junior", value: 3}
+                {label: "Freshman", value: 1},
+                {label: "Sophomore", value: 2},
+                {label: "Junior", value: 3},
                 {label: "Senior", value: 4}
             ]
         }
