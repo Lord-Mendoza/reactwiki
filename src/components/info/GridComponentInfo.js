@@ -33,7 +33,6 @@ class GridComponentInfo extends Component {
 
                     <div style={{textAlign: "left", paddingLeft: 30}}>
                         <ol>
-                            <li><a className="nav-link glossary" href="#prereq">Pre-Requisites</a></li>
                             <li><a className="nav-link glossary" href="#configs">Available Configurations</a></li>
                             <li><a className="nav-link glossary" href="#props">Props</a></li>
 
@@ -46,40 +45,6 @@ class GridComponentInfo extends Component {
                                 <li><a className="nav-link glossary" href="#styling">Styling</a></li>
                             </ul>
                         </ol>
-                    </div>
-                </section>
-
-                {/*=======================================================
-                ====================== Next Section ======================
-                =======================================================*/}
-                <section id={"prereq"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                    <hr/>
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
-
-                    <div style={{textAlign: "left", paddingLeft: 70}}>
-                        <p> &#8226; You need to include the following on your package.json </p>
-                        <div style={{paddingLeft: 80}}>
-                            <samp>
-                                <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p style={{marginLeft: "40px"}}>&#8220;@devexpress/dx-react-core&#8221;    &#58; &#8220;latest&#8221;,</p>
-                                <p style={{marginLeft: "40px"}}>&#8220;@devexpress/dx-react-grid&#8221;    &#58; &#8220;latest&#8221;,</p>
-                                <p style={{marginLeft: "40px"}}>&#8220;@devexpress/dx-react-grid-bootstrap4&#8221;    &#58; &#8220;latest&#8221;,</p>
-                                <p style={{marginLeft: "40px"}}>&#8220;bootstrap&#8221;: &#8220;latest&#8221;,</p>
-                                <p style={{marginLeft: "40px"}}>&#8220;react-icons&#8221;: &#8220;latest&#8221;,</p>
-                                <p>&#125;</p>
-                            </samp>
-                        </div>
-
-                        <p> &#8226; Then on your index.js file include: </p>
-                        <div style={{paddingLeft: 80}}>
-                            <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
-                        </div>
-
-                        <br/>
-                        <p> &#8226; Lastly, import the GridComponent for use: </p>
-                        <div style={{paddingLeft: 80}}>
-                            <samp> import GridComponent from "./GridComponent" </samp>
-                        </div>
                     </div>
                 </section>
 

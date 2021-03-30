@@ -19,45 +19,10 @@ class MaskComponentInfo extends Component {
 
                     <div style={{textAlign: "left", paddingLeft: 30}}>
                         <ol>
-                            <li><a className="nav-link glossary" href="#prereq">Pre-Requisites</a></li>
                             <li><a className="nav-link glossary" href="#demo">Demonstration</a></li>
                             <li><a className="nav-link glossary" href="#implementation">Sample Implementation</a></li>
                             <li><a className="nav-link glossary" href="#props">Props</a></li>
                         </ol>
-                    </div>
-                </section>
-
-                {/*=======================================================
-                ====================== Next Section ======================
-                =======================================================*/}
-                <section id={"prereq"} data-aos={"fade-right"} data-aos-delay={"300"}>
-                    <hr/>
-
-                    <h3 style={{textAlign: "left", paddingLeft: 50}}> Pre-Requisites </h3>
-
-                    <div style={{textAlign: "left", paddingLeft: 70}}>
-                        <p> &#8226; You need to include the following on your package.json </p>
-                        <div style={{paddingLeft: 80}}>
-                            <samp>
-                                <p>&#34;dependencies&#34;:    &#123;</p>
-                                <p style={{marginLeft: "40px"}}>&#8220;react-bootstrap&#8221;    &#58; &#8220;latest&#8221;,</p>
-                                <p style={{marginLeft: "40px"}}>&#8220;bootstrap&#8221;: &#8220;latest&#8221;,</p>
-                                <p>&#125;</p>
-                            </samp>
-                        </div>
-
-                        <p> &#8226; Then on your index.js file include: </p>
-                        <div style={{paddingLeft: 80}}>
-                            <samp> import 'bootstrap/dist/css/bootstrap.min.css'; </samp>
-                        </div>
-
-                        <br/>
-                        <p> &#8226; Add the loading.png file to the public folder. <i> Note: you can put your own image on there, as long as its named "loading.png". </i> </p>
-
-                        <p> &#8226; Lastly, import the MaskComponent for use: </p>
-                        <div style={{paddingLeft: 80}}>
-                            <samp> import MaskComponent from "./MaskComponent"; </samp>
-                        </div>
                     </div>
                 </section>
 

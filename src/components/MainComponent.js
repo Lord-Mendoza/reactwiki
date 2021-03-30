@@ -124,7 +124,7 @@ class MainComponent extends Component {
                                 <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> Popup Component </NavDropdown.Item>
                                 <NavDropdown.Item id='search-component' onClick = {this.handleSelection}> Search Form Component </NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href={"./reactComponents.zip"}> Get Package </Nav.Link>
+                            <Nav.Link href={"https://www.npmjs.com/package/reactwiki-components"}> Get Package </Nav.Link>
                         </Nav>
 
                         <div style={{padding: ".5rem 1rem"}}>
