@@ -182,7 +182,7 @@ class SearchFormComponentInfo extends Component {
                     </section>
 
                     <hr/>
-                    <section id={"configProps"}>
+                    <section id={"configProps"} data-aos={"fade-right"} data-aos-delay={"300"}>
                         <h3 style={{textAlign: "left", paddingLeft: 50}}> Configuration Props </h3>
 
                         <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Form Fields </h5>
@@ -764,7 +764,7 @@ class SearchFormComponentInfo extends Component {
                                         </li>
                                     </ul>
                                     <br/>
-                                    <li><b> onClickHandler </b>: a hook callback function that will handle the onClick
+                                    <li><b> (if action is "downloadFile") onClickHandler </b>: a hook callback function that will handle the onClick
                                         on the
                                         table cell based on the action type selected. Passes in the following
                                         parameters:

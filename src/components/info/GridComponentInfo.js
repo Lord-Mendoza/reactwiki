@@ -163,7 +163,7 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9">rows=&#123; &nbsp; [ &#123;name: "Sarah", age: 24&#125;, &#123;name: "Sam", age: 32&#125; ] &nbsp; &#125;</dd>
 
                         <dt className="col-sm-3"> Notes</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> For proper sorting behavior, ensure to pass numbers as column values for number-typed
+                        <dd className="col-sm-9"> For proper sorting behavior, ensure to pass numbers as column values for number-typed
                             columns.
                         </dd>
                     </dl>

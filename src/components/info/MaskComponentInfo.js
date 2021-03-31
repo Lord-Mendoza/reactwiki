@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../../styling/ComponentStyling.css';
-import {Image} from "react-bootstrap";
+import {img} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import Prism from "prismjs";
 
@@ -33,10 +33,10 @@ class MaskComponentInfo extends Component {
                     <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Demonstration </h3>
 
-                    <Image
+                    <img
                         src="./maskcomponent.gif"
                         alt="Clip demonstrating the loader component overlaying a grid."
-                        style={{width: "50%"}}
+                        style={{minWidth: "50vw", maxWidth: "80vw"}}
                     />
                 </section>
 
@@ -66,13 +66,13 @@ class MaskComponentInfo extends Component {
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> header</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> header</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The title of the popup.</dd>
+                        <dd className="col-sm-9"> The title of the popup.</dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
+                        <dd className="col-sm-9"> A string</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -80,14 +80,14 @@ class MaskComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> content</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> content</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The message to appear in the mask popup.
+                        <dd className="col-sm-9"> The message to appear in the mask popup.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
+                        <dd className="col-sm-9"> A string</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -95,17 +95,17 @@ class MaskComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> show</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> show</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>Toggles whether to show the mask or not.
+                        <dd className="col-sm-9">Toggles whether to show the mask or not.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
+                        <dd className="col-sm-9"> A boolean</dd>
 
                         <dt className="col-sm-3"> Note</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>It's ideal to assign a parent's state
+                        <dd className="col-sm-9">It's ideal to assign a parent's state
                             property here to toggle when to show the mask or not
                         </dd>
                     </dl>
@@ -117,15 +117,15 @@ class MaskComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> loadingIcon</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> loadingIcon</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Toggles whether to show a rotating loading
+                        <dd className="col-sm-9"> Toggles whether to show a rotating loading
                             icon in the content.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
+                        <dd className="col-sm-9"> A boolean</dd>
                     </dl>
 
                 </section>

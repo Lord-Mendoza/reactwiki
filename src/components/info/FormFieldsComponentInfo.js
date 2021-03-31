@@ -52,16 +52,16 @@ class FormFieldsComponentInfo extends Component {
 
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> formFields
+                            <dd className="col-sm-9" style={{fontStyle: "italic"}}> formFields
                             </dd>
 
                             <dt className="col-sm-3"> Description</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> The list of form fields to be
+                            <dd className="col-sm-9"> The list of form fields to be
                                 generated.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 <p> A JSON object whose keys are the key/id for the fields, and values are objects with
                                     properties "label" and "type". They follow the given format: </p>
                                 <p style={{marginLeft: "40px"}}>&lt;<i>key/id of field</i>&gt;: &#123; label: &lt;<i>label</i>&gt;,
@@ -131,21 +131,21 @@ class FormFieldsComponentInfo extends Component {
 
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> formFieldsData
+                            <dd className="col-sm-9" style={{fontStyle: "italic"}}> formFieldsData
                             </dd>
 
                             <dt className="col-sm-3"> Description</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> The current values for each form
+                            <dd className="col-sm-9"> The current values for each form
                                 field.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> A JSON object whose keys correspond to
+                            <dd className="col-sm-9"> A JSON object whose keys correspond to
                                 keys/ids of formFields, and values are the current values for those fields.
                             </dd>
 
                             <dt className="col-sm-3"> Example</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 <section className={"codeSample"}>
                                     <pre className="language-javascript">
                                         <code>
@@ -161,11 +161,11 @@ class FormFieldsComponentInfo extends Component {
 
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> handlerFunction
+                            <dd className="col-sm-9" style={{fontStyle: "italic"}}> handlerFunction
                             </dd>
 
                             <dt className="col-sm-3"> Description</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 <p>The callback function where the user's input are passed in as they revise a field.
                                     Must have the following parameters for proper flow: </p>
                                 <p style={{marginLeft: "40px"}}> (e, &#123;name, value&#125;) </p>
@@ -189,7 +189,7 @@ class FormFieldsComponentInfo extends Component {
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function</dd>
+                            <dd className="col-sm-9"> A callback function</dd>
                         </dl>
 
                         {/*====================== Additional Section ======================*/}
@@ -201,21 +201,21 @@ class FormFieldsComponentInfo extends Component {
                         {/*-----Next Entry-----*/}
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> requiredFields
+                            <dd className="col-sm-9" style={{fontStyle: "italic"}}> requiredFields
                             </dd>
 
                             <dt className="col-sm-3"> Description</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> Specifies which fields to add a red
+                            <dd className="col-sm-9"> Specifies which fields to add a red
                                 asterisk (*) after the form label to indicate a required field.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> An array of strings where each string
+                            <dd className="col-sm-9"> An array of strings where each string
                                 corresponds to a key/id in formFields.
                             </dd>
 
                             <dt className="col-sm-3"> Example</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 <section className={"codeSample"}>
                                     <pre className="language-javascript">
                                         <code>
@@ -231,15 +231,15 @@ class FormFieldsComponentInfo extends Component {
 
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> columnCount</dd>
+                            <dd className="col-sm-9" style={{fontStyle: "italic"}}> columnCount</dd>
 
                             <dt className="col-sm-3"> Description</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 Specifies the number of columns to divide the formFields.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> A number of either 2, 3, or 4.</dd>
+                            <dd className="col-sm-9"> A number of either 2, 3, or 4.</dd>
 
                             <dt className="col-sm-3"> Default</dt>
                             <dd className="col-sm-9"> 2</dd>
@@ -251,21 +251,21 @@ class FormFieldsComponentInfo extends Component {
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
                             <dd className="col-sm-9"
-                                style={{textAlign: "left", fontStyle: "italic"}}> fieldContainerWidth
+                                style={{fontStyle: "italic"}}> fieldContainerWidth
                             </dd>
 
                             <dt className="col-sm-3"> Description</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 Specifies the width to span the form fields by.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> A string that can either be some
+                            <dd className="col-sm-9"> A string that can either be some
                                 length unit (px, cm, etc.), percentage (%), or any CSS-supported width value.
                             </dd>
 
                             <dt className="col-sm-3"> Example</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 <section className={"codeSample"}>
                                     <pre className="language-javascript">
                                         <code>
@@ -284,16 +284,16 @@ class FormFieldsComponentInfo extends Component {
 
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> formClassName
+                            <dd className="col-sm-9" style={{fontStyle: "italic"}}> formClassName
                             </dd>
 
                             <dt className="col-sm-3"> Description</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}>
+                            <dd className="col-sm-9">
                                 Specifies a CSS class to wrap the FormFieldsComponent by for external CSS styling.
                             </dd>
 
                             <dt className="col-sm-3"> Value</dt>
-                            <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
+                            <dd className="col-sm-9"> A string</dd>
                         </dl>
 
                     </section>

@@ -35,10 +35,9 @@ class LoaderComponentInfo extends Component {
 
                     <Carousel pauseOnHover={true}>
                         <Carousel.Item>
-                            <Image
+                            <img
                                 src="./loader.gif"
                                 alt="Code for rendering form"
-                                style={{width: "50%"}}
                             />
                             <Carousel.Caption>
                                 <h3>Default appearance</h3>
@@ -47,10 +46,9 @@ class LoaderComponentInfo extends Component {
                         </Carousel.Item>
 
                         <Carousel.Item>
-                            <Image
+                            <img
                                 src="./loaderInverted.gif"
                                 alt="Code for rendering form"
-                                style={{width: "50%"}}
                             />
                             <Carousel.Caption>
                                 <h3><i>inverted</i> = false</h3>
@@ -86,13 +84,13 @@ class LoaderComponentInfo extends Component {
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> isLoading</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> isLoading</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Determines if the content needs to be overlayed.</dd>
+                        <dd className="col-sm-9"> Determines if the content needs to be overlayed.</dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
+                        <dd className="col-sm-9"> A boolean</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -100,14 +98,14 @@ class LoaderComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> content</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> content</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The content to be overlayed.
+                        <dd className="col-sm-9"> The content to be overlayed.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> An object</dd>
+                        <dd className="col-sm-9"> An object</dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
@@ -117,31 +115,31 @@ class LoaderComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> loadingMessage</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> loadingMessage</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> What message to appear at the center of the overlay.
+                        <dd className="col-sm-9"> What message to appear at the center of the overlay.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
+                        <dd className="col-sm-9"> A string</dd>
                     </dl>
 
                     <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> inverted</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> inverted</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Whether to invert the background color of the overlay.
+                        <dd className="col-sm-9"> Whether to invert the background color of the overlay.
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> true
+                        <dd className="col-sm-9"> true
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
+                        <dd className="col-sm-9"> A boolean</dd>
                     </dl>
 
                 </section>

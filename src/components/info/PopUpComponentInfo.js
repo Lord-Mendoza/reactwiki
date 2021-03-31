@@ -36,11 +36,8 @@ class PopUpComponentInfo extends Component {
 
                     <Carousel pauseOnHover={true}>
                         <Carousel.Item>
-                            <Image
-                                className="d-block w-100"
-                                src="./closeOnly.png"
+                            <img src="./closeOnly.png"
                                 alt="Render for closeOnly"
-                                style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
                             <Carousel.Caption>
                                 <h3><i>footerConfig</i> = "closeOnly"</h3>
@@ -49,11 +46,8 @@ class PopUpComponentInfo extends Component {
                         </Carousel.Item>
 
                         <Carousel.Item>
-                            <Image
-                                className="d-block w-100"
-                                src="./submit.png"
+                            <img src="./submit.png"
                                 alt="Render for simple"
-                                style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
 
                             <Carousel.Caption>
@@ -63,11 +57,8 @@ class PopUpComponentInfo extends Component {
                         </Carousel.Item>
 
                         <Carousel.Item>
-                            <Image
-                                className="d-block w-100"
-                                src="./popupall.png"
+                            <img src="./popupall.png"
                                 alt="Render for search"
-                                style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
 
                             <Carousel.Caption>
@@ -77,11 +68,8 @@ class PopUpComponentInfo extends Component {
                         </Carousel.Item>
 
                         <Carousel.Item>
-                            <Image
-                                className="d-block w-100"
-                                src="./custom.png"
+                            <img src="./custom.png"
                                 alt="Render for all"
-                                style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
 
                             <Carousel.Caption>
@@ -91,11 +79,8 @@ class PopUpComponentInfo extends Component {
                         </Carousel.Item>
 
                         <Carousel.Item>
-                            <Image
-                                className="d-block w-100"
-                                src="./formInside.png"
+                            <img src="./formInside.png"
                                 alt="Render for all with a form as the content"
-                                style={{paddingLeft: "400px", paddingRight: "400px", paddingBottom: "10px"}}
                             />
 
                             <Carousel.Caption>
@@ -131,13 +116,13 @@ class PopUpComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> header</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> header</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The title of the popup.</dd>
+                        <dd className="col-sm-9"> The title of the popup.</dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string</dd>
+                        <dd className="col-sm-9"> A string</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -145,16 +130,16 @@ class PopUpComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> content</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> content</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The content of the popup. PopupComponent
+                        <dd className="col-sm-9"> The content of the popup. PopupComponent
                             offers flexibility on the content, such as placing another component (ex. FormComponent)
                             inside.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string, or another component. </dd>
+                        <dd className="col-sm-9"> A string, or another component. </dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -162,15 +147,15 @@ class PopUpComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> footerConfig</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> footerConfig</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             The buttons to appear at the foot of the popup.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             <p>A string of either</p>
                             <p>i. “custom” = giving the developer the option to define their own buttons in the
                                 footer</p>
@@ -180,7 +165,7 @@ class PopUpComponentInfo extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Notes</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             Providing the value of “custom” requires for customFooter to be defined
                         </dd>
                     </dl>
@@ -190,16 +175,16 @@ class PopUpComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> closeToggled</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> closeToggled</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             This property uses the supplied callback function to close the popup component. Ideally, the
                             callback function should set the state of showing the popup to false.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             A callback function
                         </dd>
                     </dl>
@@ -211,15 +196,15 @@ class PopUpComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> resetToggled</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> resetToggled</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> When “footerConfig” is set to “all”, this
+                        <dd className="col-sm-9"> When “footerConfig” is set to “all”, this
                             must be included to respond to the user's desire to reset what's placed in the content body.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function</dd>
+                        <dd className="col-sm-9"> A callback function</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -227,16 +212,16 @@ class PopUpComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> submitToggled</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> submitToggled</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             When “footerConfig” is set to “all” or “submit”, this must be included to respond to the
                             user's desire to submit what's placed in the content body.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function</dd>
+                        <dd className="col-sm-9"> A callback function</dd>
                     </dl>
 
                 </section>

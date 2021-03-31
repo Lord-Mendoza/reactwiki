@@ -35,10 +35,9 @@ class FileUploadComponentInfo extends Component {
 
                     <Carousel pauseOnHover={true} interval={20000}>
                         <Carousel.Item>
-                            <Image
+                            <img
                                 src="./fileupload.gif"
                                 alt="Clip demonstrating the FileUploadComponent in its default state."
-                                style={{width: "50%"}}
                             />
                             <Carousel.Caption>
                                 <h3>Default appearance</h3>
@@ -47,10 +46,9 @@ class FileUploadComponentInfo extends Component {
                         </Carousel.Item>
 
                         <Carousel.Item>
-                            <Image
+                            <img
                                 src="./fileuploadbtn.gif"
                                 alt="Clip demonstrating the loader FileUploadComponent as a button."
-                                style={{width: "50%"}}
                             />
                             <Carousel.Caption>
                                 <h3> <i>uploadByButton </i> = true </h3>
@@ -86,13 +84,13 @@ class FileUploadComponentInfo extends Component {
                     <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Required </h5>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> files</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> files</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>Uses the callback function to return the list of files.</dd>
+                        <dd className="col-sm-9">Uses the callback function to return the list of files.</dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A callback function.</dd>
+                        <dd className="col-sm-9"> A callback function.</dd>
                     </dl>
 
                     {/*====================== Additional Section ======================*/}
@@ -102,18 +100,18 @@ class FileUploadComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> fileType</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> fileType</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Determines the file type that the file uploader will accept.
+                        <dd className="col-sm-9"> Determines the file type that the file uploader will accept.
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> "" (which will accept any file type).
+                        <dd className="col-sm-9"> "" (which will accept any file type).
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             <p>A comma-separated list of unique content type specifiers (string format):</p>
                             <p>&#8226; A file extension starting with the STOP character (U+002E). (e.g. .jpg, .png, .doc).</p>
                             <p>&#8226; A valid MIME type with no extensions.</p>
@@ -126,73 +124,73 @@ class FileUploadComponentInfo extends Component {
                     <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> fileUploadText</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> fileUploadText</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> The label of the upload field/button.
+                        <dd className="col-sm-9"> The label of the upload field/button.
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>
+                        <dd className="col-sm-9">
                             <p> &#8226; If uploadByBtn is set to true, the default fileUploadText is “Upload”</p>
                             <p> &#8226; Otherwise, it's “Drag and drop some files here, or click to select files”</p>
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A string
+                        <dd className="col-sm-9"> A string
                         </dd>
                     </dl>
 
                     <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> showFileUploadManager</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> showFileUploadManager</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Specifying whether to show the "files uploaded" queue to the user, and allow them to reset, delete, and submit them.
+                        <dd className="col-sm-9"> Specifying whether to show the "files uploaded" queue to the user, and allow them to reset, delete, and submit them.
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> true
+                        <dd className="col-sm-9"> true
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean
+                        <dd className="col-sm-9"> A boolean
                         </dd>
                     </dl>
 
                     <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> resetUponSubmit</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> resetUponSubmit</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Determines whether to reset the list of files uploaded upon clicking "submit".
+                        <dd className="col-sm-9"> Determines whether to reset the list of files uploaded upon clicking "submit".
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> true
+                        <dd className="col-sm-9"> true
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> A boolean</dd>
+                        <dd className="col-sm-9"> A boolean</dd>
                     </dl>
 
                     <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left", fontStyle: "italic"}}> uploadByBtn</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> uploadByBtn</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> Specifying whether to render a button, or an upload field.
+                        <dd className="col-sm-9"> Specifying whether to render a button, or an upload field.
                         </dd>
 
                         <dt className="col-sm-3"> Default</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}> false
+                        <dd className="col-sm-9"> false
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9" style={{textAlign: "left"}}>A boolean</dd>
+                        <dd className="col-sm-9">A boolean</dd>
                     </dl>
 
                 </section>

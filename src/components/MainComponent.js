@@ -98,18 +98,12 @@ class MainComponent extends Component {
                 break;
         }
 
-        let availHeight = window.screen.availHeight;
-        let availWidth = window.screen.availWidth;
-
         let style = {};
         if (darkMode === true)
             style = {backgroundColor: "#222222", color: "white"};
 
         return(
-            <div style={{
-                height: availHeight,
-                width: availWidth,
-            }}>
+            <div>
                 <Navbar sticky="top" collapseOnSelect expand ="lg" bg="dark" variant="dark">
                     <Navbar.Brand>
                         <img src={"logo.png"} style={{marginRight: "5px"}} alt={'react wiki logo'}/>
