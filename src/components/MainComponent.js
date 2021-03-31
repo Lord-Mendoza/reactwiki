@@ -111,7 +111,10 @@ class MainComponent extends Component {
                 width: availWidth,
             }}>
                 <Navbar sticky="top" collapseOnSelect expand ="lg" bg="dark" variant="dark">
-                    <Navbar.Brand> <Image src={"logo.png"} style={{marginBottom: "4px", marginRight: "4px"}}/> React Wiki </Navbar.Brand>
+                    <Navbar.Brand>
+                        <img src={"logo.png"} style={{marginRight: "5px"}} alt={'react wiki logo'}/>
+                        <span style={{verticalAlign: "text-bottom"}}>React Wiki</span>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
@@ -138,11 +141,19 @@ class MainComponent extends Component {
                                 }, this.setDarkModeToLocalStorage)}
                             />
                         </div>
+
+                        <div style={{padding: ".5rem 1rem .5rem 0"}}>
+                            <a href={"https://github.com/lord-mendoza/reactWiki-components"} style={{color: 'white'}}> <Icon name="github" size='large'/> </a>
+                        </div>
                     </Navbar.Collapse>
                 </Navbar>
 
-                <div style={{...style}} className={darkMode === true ? "darkMode" : ""}>
+                <div style={{paddingBottom: "15px", ...style}} className={darkMode === true ? "darkMode" : ""}>
                     {mainComponent}
+                </div>
+
+                <div style={{paddingBottom: "10px", backgroundColor: "#343a40", paddingTop: "10px", marginTop: "-15px"}}>
+                    <h4 style={{color: "white", textAlign: "center"}}>Developed by <a href="https://lordmendoza.com/">Lord Mendoza</a></h4>
                 </div>
             </div>
 

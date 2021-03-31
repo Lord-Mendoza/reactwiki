@@ -390,10 +390,15 @@ class SearchFormComponentInfo extends Component {
                             <dd className="col-sm-9">
                                 an array of JSON objects whose properties are listed below:
                                 <ul>
+                                    <br/>
                                     <li><b> key:</b> the key of the option. This is internally used for mapping the
                                         selected nav option with its onClickHandler.
                                     </li>
+                                    <br/>
+
                                     <li><b> title:</b> the title/label to show for the option</li>
+                                    <br/>
+
                                     <li>(if desired) one of the following:</li>
                                     <ul>
                                         <li><b> image:</b> the file (.png, .gif, etc.) to show to the left of the option
@@ -404,13 +409,18 @@ class SearchFormComponentInfo extends Component {
                                             https://react.semantic-ui.com/elements/icon/
                                         </li>
                                     </ul>
+                                    <br/>
+
                                     <li><b> dependsOnRowSelection:</b> boolean where, if allowRowSelection is set to
                                         true, then the row(s) data selected will be passed on to the onClickHandler
                                         function; if no selections are made before the user toggled this option, then an
                                         alert message will appear telling the user to make row selection(s) first.
                                     </li>
+                                    <br/>
+
                                     <li><b> action:</b> a string that specifies the action. Can be one of the following
-                                        listed below OR can be omitted if onClickHandler just needs to get called.
+                                        listed below <b>OR</b> <u>can be omitted if onClickHandler just needs to get
+                                            called.</u>
                                     </li>
                                     <ul>
                                         <li><b> "downloadFile" </b>= fires the callback function on the onClickHandler
@@ -420,20 +430,28 @@ class SearchFormComponentInfo extends Component {
                                             popupContent callback to get the content to be displayed inside the popup.
                                         </li>
                                     </ul>
-                                    <li>(if action is set to "downloadFile") <b> onClickHandler </b>= a hook callback
-                                        function that passes in the following parameters:
+                                    <br/>
+
+                                    <li>(if action is set to "downloadFile", or is omitted) <b> onClickHandler </b>= a
+                                        hook callback function.
                                     </li>
                                     <ul>
-                                        <li><i> rowsArray </i>= an array of row objects where, for each object, contains
-                                            keys that correspond to searchGridColumns, and its values are its
-                                            corresponding column value
-                                        </li>
-                                        <li><i> resetCallback </i>= a callback function to be triggered by the hook
-                                            callback to specify whenever the action performed is completed; this is
-                                            important to get called so that the dropdown option will trigger the
-                                            download again
-                                        </li>
+                                        <li>If dependsOnRowSelection is set to true, then it passes in the following parameters:</li>
+                                        <ul>
+                                            <li><i> rowsArray </i>= an array of row objects where, for each object, contains
+                                                keys that correspond to searchGridColumns, and its values are its
+                                                corresponding column value
+                                            </li>
+                                            <li><i> resetCallback </i>= a callback function to be triggered by the hook
+                                                callback to specify whenever the action performed is completed; this is
+                                                important to get called so that the dropdown option will trigger the
+                                                download again
+                                            </li>
+                                        </ul>
+                                        <li>Otherwise, onClickHandler gets called as is.</li>
                                     </ul>
+                                    <br/>
+
                                     <li>(if action is "openPopup") the following properties:</li>
                                     <ul>
                                         <li><b> popupHeader:</b> a string that is the title of the popup</li>
@@ -456,6 +474,8 @@ class SearchFormComponentInfo extends Component {
                                             </li>
                                         </ul>
                                     </ul>
+
+                                    <br/>
                                     <li><b> subMenuItems:</b> an array of objects to appear as a sub-menu for the search
                                         menu nav option.
                                     </li>

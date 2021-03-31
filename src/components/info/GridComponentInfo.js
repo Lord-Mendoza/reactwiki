@@ -622,7 +622,7 @@ class GridComponentInfo extends Component {
                         <dt className="col-sm-3"> Example</dt>
                         <dd className="col-sm-9">groupBy=&#123;"name"&#125;</dd>
 
-                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
                         <dd className="col-sm-9"><i>groupsEnabled == true</i></dd>
                     </dl>
 
