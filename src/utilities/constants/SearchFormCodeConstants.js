@@ -187,3 +187,8 @@ export const searchFormTableCellConfigSampleCode = `tableCellConfig: {
     },
     activities: {action: "transferTab", targetTab: "View Student Activities"}
 }`;
+
+export const searchMenuClosePopupSampleCode = `popupCallback("closePopup");`;
+export const searchMenuClosePopupRefreshTrueSampleCode = `popupCallback("closePopup", true);`;
+export const searchMenuTransferTabSampleCode = `popupCallback("transferTab", <target tab's key>, <data to pass>);`;
+export const searchMenuConfirmationCallbackDoneSampleCode = `popupCallback("confirmationCallbackDone");`;

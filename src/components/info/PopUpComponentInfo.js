@@ -34,7 +34,7 @@ class PopUpComponentInfo extends Component {
                     <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
-                    <Carousel pauseOnHover={true}>
+                    <Carousel interval={null}>
                         <Carousel.Item>
                             <img src="./closeOnly.png"
                                 alt="Render for closeOnly"

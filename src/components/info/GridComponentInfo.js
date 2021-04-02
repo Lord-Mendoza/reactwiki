@@ -55,7 +55,7 @@ class GridComponentInfo extends Component {
                     <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
-                    <Carousel pauseOnHover={true}>
+                    <Carousel interval={null}>
                         <Carousel.Item>
                             <img
                                 className="d-block w-100"
@@ -139,10 +139,13 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9">the list of columns for the given grid.</dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> an array of JSON objects that contains the properties "name" for the name/id of the column, and "title" for the column's header title </dd>
+                        <dd className="col-sm-9"> an array of JSON objects that contains the properties "name" for the
+                            name/id of the column, and "title" for the column's header title
+                        </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9"> columns=&#123; &nbsp; [&#123;name: "name", title: "Name"&#125;, &#123;name: "age", title: "Age"&#125;] &nbsp; &#125;</dd>
+                        <dd className="col-sm-9"> columns=&#123; &nbsp; [&#123;name: "name", title:
+                            "Name"&#125;, &#123;name: "age", title: "Age"&#125;] &nbsp; &#125;</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -153,17 +156,21 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>rows</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">the list of rows (data) for the given grid. <b><i> Object keys must match the column "name" (case-sensitive). </i></b>
+                        <dd className="col-sm-9">the list of rows (data) for the given grid. <b><i> Object keys must
+                            match the column "name" (case-sensitive). </i></b>
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop. </dd>
+                        <dd className="col-sm-9"> an array of JSON objects whose keys corresponds to the columns prop.
+                        </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">rows=&#123; &nbsp; [ &#123;name: "Sarah", age: 24&#125;, &#123;name: "Sam", age: 32&#125; ] &nbsp; &#125;</dd>
+                        <dd className="col-sm-9">rows=&#123; &nbsp; [ &#123;name: "Sarah", age: 24&#125;, &#123;name:
+                            "Sam", age: 32&#125; ] &nbsp; &#125;</dd>
 
                         <dt className="col-sm-3"> Notes</dt>
-                        <dd className="col-sm-9"> For proper sorting behavior, ensure to pass numbers as column values for number-typed
+                        <dd className="col-sm-9"> For proper sorting behavior, ensure to pass numbers as column values
+                            for number-typed
                             columns.
                         </dd>
                     </dl>
@@ -181,7 +188,8 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>disableModifications</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">toggles whether to disable making any changes to the grid, but allows for viewing only.
+                        <dd className="col-sm-9">toggles whether to disable making any changes to the grid, but allows
+                            for viewing only.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -252,7 +260,8 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>editExternally</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> specifies whether the developer wants to handle editing on their own, and not allow for in-line editing as provided.
+                        <dd className="col-sm-9"> specifies whether the developer wants to handle editing on their own,
+                            and not allow for in-line editing as provided.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -273,7 +282,8 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>editToggled</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> a function that passes two parameters (row object based on "Rows" prop, and it's index)
+                        <dd className="col-sm-9"> a function that passes two parameters (row object based on "Rows"
+                            prop, and it's index)
                             which allows the developer to handle it's data changes.
                         </dd>
 
@@ -286,13 +296,12 @@ class GridComponentInfo extends Component {
 
                     {/*-----Next Entry-----*/}
                     <hr width={"85%"}/>
-
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>hideOnSubmit</i></dd>
+                        <dd className="col-sm-9"><i>editAlways</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> specifies whether the edit button should hide everytime a user completes an edit.
+                        <dd className="col-sm-9"> allows for the edit button to always appear
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -300,6 +309,45 @@ class GridComponentInfo extends Component {
 
                         <dt className="col-sm-3"> Default</dt>
                         <dd className="col-sm-9">false</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>hideOnSubmit</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> specifies whether the edit button should hide everytime a user
+                            completes an edit.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9">false</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>toggleEditDeleteExternally</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> specifies whether the developer wants to handle showing the
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9">false</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>editToggled</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -412,6 +460,25 @@ class GridComponentInfo extends Component {
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
                         <dd className="col-sm-9"><i>toggleSelect</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>allowSelectAll</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">displays a "select all" checkbox in the grid header allowing for
+                            selecting rows all at once
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9">false</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -564,7 +631,8 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>filterArray</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> specifies which column(s) to filter the grid by along with their corresponding values.
+                        <dd className="col-sm-9"> specifies which column(s) to filter the grid by along with their
+                            corresponding values.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -576,18 +644,58 @@ class GridComponentInfo extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">filterArray=&#123;&nbsp;[&nbsp;&#123;columnName: "name", value: "Adam"&#125;&nbsp;]&nbsp;&#125;</dd>
+                        <dd className="col-sm-9">filterArray=&#123;&nbsp;[&nbsp;&#123;columnName: "name", value:
+                            "Adam"&#125;&nbsp;]&nbsp;&#125;</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>filterByColumnEnabled == true </i></dd>
+                        <dd className="col-sm-9"><i>filterByColumnEnabled = true </i></dd>
                     </dl>
 
                     {/*====================== Displaying Data Section ======================*/}
 
                     <hr width={"95%"}/>
                     <section id={"displaying"}/>
-                    <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Displaying Data </h5>
+                    <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Displaying
+                        Data </h5>
 
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Row Details </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>rowDetailsEnabled</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether the rows can be expanded to view additional details.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs To Have</dt>
+                        <dd className="col-sm-9"><i>rowDetailsContent</i></dd>
+                    </dl>
+
+                    <hr width={"85%"}/>
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>rowDetailsContent</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">the content to display when a row gets expanded.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">a callback function. When a row is expanded, it passed in the row
+                            object as a parameter. The object is formatted where the keys correspond to the columns
+                            prop.
+                        </dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>rowDetailsEnabled = true</i></dd>
+                    </dl>
+
+                    {/* ========= Next Section ==== */}
+                    <hr width={"90%"}/>
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Grouping </h6>
 
                     <dl className="row">
@@ -595,7 +703,8 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>groupsEnabled</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">toggles whether the rows in the grid should be grouped by a specified column.
+                        <dd className="col-sm-9">toggles whether the rows in the grid should be grouped by a specified
+                            column.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -617,13 +726,15 @@ class GridComponentInfo extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> a string whose value corresponds to a column in the "columns" property.</dd>
+                        <dd className="col-sm-9"> a string whose value corresponds to a column in the "columns"
+                            property.
+                        </dd>
 
                         <dt className="col-sm-3"> Example</dt>
                         <dd className="col-sm-9">groupBy=&#123;"name"&#125;</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>groupsEnabled == true</i></dd>
+                        <dd className="col-sm-9"><i>groupsEnabled = true</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -660,22 +771,24 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9">an array of JSON object with the following properties:
                             <ul style={{textAlign: "left", listStyleType: "none"}}>
                                 <li>i. "columnName", which corresponds to a value in the "columns" property</li>
-                                <li>ii. "type", which is the type of summary to provide. Can be one of the following: </li>
-                                    <ul style={{textAlign: "left", listStyleType: "none"}}>
-                                        <li>-sum</li>
-                                        <li>-max</li>
-                                        <li>-min</li>
-                                        <li>-avg</li>
-                                        <li>-count</li>
-                                    </ul>
+                                <li>ii. "type", which is the type of summary to provide. Can be one of the following:
+                                </li>
+                                <ul style={{textAlign: "left", listStyleType: "none"}}>
+                                    <li>-sum</li>
+                                    <li>-max</li>
+                                    <li>-min</li>
+                                    <li>-avg</li>
+                                    <li>-count</li>
+                                </ul>
                             </ul>
                         </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">summaryItems=&#123;&nbsp; [&nbsp;&#123;columnName: "price", type: "sum"&#125;&nbsp;]&nbsp;&#125;</dd>
+                        <dd className="col-sm-9">summaryItems=&#123;&nbsp; [&nbsp;&#123;columnName: "price", type:
+                            "sum"&#125;&nbsp;]&nbsp;&#125;</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>summaryItems == true</i></dd>
+                        <dd className="col-sm-9"><i>summaryItems = true</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -704,14 +817,15 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>summaryValue</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> the summary value to display. Note: this value will override the internal summary's calculated value.
+                        <dd className="col-sm-9"> the summary value to display. Note: this value will override the
+                            internal summary's calculated value.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">string or numeric</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                        <dd className="col-sm-9"><i>summaryIsCustomized == true</i></dd>
+                        <dd className="col-sm-9"><i>summaryIsCustomized = true</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -740,15 +854,18 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>gridSorting</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> specifies the sorting on the grid based on a specified column from the "columns" property, and order
+                        <dd className="col-sm-9"> specifies the sorting on the grid based on a specified column from the
+                            "columns" property, and order
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">an array of JSON object where the property is the column name, and value is either "asc" or "desc".
+                        <dd className="col-sm-9">an array of JSON object where the property is the column name, and
+                            value is either "asc" or "desc".
                         </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">gridSorting=&#123;&nbsp; [&nbsp;&#123;name: "asc"&#125;&nbsp;]&nbsp;&#125;</dd>
+                        <dd className="col-sm-9">gridSorting=&#123;&nbsp; [&nbsp;&#123;name:
+                            "asc"&#125;&nbsp;]&nbsp;&#125;</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -759,16 +876,20 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>sortingColumnExtensions</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">allows the developer to specify how data should be sorted for specified column(s).</dd>
+                        <dd className="col-sm-9">allows the developer to specify how data should be sorted for specified
+                            column(s).
+                        </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">an array of JSON objects that contain the following properties:
                             <ul style={{textAlign: "left", listStyleType: "none"}}>
                                 <li>i. "columnName", which corresponds to a value in the "columns" property</li>
-                                <li>ii. "compare", which is a callback compare function that takes two parameters, and returns 0, 1, or -1.
+                                <li>ii. "compare", which is a callback compare function that takes two parameters, and
+                                    returns 0, 1, or -1.
                                     <br/><br/><i><b>Here's an example for comparing dates:</b></i>
                                     <br/>&emsp;const compareDates = (a,b) => &#123;
-                                    <br/>&emsp;&emsp;if (&nbsp;(a === null && b === null) &nbsp; || &nbsp;(a === undefined && b === undefined)&nbsp;) <br/>
+                                    <br/>&emsp;&emsp;if (&nbsp;(a === null && b === null) &nbsp; || &nbsp;(a ===
+                                    undefined && b === undefined)&nbsp;) <br/>
                                     &emsp;&emsp;&emsp;return 1;
                                     <br/>&emsp;&emsp;else if (a === null &nbsp; || &nbsp;a === undefined) <br/>
                                     &emsp;&emsp;&emsp;return -1;
@@ -788,7 +909,9 @@ class GridComponentInfo extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">sortingColumnExtensions=&nbsp;[&nbsp;&#123;columnName: "name", compare: compareDates&#125;&nbsp;]</dd>
+                        <dd className="col-sm-9">sortingColumnExtensions=&nbsp;[&nbsp;&#123;columnName: "name", compare:
+                            compareDates&#125;&nbsp;]
+                        </dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -816,12 +939,16 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>selectedSorting</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">a function called by GridComponent when the user toggles to sort by a specific column.</dd>
+                        <dd className="col-sm-9">a function called by GridComponent when the user toggles to sort by a
+                            specific column.
+                        </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a callback function that receives a JSON object as parameter containing column name and order.</dd>
+                        <dd className="col-sm-9">a callback function that receives a JSON object as parameter containing
+                            column name and order.
+                        </dd>
 
-                        <dt className="col-sm-3"> Sample Parameter </dt>
+                        <dt className="col-sm-3"> Sample Parameter</dt>
                         <dd className="col-sm-9">&#123;name: asc&#125;</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
@@ -868,7 +995,8 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9">boolean</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needs to Have</dt>
-                        <dd className="col-sm-9"><i>totalCount, currentPage, changeCurrentPage, currentPageSize, changeCurrentPageSize</i></dd>
+                        <dd className="col-sm-9"><i>totalCount, currentPage, changeCurrentPage, currentPageSize,
+                            changeCurrentPageSize</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -913,7 +1041,9 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>changeCurrentPage</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">a function called by GridComponent whenever the user clicks to view another page. </dd>
+                        <dd className="col-sm-9">a function called by GridComponent whenever the user clicks to view
+                            another page.
+                        </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">callback function</dd>
@@ -950,7 +1080,9 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>changeCurrentPageSize</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">a function called by GridComponent whenever the user clicks to view more rows per page. </dd>
+                        <dd className="col-sm-9">a function called by GridComponent whenever the user clicks to view
+                            more rows per page.
+                        </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">callback function</dd>
@@ -999,7 +1131,9 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>columnWidths</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> the specified column widths for each column. If not specified, the default will be applied. <b><i> Object keys must match the column "name" (case-sensitive). </i></b>
+                        <dd className="col-sm-9"> the specified column widths for each column. If not specified, the
+                            default will be applied. <b><i> Object keys must match the column "name"
+                                (case-sensitive). </i></b>
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -1007,7 +1141,8 @@ class GridComponentInfo extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">columnWidths=&#123;&nbsp;&#123;name: 100, age: 50&#125;&nbsp;&#125;</dd>
+                        <dd className="col-sm-9">columnWidths=&#123;&nbsp;&#123;name: 100, age:
+                            50&#125;&nbsp;&#125;</dd>
 
                         <dt className="col-sm-3"> Default</dt>
                         <dd className="col-sm-9"> 180</dd>
@@ -1024,7 +1159,9 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"> a list of hidden columns on the grid.</dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> an array of columns whose values correspond to columns in the "columns" property. </dd>
+                        <dd className="col-sm-9"> an array of columns whose values correspond to columns in the
+                            "columns" property.
+                        </dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -1035,10 +1172,13 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>buttonColors</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">allows the developer to pass in their own values for the colors of the button text and background in the grid.</dd>
+                        <dd className="col-sm-9">allows the developer to pass in their own values for the colors of the
+                            button text and background in the grid.
+                        </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a JSON object that contains one or more of the following property pairs:
+                        <dd className="col-sm-9">a JSON object that contains one or more of the following property
+                            pairs:
                             <ul style={{textAlign: "left", listStyleType: "none"}}>
                                 <li>-Create Button:
                                     <ul style={{textAlign: "left", listStyleType: "none"}}>
@@ -1100,7 +1240,9 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>gridContainerClass</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">a class name to give to the container of the GridComponent to allow for CSS manipulation</dd>
+                        <dd className="col-sm-9">a class name to give to the container of the GridComponent to allow for
+                            CSS manipulation
+                        </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">string</dd>
@@ -1114,7 +1256,9 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>showPagingPanel</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">specifies whether the paging panel (page size, current/next/previous page) at the bottom of the grid is shown</dd>
+                        <dd className="col-sm-9">specifies whether the paging panel (page size, current/next/previous
+                            page) at the bottom of the grid is shown
+                        </dd>
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">boolean</dd>
@@ -1128,35 +1272,42 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9"><i>tableCell</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> the specified styling/behavior for cells of the table; can be used for defining how cells should appear for certain columns, onClick callbacks when clicking a table data, etc.
+                        <dd className="col-sm-9"> the specified styling/behavior for cells of the table; can be used for
+                            defining how cells should appear for certain columns, onClick callbacks when clicking a
+                            table data, etc.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9"> a function whose parameter is a JSON object contains &#123;row, column, ...restProps&#125;, and the function returns an instance of &#60;Table.Cell/&#62;
+                        <dd className="col-sm-9"> a function whose parameter is a JSON object contains &#123;row,
+                            column, ...restProps&#125;, and the function returns an instance of &#60;Table.Cell/&#62;
                         </dd>
 
                         <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9"> <b><i>below demonstrates a table cell for the "add" column to display an add icon, then performing callback function upon clicking</i></b>
+                        <dd className="col-sm-9"><b><i>below demonstrates a table cell for the "add" column to display
+                            an add icon, then performing callback function upon clicking</i></b>
                             <br/>&emsp;tableCell=&#123;
-                                &emsp;(&#123;row, column, ...restProps&#125;) => &#123; <br/>
-                                &emsp;&emsp;if (column.title === "Add") &#123;<br/>
-                                &emsp;&emsp;&emsp;return &#60;Table.Cell
-                                        <br/>&emsp;&emsp;&emsp;&emsp;row=&#123;row&#125;
-                                        <br/>&emsp;&emsp;&emsp;&emsp;&#123;...restProps&#125;
-                                        <br/>&emsp;&emsp;&emsp;&emsp;className=&#123;'icon'&#125;
-                                    <br/>&emsp;&emsp;&emsp;&#62;
-                                        <br/>&emsp;&emsp;&emsp;&emsp;&#60;div style=&#123;&#123;width: "1vw"&#125;&#125; onClick=&#123;() =&#62; this.showAdditionalInfoPopup(true, row, "add")&#125;&#62;
-                                            <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#60;Image src=&#123;create&#125; style=&#123;&#123;display: "inline"&#125;&#125;/&#62;
-                                        <br/>&emsp;&emsp;&emsp;&emsp;&#60;/div&#62;
-                                        <br/>&emsp;&emsp;&emsp;&#60;/Table.Cell&#62;
-                                    <br/>&emsp;&emsp;&#125;&emsp;else &#123;
-                                        <br/>&emsp;&emsp;&emsp;&emsp;return &#60;Table.Cell
-                                        <br/>&emsp;&emsp;&emsp;&emsp;&emsp;row=&#123;row&#125;
-                                        <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#123;...restProps&#125;
-                                    <br/>&emsp;&emsp;&emsp;&emsp;&#62;
-                                        <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#123;row[column.name]&#125;
-                                        <br/>&emsp;&emsp;&emsp;&#60;/Table.Cell&#62;
-                                    <br/>&emsp;&emsp;&#125;
+                            &emsp;(&#123;row, column, ...restProps&#125;) => &#123; <br/>
+                            &emsp;&emsp;if (column.title === "Add") &#123;<br/>
+                            &emsp;&emsp;&emsp;return &#60;Table.Cell
+                            <br/>&emsp;&emsp;&emsp;&emsp;row=&#123;row&#125;
+                            <br/>&emsp;&emsp;&emsp;&emsp;&#123;...restProps&#125;
+                            <br/>&emsp;&emsp;&emsp;&emsp;className=&#123;'icon'&#125;
+                            <br/>&emsp;&emsp;&emsp;&#62;
+                            <br/>&emsp;&emsp;&emsp;&emsp;&#60;div style=&#123;&#123;width:
+                            "1vw"&#125;&#125; onClick=&#123;() =&#62; this.showAdditionalInfoPopup(true, row,
+                            "add")&#125;&#62;
+                            <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#60;Image
+                            src=&#123;create&#125; style=&#123;&#123;display: "inline"&#125;&#125;/&#62;
+                            <br/>&emsp;&emsp;&emsp;&emsp;&#60;/div&#62;
+                            <br/>&emsp;&emsp;&emsp;&#60;/Table.Cell&#62;
+                            <br/>&emsp;&emsp;&#125;&emsp;else &#123;
+                            <br/>&emsp;&emsp;&emsp;&emsp;return &#60;Table.Cell
+                            <br/>&emsp;&emsp;&emsp;&emsp;&emsp;row=&#123;row&#125;
+                            <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#123;...restProps&#125;
+                            <br/>&emsp;&emsp;&emsp;&emsp;&#62;
+                            <br/>&emsp;&emsp;&emsp;&emsp;&emsp;&#123;row[column.name]&#125;
+                            <br/>&emsp;&emsp;&emsp;&#60;/Table.Cell&#62;
+                            <br/>&emsp;&emsp;&#125;
                             <br/>&emsp;&#125;</dd>
                     </dl>
 

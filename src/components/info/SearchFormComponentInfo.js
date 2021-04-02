@@ -11,10 +11,15 @@ import {
     searchFormColumnCountSampleCode,
     searchFormDefaultSampleCode,
     searchFormFieldContainerSampleCode,
-    searchFormFieldsCode, searchFormTableCellConfigSampleCode,
+    searchFormFieldsCode,
+    searchFormTableCellConfigSampleCode,
     searchGridColumnWidthsSampleCode,
-    searchGridHiddenColumnsSampleCode, searchGridWidthSampleCode,
-    searchMenuOptionsSampleCode
+    searchGridHiddenColumnsSampleCode,
+    searchGridWidthSampleCode, searchMenuClosePopupRefreshTrueSampleCode,
+    searchMenuClosePopupSampleCode,
+    searchMenuConfirmationCallbackDoneSampleCode,
+    searchMenuOptionsSampleCode,
+    searchMenuTransferTabSampleCode
 } from "../../utilities/constants/SearchFormCodeConstants";
 import {Carousel} from "react-bootstrap";
 
@@ -96,7 +101,7 @@ class SearchFormComponentInfo extends Component {
                     <section id={"sample-implementation"} data-aos={"fade-right"} data-aos-delay={"300"}>
                         <h3 style={{textAlign: "left", paddingLeft: 50}}> Sample Configurations </h3>
 
-                        <Carousel pauseOnHover={true}>
+                        <Carousel interval={null}>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
@@ -235,8 +240,14 @@ class SearchFormComponentInfo extends Component {
                                                 </li>
                                             </ul>
 
-                                            <li>There are two optional properties available for added features:
+                                            <li>There are three optional properties available for added features:
                                                 <ul>
+                                                    <li><b>"menuWidth"</b> = the width that the dropdown options will
+                                                        expand
+                                                        to. Ideally, this property should be set wide enough where the
+                                                        options are readable in one line. By default, the width expands
+                                                        to the same width as the select field.
+                                                    </li>
                                                     <li><b>"multiselect"</b> = boolean that allows for multiple
                                                         selection of values; is false by default if unspecified
                                                     </li>
@@ -429,6 +440,11 @@ class SearchFormComponentInfo extends Component {
                                         <li><b> "openPopup" </b>= triggers a popup to open, and will fire the
                                             popupContent callback to get the content to be displayed inside the popup.
                                         </li>
+                                        <li><b> "confirmAction" </b>= triggers a confirmation popup to open where a
+                                            specified confirmationMessage will be shown as the message. If the user
+                                            clicks "Yes", then it will fire the confirmationCallback function
+                                            to proceed with their intended action.
+                                        </li>
                                     </ul>
                                     <br/>
 
@@ -436,29 +452,36 @@ class SearchFormComponentInfo extends Component {
                                         hook callback function.
                                     </li>
                                     <ul>
-                                        <li>If dependsOnRowSelection is set to true, then it passes in the following parameters:</li>
+                                        <li>If dependsOnRowSelection is set to true, then it passes in the following
+                                            as the first parameter:
+                                        </li>
                                         <ul>
-                                            <li><i> rowsArray </i>= an array of row objects where, for each object, contains
+                                            <li><i> rowsArray </i>= an array of row objects where, for each object,
+                                                contains
                                                 keys that correspond to searchGridColumns, and its values are its
                                                 corresponding column value
                                             </li>
-                                            <li><i> resetCallback </i>= a callback function to be triggered by the hook
-                                                callback to specify whenever the action performed is completed; this is
-                                                important to get called so that the dropdown option will trigger the
-                                                download again
-                                            </li>
                                         </ul>
-                                        <li>Otherwise, onClickHandler gets called as is.</li>
+                                        <li>If action is set to "downloadFile", then it passes the follow as a second
+                                            parameter:
+                                            <ul>
+                                                <li><i> resetCallback </i>= a callback function to be triggered by the
+                                                    hook
+                                                    callback to specify whenever the download is done; this is
+                                                    important to get called so that the menu option can be clicked
+                                                    again.
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>If action property is omitted, and dependsOnRowSelection is false, then
+                                            onClickHandler gets called without passing any properties.
+                                        </li>
                                     </ul>
                                     <br/>
 
                                     <li>(if action is "openPopup") the following properties:</li>
                                     <ul>
                                         <li><b> popupHeader:</b> a string that is the title of the popup</li>
-                                        <li><b> popupClassName:</b> a string that is passed on as a classname for the
-                                            popup for CSS styling; helps with specifying the margins (which determines
-                                            the width of the specific popup) via CSS
-                                        </li>
                                         <li><b> popupContent:</b> a hook callback function that will handle the contents
                                             to display inside the popup. SearchFormComponent passes in the following
                                             parameters:
@@ -468,12 +491,87 @@ class SearchFormComponentInfo extends Component {
                                                 contains keys that correspond to searchGridColumns, and its values are
                                                 its corresponding column value
                                             </li>
-                                            <li><i> resetCallback </i>= a callback function that can be used by the hook
-                                                callback function to specify whethe to close the popup, or (if the
-                                                SearchFormComponent is a child of TabComponent) to transfer tabs.
+                                            <li><i> popupCallback </i>= a callback function that can be used by the hook
+                                                callback function to trigger one of the following:
+                                                <ul>
+                                                    <li><i>closePopup</i>: closes the popup. Called like so:
+                                                        <section className={"codeSample"}>
+                                                            <pre className="language-javascript">
+                                                                <code>
+                                                                    {searchMenuClosePopupSampleCode}
+                                                                </code>
+                                                            </pre>
+                                                        </section>
+                                                        <p><u>Note:</u> If the grid needs to be refreshed when the popup
+                                                            closes, pass in a boolean value <b>true</b> like so:</p>
+                                                        <section className={"codeSample"}>
+                                                            <pre className="language-javascript">
+                                                                <code>
+                                                                    {searchMenuClosePopupRefreshTrueSampleCode}
+                                                                </code>
+                                                            </pre>
+                                                        </section>
+                                                    </li>
+                                                    <li><i>transferTab</i>: if the SearchFormComponent is a child of
+                                                        TabComponent, it will open the target tab. Would need to call
+                                                        the function like so:
+                                                        <section className={"codeSample"}>
+                                                            <pre className="language-javascript">
+                                                                <code>
+                                                                    {searchMenuTransferTabSampleCode}
+                                                                </code>
+                                                            </pre>
+                                                        </section>
+                                                    </li>
+                                                </ul>
                                             </li>
                                         </ul>
+                                        <li>
+                                            Additionally, you can customize the popup with this optional property:
+                                            <ul>
+                                                <li><b> popupClassName:</b> a string that is passed on as a
+                                                    classname for the popup for CSS styling; helps with specifying
+                                                    the margins (which determines the width of the specific popup)
+                                                    via CSS
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
+
+                                    <br/>
+                                    <li>(if action is set to "confirmAction") the following properties:</li>
+                                    <ul>
+                                        <li><b>confirmationMessage</b>: The message to show inside the confirmation
+                                            popup.
+                                            <ul>
+                                                <li>If omitted, defaults to: "Are you sure you want to perform this
+                                                    action?"
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><b>confirmationCallback</b>: A hook callback function to be triggered once
+                                            the user clicks "Yes" to the confirmation popup.
+                                            <ul>
+                                                <li>This confirmation callback is actually rendered, and so the hook can
+                                                    render a loading mask while it performs an API call.
+                                                </li>
+                                                <li>SearchFormComponent will pass in a parameter to this callback
+                                                    function:
+                                                    <ul>
+                                                        <li><i>resetCallback</i> = a callback function to be
+                                                            triggered by the hook callback to specify whenever the
+                                                            confirmation callback function is done; this is important to
+                                                            get
+                                                            called so that the menu option can be clicked
+                                                            again. <u>Note:</u> If the grid needs to be refreshed, pass
+                                                            in a boolean value <b>true</b> when calling resetCallback
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <br/>
 
                                     <br/>
                                     <li><b> subMenuItems:</b> an array of objects to appear as a sub-menu for the search
@@ -717,7 +815,7 @@ class SearchFormComponentInfo extends Component {
                             </dd>
 
                             <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
-                            <dd className="col-sm-9"><i>rowDetailsContent == true</i></dd>
+                            <dd className="col-sm-9"><i>rowDetailsContent = true</i></dd>
 
                             <dt className="col-sm-3">Default</dt>
                             <dd className="col-sm-9">false</dd>
@@ -764,7 +862,8 @@ class SearchFormComponentInfo extends Component {
                                         </li>
                                     </ul>
                                     <br/>
-                                    <li><b> (if action is "downloadFile") onClickHandler </b>: a hook callback function that will handle the onClick
+                                    <li><b> (if action is "downloadFile") onClickHandler </b>: a hook callback function
+                                        that will handle the onClick
                                         on the
                                         table cell based on the action type selected. Passes in the following
                                         parameters:
@@ -775,8 +874,8 @@ class SearchFormComponentInfo extends Component {
                                             searchGridColumns, and values are its corresponding column value
                                         </li>
                                         <li><i>resetCallback</i> = a callback function to be triggered by the hook
-                                            callback to
-                                            specify whenever the action performed is completed; this is important to get
+                                            callback to specify whenever the action performed is completed; this is
+                                            important to get
                                             called so that the table cell can be clicked again
                                         </li>
                                     </ul>
@@ -784,10 +883,6 @@ class SearchFormComponentInfo extends Component {
                                     <li> (if action is "openPopup") the following properties:</li>
                                     <ul>
                                         <li><b> popupHeader </b>: a string that is the title of the popup</li>
-                                        <li><b> popupClassName </b>: a string that is passed on as a classname for the
-                                            popup for
-                                            styling
-                                        </li>
                                         <li><b> popupContent </b>: a hook callback function that will handle the
                                             contents to
                                             display inside the popup. Passed in the following parameters:
@@ -797,11 +892,42 @@ class SearchFormComponentInfo extends Component {
                                                 correspond
                                                 to searchGridColumns, and values are its corresponding column value
                                             </li>
-                                            <li><i>resetCallback</i> = a callback function that can be used by the hook
-                                                callback function to specify whethe to close the popup, or (if the
-                                                SearchFormComponent is a child of TabComponent) to transfer tabs.
+                                            <li><i> popupCallback </i>= a callback function that can be used by the hook
+                                                callback function to trigger one of the following:
+                                                <ul>
+                                                    <li><i>closePopup</i>: closes the popup. Called like so:
+                                                        <section className={"codeSample"}>
+                                                            <pre className="language-javascript">
+                                                                <code>
+                                                                    {searchMenuClosePopupSampleCode}
+                                                                </code>
+                                                            </pre>
+                                                        </section>
+                                                    </li>
+                                                    <li><i>transferTab</i>: if the SearchFormComponent is a child of
+                                                        TabComponent, it will open the target tab. Would need to call
+                                                        the function like so:
+                                                        <section className={"codeSample"}>
+                                                            <pre className="language-javascript">
+                                                                <code>
+                                                                    {searchMenuTransferTabSampleCode}
+                                                                </code>
+                                                            </pre>
+                                                        </section>
+                                                    </li>
+                                                </ul>
                                             </li>
                                         </ul>
+                                        <li>
+                                            Additionally, you can customize the popup with this optional property:
+                                            <ul>
+                                                <li><b> popupClassName:</b> a string that is passed on as a
+                                                    classname for the popup for CSS styling; helps with specifying
+                                                    the margins (which determines the width of the specific popup)
+                                                    via CSS
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                     <br/>
                                     <li> (if action is "openDropdown") <b>dropdownOptions</b>: an array of objects whose

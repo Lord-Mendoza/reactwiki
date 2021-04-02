@@ -33,7 +33,7 @@ class FileUploadComponentInfo extends Component {
                     <hr/>
                     <h3 style={{textAlign: "left", paddingLeft: 50}}> Available Configurations </h3>
 
-                    <Carousel pauseOnHover={true} interval={20000}>
+                    <Carousel interval={null}>
                         <Carousel.Item>
                             <img
                                 src="./fileupload.gif"
@@ -119,6 +119,23 @@ class FileUploadComponentInfo extends Component {
                             <p>&#8226; video&#47;* representing video files.</p>
                             <p>&#8226; image&#47;* representing image files.</p>
                         </dd>
+                    </dl>
+
+                    <hr width={"85%"}/>
+                    <dl className="row">
+                        <dt className="col-sm-3"> Name</dt>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> allowMultiUpload</dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> Specifying whether to allow user to select multiple files for uploading.
+                        </dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9"> true
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">A boolean</dd>
                     </dl>
 
                     <hr width={"85%"}/>

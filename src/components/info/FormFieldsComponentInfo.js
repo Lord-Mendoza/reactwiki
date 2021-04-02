@@ -98,8 +98,13 @@ class FormFieldsComponentInfo extends Component {
                                                 </li>
                                             </ul>
 
-                                            <li>There are two optional properties available for added features:
+                                            <li>There are three optional properties available for added features:
                                                 <ul>
+                                                    <li><b>"menuWidth"</b> = the width that the dropdown options will expand
+                                                        to. Ideally, this property should be set wide enough where the
+                                                        options are readable in one line. By default, the width expands
+                                                        to the same width as the select field.
+                                                    </li>
                                                     <li><b>"multiselect"</b> = boolean that allows for multiple
                                                         selection of values; is false by default if unspecified
                                                     </li>
@@ -321,12 +326,13 @@ const formFieldsSampleCode = `<FormFieldsComponent
                     {label: "Senior", value: "4"}
                 ]
             }
-    },
-    extracurricularActivities: {
-        label: "Extracurricular Activities",
-        type: {dropdown: <GetActivitiesOptions/>},
-        isClearable: true,
-        isMultiSelect: true
+        }, 
+        extracurricularActivities: {
+            label: "Extracurricular Activities",
+            type: {dropdown: <GetActivitiesOptions/>},
+            isClearable: true,
+            isMultiSelect: true
+        }
     },
     formFieldsData = {
         name: "John",
