@@ -192,3 +192,4 @@ export const searchMenuClosePopupSampleCode = `popupCallback("closePopup");`;
 export const searchMenuClosePopupRefreshTrueSampleCode = `popupCallback("closePopup", true);`;
 export const searchMenuTransferTabSampleCode = `popupCallback("transferTab", <target tab's key>, <data to pass>);`;
 export const searchMenuConfirmationCallbackDoneSampleCode = `popupCallback("confirmationCallbackDone");`;
+export const searchMenuResetCallbackRefreshGridSampleCode = `resetCallback(true);`;

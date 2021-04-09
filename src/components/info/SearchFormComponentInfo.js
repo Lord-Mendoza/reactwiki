@@ -18,7 +18,7 @@ import {
     searchGridWidthSampleCode, searchMenuClosePopupRefreshTrueSampleCode,
     searchMenuClosePopupSampleCode,
     searchMenuConfirmationCallbackDoneSampleCode,
-    searchMenuOptionsSampleCode,
+    searchMenuOptionsSampleCode, searchMenuResetCallbackRefreshGridSampleCode,
     searchMenuTransferTabSampleCode
 } from "../../utilities/constants/SearchFormCodeConstants";
 import {Carousel} from "react-bootstrap";
@@ -351,9 +351,6 @@ class SearchFormComponentInfo extends Component {
                             <dt className="col-sm-3"> Value</dt>
                             <dd className="col-sm-9">a CSS-supported width value (px, %, etc.)</dd>
 
-                            <dt className="col-sm-3"> Default</dt>
-                            <dd className="col-sm-9">'fit-content'</dd>
-
                             <dt className="col-sm-3"> Example</dt>
                             <dd className="col-sm-9">
                                 <section className={"codeSample"}>
@@ -442,8 +439,19 @@ class SearchFormComponentInfo extends Component {
                                         </li>
                                         <li><b> "confirmAction" </b>= triggers a confirmation popup to open where a
                                             specified confirmationMessage will be shown as the message. If the user
-                                            clicks "Yes", then it will fire the confirmationCallback function
+                                            clicks "Yes", then it will fire the <i>confirmationCallback</i> function
                                             to proceed with their intended action.
+                                        </li>
+                                        <li><b> "renderCustomContent" </b>= allows the developer to render their
+                                            own content. Fires the function in the <i>renderedCustomContent</i> prop.
+                                            <ul>
+                                                <li>This accommodates for scenarios where,
+                                                    if <i>dependsOnRowSelection</i> is set to true, the developer can
+                                                    validate the passed rows first, then show a warning message if
+                                                    needed, or proceed to display the PopupComponent with their true
+                                                    intended content.
+                                                </li>
+                                            </ul>
                                         </li>
                                     </ul>
                                     <br/>
@@ -487,40 +495,48 @@ class SearchFormComponentInfo extends Component {
                                             parameters:
                                         </li>
                                         <ul>
-                                            <li><i> rowsArray </i>= an array of row objects where, for each object,
-                                                contains keys that correspond to searchGridColumns, and its values are
-                                                its corresponding column value
+                                            <li>if dependsOnRowSelection is set to true, then it passes in the following
+                                                as the first parameter.
+                                                <ul>
+                                                    <li>
+                                                        <i> rowsArray </i>= an array of row objects where, for each
+                                                        object,
+                                                        contains keys that correspond to searchGridColumns, and its
+                                                        values are
+                                                        its corresponding column value
+                                                    </li>
+                                                </ul>
                                             </li>
                                             <li><i> popupCallback </i>= a callback function that can be used by the hook
                                                 callback function to trigger one of the following:
                                                 <ul>
                                                     <li><i>closePopup</i>: closes the popup. Called like so:
                                                         <section className={"codeSample"}>
-                                                            <pre className="language-javascript">
-                                                                <code>
-                                                                    {searchMenuClosePopupSampleCode}
-                                                                </code>
-                                                            </pre>
+                                                        <pre className="language-javascript">
+                                                            <code>
+                                                                {searchMenuClosePopupSampleCode}
+                                                            </code>
+                                                        </pre>
                                                         </section>
                                                         <p><u>Note:</u> If the grid needs to be refreshed when the popup
                                                             closes, pass in a boolean value <b>true</b> like so:</p>
                                                         <section className={"codeSample"}>
-                                                            <pre className="language-javascript">
-                                                                <code>
-                                                                    {searchMenuClosePopupRefreshTrueSampleCode}
-                                                                </code>
-                                                            </pre>
+                                                        <pre className="language-javascript">
+                                                            <code>
+                                                                {searchMenuClosePopupRefreshTrueSampleCode}
+                                                            </code>
+                                                        </pre>
                                                         </section>
                                                     </li>
                                                     <li><i>transferTab</i>: if the SearchFormComponent is a child of
                                                         TabComponent, it will open the target tab. Would need to call
                                                         the function like so:
                                                         <section className={"codeSample"}>
-                                                            <pre className="language-javascript">
-                                                                <code>
-                                                                    {searchMenuTransferTabSampleCode}
-                                                                </code>
-                                                            </pre>
+                                                        <pre className="language-javascript">
+                                                            <code>
+                                                                {searchMenuTransferTabSampleCode}
+                                                            </code>
+                                                        </pre>
                                                         </section>
                                                     </li>
                                                 </ul>
@@ -550,41 +566,68 @@ class SearchFormComponentInfo extends Component {
                                             </ul>
                                         </li>
                                         <li><b>confirmationCallback</b>: A hook callback function to be triggered once
-                                            the user clicks "Yes" to the confirmation popup.
+                                            the user clicks "Yes" to the confirmation popup. SearchFormComponent passes
+                                            in the following parameters:
                                             <ul>
-                                                <li>This confirmation callback is actually rendered, and so the hook can
-                                                    render a loading mask while it performs an API call.
-                                                </li>
-                                                <li>SearchFormComponent will pass in a parameter to this callback
-                                                    function:
+                                                <li>if dependsOnRowSelection is set to true, then it passes in the
+                                                    following as the first parameter:
                                                     <ul>
-                                                        <li><i>resetCallback</i> = a callback function to be
-                                                            triggered by the hook callback to specify whenever the
-                                                            confirmation callback function is done; this is important to
-                                                            get
-                                                            called so that the menu option can be clicked
-                                                            again. <u>Note:</u> If the grid needs to be refreshed, pass
-                                                            in a boolean value <b>true</b> when calling resetCallback
+                                                        <li><i> rowsArray </i>= an array of row objects where, for each
+                                                            object, contains keys that correspond to searchGridColumns,
+                                                            and its values are its corresponding column value
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><i>resetCallback</i> = a callback function to be
+                                                    triggered by the hook to specify whenever the
+                                                    confirmation callback function is done.
+                                                    <ul>
+                                                        <li>This is important to get called so that the menu option can
+                                                            be clicked again.
+                                                        </li>
+                                                        <li><u>Note:</u> If the grid needs to be refreshed, pass in a
+                                                            boolean value <b>true</b> when calling resetCallback like
+                                                            so:
+                                                            <section className={"codeSample"}>
+                                                                <pre className="language-javascript">
+                                                                    <code>
+                                                                        {searchMenuResetCallbackRefreshGridSampleCode}
+                                                                    </code>
+                                                                </pre>
+                                                            </section>
                                                         </li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </li>
                                     </ul>
-                                    <br/>
 
                                     <br/>
-                                    <li><b> subMenuItems:</b> an array of objects to appear as a sub-menu for the search
-                                        menu nav option.
+                                    <li>(if action is "renderCustomContent") <b>renderedCustomContent</b>= a hook
+                                        callback content that gets rendered.
+                                        <ul>
+                                            <li>
+                                                SearchFormComponent passes in the same parameters
+                                                as <b>confirmationCallback</b> given the same dependsOnRowSelection
+                                                condition.
+                                            </li>
+                                        </ul>
+
+                                        <br/>
+                                        <li><b> subMenuItems:</b> an array of objects to appear as a sub-menu for the
+                                            search
+                                            menu nav option.
+                                        </li>
+                                        <ul>
+                                            <li>Its objects contains the same properties as searchMenuOptions since,
+                                                when
+                                                the user selects them, they use the same internal handling.
+                                            </li>
+                                            <li>These properties include: key, title, image/icon, dependsOnRowSelection,
+                                                action, onClickHandler, popupHeader, popupClassName, and popupContent.
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <ul>
-                                        <li>Its objects contains the same properties as searchMenuOptions since, when
-                                            the user selects them, they use the same internal handling.
-                                        </li>
-                                        <li>These properties include: key, title, image/icon, dependsOnRowSelection,
-                                            action, onClickHandler, popupHeader, popupClassName, and popupContent.
-                                        </li>
-                                    </ul>
                                 </ul>
                             </dd>
 
@@ -856,13 +899,13 @@ class SearchFormComponentInfo extends Component {
                                             callback to get the content to be displayed inside the popup.
                                         </li>
                                         <li><i>"transferTab"</i> = if searchForm is rendered as a child of TabComponent,
-                                            and
-                                            the "tabToOpen" prop is specified, then clicking the tableCell will trigger
-                                            the TabComponent to open another tab whose key corresponds to targetTab
+                                            and the "tabToOpen" prop is specified, then clicking the tableCell will
+                                            trigger the TabComponent to open another tab whose key corresponds to
+                                            targetTab
                                         </li>
                                     </ul>
                                     <br/>
-                                    <li><b> (if action is "downloadFile") onClickHandler </b>: a hook callback function
+                                    <li> (if action is "downloadFile") <b> onClickHandler</b>: a hook callback function
                                         that will handle the onClick
                                         on the
                                         table cell based on the action type selected. Passes in the following
@@ -884,13 +927,13 @@ class SearchFormComponentInfo extends Component {
                                     <ul>
                                         <li><b> popupHeader </b>: a string that is the title of the popup</li>
                                         <li><b> popupContent </b>: a hook callback function that will handle the
-                                            contents to
-                                            display inside the popup. Passed in the following parameters:
+                                            contents to display inside the popup. SearchFormComponent passes in the
+                                            following parameters to the hook:
                                         </li>
                                         <ul>
                                             <li><i>rowData</i> = the data of the whole row as an object whose keys
-                                                correspond
-                                                to searchGridColumns, and values are its corresponding column value
+                                                correspond to searchGridColumns, and values are its corresponding
+                                                column value
                                             </li>
                                             <li><i> popupCallback </i>= a callback function that can be used by the hook
                                                 callback function to trigger one of the following:
@@ -929,10 +972,23 @@ class SearchFormComponentInfo extends Component {
                                             </ul>
                                         </li>
                                     </ul>
+
+                                    <br/>
+                                    <li> (if action is "transferTab") <b>targetTab</b>: a string that indicates which
+                                        tabKey to open. Passes in the following parameters to the target tab:
+                                    </li>
+                                    <ul>
+                                        <li><i>rowData:</i>the data of the whole row as an object whose keys correspond
+                                            to searchGridColumns, and values are its corresponding column value
+                                        </li>
+                                        <li><i>column:</i> a JSON object whose property "name" corresponds to the column
+                                            where the "transferTab" action was configured to.
+                                        </li>
+                                    </ul>
+
                                     <br/>
                                     <li> (if action is "openDropdown") <b>dropdownOptions</b>: an array of objects whose
-                                        keys
-                                        contain the following properties:
+                                        that contain the following properties:
                                     </li>
                                     <ul>
                                         <li><i>key:</i> the key of the option</li>
@@ -956,28 +1012,38 @@ class SearchFormComponentInfo extends Component {
                                                 The onClickHandler should handle the downloading of the file.
                                             </li>
                                             <li><i>"transferTab"</i> = see previous "transferTab" description as it
-                                                executes
-                                                the same.
+                                                executes the same (tableCellConfig > action > "transferTab"). Similarly,
+                                                it will need the <b>targetTab</b> property.
                                             </li>
-
                                         </ul>
-                                        <li><i>onClickHandler</i> = a hook callback function that passes in the
-                                            following
-                                            parameters for downloading files:
+                                        <li>(if action is "downloadFile") <i>onClickHandler</i> = a hook callback
+                                            function that passes in the
+                                            following parameters for downloading files:
+                                            <ul>
+                                                <li><i>rowData</i> = the data of the whole row as an object whose keys
+                                                    correspond
+                                                    to searchGridColumns, and values are its corresponding column value
+                                                </li>
+                                                <li><i>resetCallback</i> = a callback function to be triggered by the
+                                                    hook
+                                                    callback to specify whenever the action performed is completed; this
+                                                    is
+                                                    important to get called so that the dropdown option will trigger the
+                                                    download again
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <ul>
-                                            <li><i>rowData</i> = the data of the whole row as an object whose keys
-                                                correspond
-                                                to searchGridColumns, and values are its corresponding column value
-                                            </li>
-                                            <li><i>resetCallback</i> = a callback function to be triggered by the hook
-                                                callback to specify whenever the action performed is completed; this is
-                                                important to get called so that the dropdown option will trigger the
-                                                download again
-                                            </li>
-                                        </ul>
+                                        <li>(if action is "transferTab") <i>targetTab</i> = see previous "targetTab"
+                                            description as it executes the same (tableCellConfig > targetTab).
+                                            <ul>
+                                                <li>Additionally, it also passes in the following as a third parameter:
+                                                    <ul>
+                                                        <li><i>key</i> = the dropdown option's key</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
-
                                 </ul>
                             </dd>
 

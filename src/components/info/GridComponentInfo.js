@@ -841,6 +841,9 @@ class GridComponentInfo extends Component {
 
                         <dt className="col-sm-3"> Value</dt>
                         <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3"> Default</dt>
+                        <dd className="col-sm-9"> true</dd>
                     </dl>
 
                     {/*====================== Sorting Section ======================*/}

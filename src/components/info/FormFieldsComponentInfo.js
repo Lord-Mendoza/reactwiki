@@ -279,9 +279,6 @@ class FormFieldsComponentInfo extends Component {
                                     </pre>
                                 </section>
                             </dd>
-
-                            <dt className="col-sm-3"> Default</dt>
-                            <dd className="col-sm-9"> "fit-content"</dd>
                         </dl>
 
                         {/*-----Next Entry-----*/}
