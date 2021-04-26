@@ -147,27 +147,17 @@ class PopUpComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
-                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> footerConfig</dd>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> show</dd>
 
                         <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9">
-                            The buttons to appear at the foot of the popup.
+                        <dd className="col-sm-9"> Whether to show the popup or not.
                         </dd>
 
                         <dt className="col-sm-3"> Values</dt>
-                        <dd className="col-sm-9">
-                            <p>A string of either</p>
-                            <p>i. “custom” = giving the developer the option to define their own buttons in the
-                                footer</p>
-                            <p>ii. “closeOnly” = renders only a close button to close the popup.</p>
-                            <p>iii. “submit” = renders a close button as well as submit button.</p>
-                            <p>iv. “all” = renders a close, reset, & submit button. Ideal for forms</p>
-                        </dd>
+                        <dd className="col-sm-9">boolean</dd>
 
-                        <dt className="col-sm-3"> Notes</dt>
-                        <dd className="col-sm-9">
-                            Providing the value of “custom” requires for customFooter to be defined
-                        </dd>
+                        <dt className="col-sm-3">Default</dt>
+                        <dd className="col-sm-9">false</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -192,8 +182,53 @@ class PopUpComponentInfo extends Component {
                     {/*====================== Additional Section ======================*/}
 
                     <hr width={"95%"}/>
-                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customization </h5>
+                    <h5 style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Additional Customizations </h5>
 
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Footer Configurations </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3"> Name</dt>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> footerConfig</dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">
+                            The buttons to appear at the foot of the popup.
+                        </dd>
+
+                        <dt className="col-sm-3"> Values</dt>
+                        <dd className="col-sm-9">
+                            <p>A string of either</p>
+                            <p>i. “custom” = giving the developer the option to define their own buttons in the
+                                footer</p>
+                            <p>ii. “closeOnly” = renders only a close button to close the popup.</p>
+                            <p>iii. “submit” = renders a close button as well as submit button.</p>
+                            <p>iv. “all” = renders a close, reset, & submit button. Ideal for forms</p>
+                        </dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needs to Have</dt>
+                        <dd className="col-sm-9"><i>customFooter</i> when <i>footerConfig = "custom"</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <dl className="row">
+                        <dt className="col-sm-3"> Name</dt>
+                        <dd className="col-sm-9"><i>customFooter</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">
+                            A custom set of buttons to appear at the bottom of the popup.
+                        </dd>
+
+                        <dt className="col-sm-3"> Values</dt>
+                        <dd className="col-sm-9">A set of &lt;Button/&gt; elements wrapped by &lt;Modal.Footer/&gt; element from the React-Bootstrap library</dd>
+
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
+                        <dd className="col-sm-9"><i>footerConfig = "custom"</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
                     <dl className="row">
                         <dt className="col-sm-3"> Name</dt>
                         <dd className="col-sm-9" style={{fontStyle: "italic"}}> resetToggled</dd>
@@ -222,6 +257,26 @@ class PopUpComponentInfo extends Component {
 
                         <dt className="col-sm-3"> Values</dt>
                         <dd className="col-sm-9"> A callback function</dd>
+                    </dl>
+
+                    {/*----- Next Section -----*/}
+                    <hr width={"90%"}/>
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Styling </h6>
+
+                    <dl className="row">
+                        <dt className="col-sm-3"> Name</dt>
+                        <dd className="col-sm-9" style={{fontStyle: "italic"}}> hasBodyPadding</dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">
+                            Whether to add default paddings on the body of the popup.
+                        </dd>
+
+                        <dt className="col-sm-3">Values</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3">Default</dt>
+                        <dd className="col-sm-9">false</dd>
                     </dl>
 
                 </section>

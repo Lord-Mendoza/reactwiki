@@ -86,6 +86,7 @@ class FormFieldsComponentInfo extends Component {
                                     </li>
                                     <li><b>"text"</b> = allows any input</li>
                                     <li><b>"textarea"</b> = shows a textarea that allows for any input</li>
+                                    <li><b>"boolean"</b> = shows a dropdown field with two options: "Yes" or "No", whose values are boolean "true" and "false", respectively.</li>
                                     <li><b>"data"</b> = does not render an input field; only displays data</li>
                                     <li><b>"multilineData"</b> = same as above, but shows a button which, upon clicking,
                                         opens a popup that shows the multi-line data; if value is empty, then the button

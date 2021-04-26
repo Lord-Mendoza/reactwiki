@@ -1015,6 +1015,9 @@ class SearchFormComponentInfo extends Component {
                                                 executes the same (tableCellConfig > action > "transferTab"). Similarly,
                                                 it will need the <b>targetTab</b> property.
                                             </li>
+                                            <li><i>"openPopup"</i> = triggers a popup to open, and will fire the
+                                                popupContent callback to get the content to be displayed inside the popup.
+                                            </li>
                                         </ul>
                                         <li>(if action is "downloadFile") <i>onClickHandler</i> = a hook callback
                                             function that passes in the
@@ -1043,6 +1046,72 @@ class SearchFormComponentInfo extends Component {
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li>(if action is "openPopup") the following properties:</li>
+                                        <ul>
+                                            <li><b> popupHeader:</b> a string that is the title of the popup</li>
+                                            <li><b> popupContent:</b> a hook callback function that will handle the contents
+                                                to display inside the popup. SearchFormComponent passes in the following
+                                                parameters:
+                                            </li>
+                                            <ul>
+                                                <li>if dependsOnRowSelection is set to true, then it passes in the following
+                                                    as the first parameter.
+                                                    <ul>
+                                                        <li>
+                                                            <i> rowsArray </i>= an array of row objects where, for each
+                                                            object,
+                                                            contains keys that correspond to searchGridColumns, and its
+                                                            values are
+                                                            its corresponding column value
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><i> popupCallback </i>= a callback function that can be used by the hook
+                                                    callback function to trigger one of the following:
+                                                    <ul>
+                                                        <li><i>closePopup</i>: closes the popup. Called like so:
+                                                            <section className={"codeSample"}>
+                                                        <pre className="language-javascript">
+                                                            <code>
+                                                                {searchMenuClosePopupSampleCode}
+                                                            </code>
+                                                        </pre>
+                                                            </section>
+                                                            <p><u>Note:</u> If the grid needs to be refreshed when the popup
+                                                                closes, pass in a boolean value <b>true</b> like so:</p>
+                                                            <section className={"codeSample"}>
+                                                        <pre className="language-javascript">
+                                                            <code>
+                                                                {searchMenuClosePopupRefreshTrueSampleCode}
+                                                            </code>
+                                                        </pre>
+                                                            </section>
+                                                        </li>
+                                                        <li><i>transferTab</i>: if the SearchFormComponent is a child of
+                                                            TabComponent, it will open the target tab. Would need to call
+                                                            the function like so:
+                                                            <section className={"codeSample"}>
+                                                        <pre className="language-javascript">
+                                                            <code>
+                                                                {searchMenuTransferTabSampleCode}
+                                                            </code>
+                                                        </pre>
+                                                            </section>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <li>
+                                                Additionally, you can customize the popup with this optional property:
+                                                <ul>
+                                                    <li><b> popupClassName:</b> a string that is passed on as a
+                                                        classname for the popup for CSS styling; helps with specifying
+                                                        the margins (which determines the width of the specific popup)
+                                                        via CSS
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </ul>
                                 </ul>
                             </dd>

@@ -512,6 +512,26 @@ class GridComponentInfo extends Component {
                     </dl>
 
                     {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>selectByGroup</i></dd>
+
+                        <dt className="col-sm-3">Description</dt>
+                        <dd className="col-sm-9">if <i>groupsEnabled</i> is set to true, when a selection is made to one
+                            of the rows in a group, it will select the rest of the rows in the group. Conversely, if one
+                            is deselected, then it will deselected the rest of the rows in the group.
+                        </dd>
+
+                        <dt className="col-sm-3">Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3">Default</dt>
+                        <dd className="col-sm-9">false</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
                     <hr width={"90%"}/>
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Refreshing </h6>
 
@@ -658,6 +678,24 @@ class GridComponentInfo extends Component {
                     <h5 id={"basics"} style={{textAlign: "left", paddingLeft: 50, color: "#63b4cf"}}> Displaying
                         Data </h5>
 
+                    <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Alternative Grid View </h6>
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>isTreeData</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">toggles whether the rows will render a tree structure based on the
+                            "children" property of each row.
+                        </dd>
+
+                        <dt className="col-sm-3">Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3">Default</dt>
+                        <dd className="col-sm-9">false</dd>
+                    </dl>
+
+                    <hr width={"90%"}/>
                     <h6 style={{textAlign: "left", paddingLeft: 100, color: "gray"}}> Row Details </h6>
 
                     <dl className="row">
@@ -735,6 +773,60 @@ class GridComponentInfo extends Component {
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed When</dt>
                         <dd className="col-sm-9"><i>groupsEnabled = true</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>groupsExpanded</i></dd>
+
+                        <dt className="col-sm-3">Description</dt>
+                        <dd className="col-sm-9">whether to expand all groups by default
+                        </dd>
+
+                        <dt className="col-sm-3">Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3">Default</dt>
+                        <dd className="col-sm-9">false</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>hideColumnName</i></dd>
+
+                        <dt className="col-sm-3">Description</dt>
+                        <dd className="col-sm-9">whether to display the grouped-by column name on the row headers of each group.
+                        </dd>
+
+                        <dt className="col-sm-3">Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3">Default</dt>
+                        <dd className="col-sm-9">false</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>showGroupCount</i></dd>
+
+                        <dt className="col-sm-3">Description</dt>
+                        <dd className="col-sm-9">whether to display the count of rows associated for each group.
+                        </dd>
+
+                        <dt className="col-sm-3">Value</dt>
+                        <dd className="col-sm-9">boolean</dd>
+
+                        <dt className="col-sm-3">Default</dt>
+                        <dd className="col-sm-9">false</dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
