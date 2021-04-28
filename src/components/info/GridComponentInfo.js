@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import '../../styling/ComponentStyling.css'
 import {Carousel} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+import {searchMenuClosePopupSampleCode} from "../../utilities/constants/SearchFormCodeConstants";
+import {
+    gridCompGridSortingSampleCode,
+    gridCompSelectedSortingSampleCode
+} from "../../utilities/constants/GridComponentCodeConstants";
 
 class GridComponentInfo extends Component {
     constructor(props) {
@@ -946,33 +951,12 @@ class GridComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
-                        <dd className="col-sm-9"><i>gridSorting</i></dd>
-
-                        <dt className="col-sm-3"> Description</dt>
-                        <dd className="col-sm-9"> specifies the sorting on the grid based on a specified column from the
-                            "columns" property, and order
-                        </dd>
-
-                        <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">an array of JSON object where the property is the column name, and
-                            value is either "asc" or "desc".
-                        </dd>
-
-                        <dt className="col-sm-3"> Example</dt>
-                        <dd className="col-sm-9">gridSorting=&#123;&nbsp; [&nbsp;&#123;name:
-                            "asc"&#125;&nbsp;]&nbsp;&#125;</dd>
-                    </dl>
-
-                    {/*-----Next Entry-----*/}
-                    <hr width={"85%"}/>
-
-                    <dl className="row">
-                        <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>sortingColumnExtensions</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>
                         <dd className="col-sm-9">allows the developer to specify how data should be sorted for specified
-                            column(s).
+                            column(s). This will utilize the integrated sorting, so it will only apply
+                            when <i>remoteSorting</i> is set to false.
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
@@ -1023,7 +1007,7 @@ class GridComponentInfo extends Component {
                         <dd className="col-sm-9">boolean</dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needs to Have</dt>
-                        <dd className="col-sm-9"><i>selectedSorting</i></dd>
+                        <dd className="col-sm-9"><i>selectedSorting, gridSorting</i></dd>
                     </dl>
 
                     {/*-----Next Entry-----*/}
@@ -1039,12 +1023,49 @@ class GridComponentInfo extends Component {
                         </dd>
 
                         <dt className="col-sm-3"> Value</dt>
-                        <dd className="col-sm-9">a callback function that receives a JSON object as parameter containing
-                            column name and order.
+                        <dd className="col-sm-9">a callback function that receives a array of a single JSON object as
+                            parameter containing column name and direction in the following format:
+                            <section className={"codeSample"}>
+                                <pre className="language-javascript">
+                                    <code>
+                                        {gridCompSelectedSortingSampleCode}
+                                    </code>
+                                </pre>
+                            </section>
                         </dd>
 
-                        <dt className="col-sm-3"> Sample Parameter</dt>
-                        <dd className="col-sm-9">&#123;name: asc&#125;</dd>
+                        <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
+                        <dd className="col-sm-9"><i>remoteSorting</i></dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>gridSorting</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9"> specifies the sorting that was applied to the rows. This needs to pass
+                            in the same exact parameters that was given to the callback function in the <i>selectedSorting</i>
+                            prop so that the grid can highlight the column that was sorted,
+                            and display an arrow for the sorting direction.
+                        </dd>
+
+                        <dt className="col-sm-3"> Value</dt>
+                        <dd className="col-sm-9">an array of a single JSON object with properties
+                            "columnName" and "direction".
+                        </dd>
+
+                        <dt className="col-sm-3"> Example</dt>
+                        <dd className="col-sm-9">
+                            <section className={"codeSample"}>
+                                    <pre className="language-javascript">
+                                        <code>
+                                            {gridCompGridSortingSampleCode}
+                                        </code>
+                                    </pre>
+                            </section>
+                        </dd>
 
                         <dt className="col-sm-3" style={{color: "red"}}>Needed By</dt>
                         <dd className="col-sm-9"><i>remoteSorting</i></dd>

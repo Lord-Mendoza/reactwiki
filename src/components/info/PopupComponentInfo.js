@@ -4,7 +4,7 @@ import {Carousel, Image} from "react-bootstrap";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import Prism from "prismjs";
 
-class PopUpComponentInfo extends Component {
+class PopupComponentInfo extends Component {
     componentDidMount() {
         Prism.highlightAll();
     }
@@ -300,4 +300,4 @@ const popupCodeSample = `<PopupComponent
     submitToggled={this.handleSubmit} 
 />`
 
-export default PopUpComponentInfo;
+export default PopupComponentInfo;

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import FormFieldsComponentInfo from './info/FormFieldsComponentInfo';
 import GridComponentInfo from './info/GridComponentInfo';
-import PopUpComponentInfo from './info/PopUpComponentInfo';
+import PopupComponentInfo from './info/PopupComponentInfo';
 import MaskComponentInfo from './info/MaskComponentInfo';
 import FileUploadComponentInfo from './info/FileUploadComponentInfo';
 import LoaderComponentInfo from "./info/LoaderComponentInfo";
 import SearchFormComponentInfo from "./info/SearchFormComponentInfo";
 
-import {Navbar, NavDropdown, Nav, Image,} from 'react-bootstrap';
+import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import '../styling/MainComponent.css';
 import 'aos/dist/aos.css';
 import AOS from "aos";
@@ -84,7 +84,7 @@ class MainComponent extends Component {
                 break;
             case "popup-component":
                 window.scrollTo(0,0);
-                mainComponent = <PopUpComponentInfo />;
+                mainComponent = <PopupComponentInfo />;
                 break;
             case "search-component":
                 window.scrollTo(0,0);
