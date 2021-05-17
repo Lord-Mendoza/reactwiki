@@ -295,6 +295,22 @@ class FormFieldsComponentInfo extends Component {
 
                         <dl className="row">
                             <dt className="col-sm-3"> Name</dt>
+                            <dd className="col-sm-9" style={{fontStyle: "italic"}}> onFormSubmit</dd>
+
+                            <dt className="col-sm-3"> Description</dt>
+                            <dd className="col-sm-9">
+                                The function that gets called whenever the user submits the form by clicking "Enter".
+                            </dd>
+
+                            <dt className="col-sm-3"> Value</dt>
+                            <dd className="col-sm-9">A callback function</dd>
+                        </dl>
+
+                        {/*-----Next Entry-----*/}
+                        <hr width={"85%"}/>
+
+                        <dl className="row">
+                            <dt className="col-sm-3"> Name</dt>
                             <dd className="col-sm-9" style={{fontStyle: "italic"}}> columnCount</dd>
 
                             <dt className="col-sm-3"> Description</dt>

@@ -94,7 +94,6 @@ class MainComponent extends Component {
             default:
                 window.scrollTo(0,0);
                 mainComponent = <FileUploadComponentInfo />;
-                // mainComponent = <SearchFormComponentInfo />;
                 break;
         }
 
