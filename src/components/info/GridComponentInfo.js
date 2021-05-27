@@ -1369,6 +1369,23 @@ class GridComponentInfo extends Component {
 
                     <dl className="row">
                         <dt className="col-sm-3">Name</dt>
+                        <dd className="col-sm-9"><i>maxGridHeight</i></dd>
+
+                        <dt className="col-sm-3"> Description</dt>
+                        <dd className="col-sm-9">specifies the maximum height the grid can expand to.
+                            Adds a vertical scrollbar if the grid spans taller than the specified height, or if the
+                            user increases the page count above what the screen can display without overflowing.
+                        </dd>
+
+                        <dt className="col-sm-3">Value</dt>
+                        <dd className="col-sm-9">string that is of CSS-accepted widths</dd>
+                    </dl>
+
+                    {/*-----Next Entry-----*/}
+                    <hr width={"85%"}/>
+
+                    <dl className="row">
+                        <dt className="col-sm-3">Name</dt>
                         <dd className="col-sm-9"><i>maxGridWidth</i></dd>
 
                         <dt className="col-sm-3"> Description</dt>

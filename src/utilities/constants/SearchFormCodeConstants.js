@@ -156,6 +156,7 @@ export const searchGridColumnWidthsSampleCode = `searchGridColumnWidths: {
 export const searchGridHiddenColumnsSampleCode = `searchGridHiddenColumns: ["studentID"]`;
 
 export const searchGridWidthSampleCode = `searchGridWidth: '1500px'`;
+export const searchGridHeightSampleCode = `searchGridHeight: '50vh'`;
 
 export const searchFormTableCellConfigSampleCode = `tableCellConfig: {
     transcript: {

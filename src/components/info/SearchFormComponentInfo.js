@@ -13,7 +13,7 @@ import {
     searchFormFieldContainerSampleCode,
     searchFormFieldsCode,
     searchFormTableCellConfigSampleCode,
-    searchGridColumnWidthsSampleCode,
+    searchGridColumnWidthsSampleCode, searchGridHeightSampleCode,
     searchGridHiddenColumnsSampleCode,
     searchGridWidthSampleCode, searchMenuClosePopupRefreshTrueSampleCode,
     searchMenuClosePopupSampleCode,
@@ -1197,10 +1197,38 @@ class SearchFormComponentInfo extends Component {
                         <hr width={"85%"}/>
                         <dl className="row">
                             <dt className="col-sm-3">Name</dt>
+                            <dd className="col-sm-9"><i>searchGridHeight</i></dd>
+
+                            <dt className="col-sm-3">Description</dt>
+                            <dd className="col-sm-9">Specifies the maximum height that the grid can expand to. Going above this
+                                height (by setting page count higher) will add vertical scrollbars.
+                            </dd>
+
+                            <dt className="col-sm-3">Value</dt>
+                            <dd className="col-sm-9">
+                                a string of CSS-supported width (px, em, %, etc.)
+                            </dd>
+
+                            <dt className="col-sm-3"> Example</dt>
+                            <dd className="col-sm-9">
+                                <section className={"codeSample"}>
+                                    <pre className="language-javascript">
+                                        <code>
+                                            {searchGridHeightSampleCode}
+                                        </code>
+                                    </pre>
+                                </section>
+                            </dd>
+                        </dl>
+
+                        {/*-----Next Entry-----*/}
+                        <hr width={"85%"}/>
+                        <dl className="row">
+                            <dt className="col-sm-3">Name</dt>
                             <dd className="col-sm-9"><i>searchGridWidth</i></dd>
 
                             <dt className="col-sm-3">Description</dt>
-                            <dd className="col-sm-9">Specifies the width that the grid will expand to. Going above this
+                            <dd className="col-sm-9">Specifies the maximum width that the grid will expand to. Going above this
                                 width (by expanding columns) will add horizontal scrollbars.
                             </dd>
 
