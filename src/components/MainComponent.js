@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import FormFieldsComponentInfo from './info/FormFieldsComponentInfo';
-import GridComponentInfo from './info/GridComponentInfo';
 import PopupComponentInfo from './info/PopupComponentInfo';
 import MaskComponentInfo from './info/MaskComponentInfo';
-import FileUploadComponentInfo from './info/FileUploadComponentInfo';
 import LoaderComponentInfo from "./info/LoaderComponentInfo";
 import SearchFormComponentInfo from "./info/SearchFormComponentInfo";
 
@@ -15,6 +13,8 @@ import Prism from "prismjs";
 import "../styling/prism.css"
 import {Icon} from "semantic-ui-react";
 import {Switch} from "antd";
+import MenuAndContentComponent from "./MenuAndContentComponent";
+import {gridInfoConfig} from "./info/GridInfoConfig";
 
 class MainComponent extends Component {
     constructor(props){
@@ -72,7 +72,7 @@ class MainComponent extends Component {
                 break;
             case "grid-component":
                 window.scrollTo(0,0);
-                mainComponent = <GridComponentInfo />;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...gridInfoConfig}/>;
                 break;
             case "loader-component":
                 window.scrollTo(0,0);
@@ -93,7 +93,7 @@ class MainComponent extends Component {
             case "file-component":
             default:
                 window.scrollTo(0,0);
-                mainComponent = <FileUploadComponentInfo />;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...gridInfoConfig}/>;
                 break;
         }
 

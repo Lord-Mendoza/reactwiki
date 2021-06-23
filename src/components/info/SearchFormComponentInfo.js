@@ -17,7 +17,6 @@ import {
     searchGridHiddenColumnsSampleCode,
     searchGridWidthSampleCode, searchMenuClosePopupRefreshTrueSampleCode,
     searchMenuClosePopupSampleCode,
-    searchMenuConfirmationCallbackDoneSampleCode,
     searchMenuOptionsSampleCode, searchMenuResetCallbackRefreshGridSampleCode,
     searchMenuTransferTabSampleCode
 } from "../../utilities/constants/SearchFormCodeConstants";
