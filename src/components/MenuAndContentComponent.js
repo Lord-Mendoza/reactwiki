@@ -184,14 +184,23 @@ class MenuAndContentComponent extends React.Component {
                 </Segment>)
         }
 
+        let menuPane;
+        if (window.screen.width <= 1250) {
+            menuPane = <Menu vertical stackable inverted={darkMode} fluid>
+                {menuOptions}
+            </Menu>;
+        } else if (window.screen.width > 1250){
+            menuPane = <Col xs={2}>
+                <Menu vertical stackable inverted={darkMode} fluid>
+                    {menuOptions}
+                </Menu>
+            </Col>
+        }
+
         return (<div className={"menuAndContentComponent"}>
             <Container fluid style={{paddingTop: "10px", paddingBottom: "10px"}}>
                 <Row>
-                    <Col xs={2}>
-                        <Menu vertical stackable inverted={darkMode} fluid>
-                            {menuOptions}
-                        </Menu>
-                    </Col>
+                    {menuPane}
 
                     <Col style={{paddingLeft: '1em'}}>
                         {content}
