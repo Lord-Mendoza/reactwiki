@@ -186,7 +186,7 @@ class MenuAndContentComponent extends React.Component {
 
         return (<div className={"menuAndContentComponent"}>
             <Container fluid style={{paddingTop: "10px", paddingBottom: "10px"}}>
-                <Row noGutters>
+                <Row>
                     <Col xs={2}>
                         <Menu vertical stackable inverted={darkMode} fluid>
                             {menuOptions}
