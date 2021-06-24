@@ -646,7 +646,7 @@ summaryItems = { [
             ]
         },
         editing: {
-            introduction: "Users can be allowed to edit existing rows, let them update permitted column values. It can " +
+            introduction: "Users can be allowed to edit existing rows, letting them update permitted column values. It can " +
                 "also be easier for them to input the data with the ability to specify the types of each column.",
             properties: [
                 {

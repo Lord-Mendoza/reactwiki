@@ -108,7 +108,7 @@ class MenuAndContentComponent extends React.Component {
                     </Header>
                 } else {
                     return <Segment raised inverted={darkMode}>
-                        <Row noGutters style={{paddingBottom: '.5em'}}><h4><code className="property">{name}</code>Prop
+                        <Row noGutters style={{paddingBottom: '.5em', paddingLeft: "1em"}}><h4><code className="property">{name}</code>Prop
                         </h4>
                         </Row>
 
