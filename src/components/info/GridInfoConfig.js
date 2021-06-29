@@ -186,8 +186,9 @@ rows = { [
                 {
                     name: "columnWidths",
                     description: "the specified column widths for each column. If not specified, the default will be applied.",
-                    value: <div>a JSON object whose keys corresponds to the <code
-                        className="property">columns</code> "name" property.</div>,
+                    value: <div>a JSON object whose keys corresponds to the
+                        <code className="property">columns</code> >
+                        <code className="property">name</code> property.</div>,
                     defaultValue: 180,
                     example: `columnWidths = { {
     name: 200,
@@ -543,7 +544,12 @@ summaryItems = { [
                     value: <div>boolean <code className="property">true</code> or <code
                         className="property">false</code></div>,
                     defaultValue: `false`,
-                    requires: ["onCommitChanges", "editConfig"]
+                    notes: <div>By default, all columns will be allowed for input. If only certain columns are to be
+                        allowed for creating, then the property <code className="property">editConfig</code> and its
+                        <code className="property">fields</code> property needs to be provided to allow only those given
+                        columns for creating, as well as the format the input field types will have.
+                        </div>,
+                    requires: ["onCommitChanges"]
                 },
                 {
                     name: "onCommitChanges",
@@ -555,7 +561,7 @@ summaryItems = { [
                         <code className="property">columns</code> "name" property, and values are the inputted values by
                         the user for those columns.
                     </div>,
-                    requires: ["allowCreating", "editConfig"],
+                    requires: ["allowCreating"],
                     notes: <div>The example below shows how to locally update the
                         <code className="property">rows</code> value to reflect it on to the table. Rather than changing
                         it locally, it can be replaced with a different callback function that handles it in its own way
@@ -655,7 +661,26 @@ summaryItems = { [
                     value: <div>boolean <code className="property">true</code> or <code
                         className="property">false</code></div>,
                     defaultValue: `false`,
-                    requires: ["onCommitChanges", "editConfig"]
+                    notes: <div>
+                        <ul>
+                            <li>
+                                By default, all columns will be allowed for input. If only certain columns are to be
+                                allowed for editing, then the property <code className="property">editConfig</code> and
+                                its <code className="property">fields</code> property needs to be provided to allow only
+                                the given columns for editing, as well as the format the input field types will have.
+                            </li>
+
+                            <li>
+                                By default, GridComponent will assume that the
+                                <code className="property">editConfig</code> >
+                                <code className="property">editFormat</code> property will be
+                                <code className="property">'row'</code>. If
+                                table-cell editing is needed, change that property value to
+                                <code className="property">'cell'</code>.
+                            </li>
+                        </ul>
+                    </div>,
+                    requires: ["onCommitChanges"]
                 },
                 {
                     name: "onCommitChanges",
@@ -673,7 +698,7 @@ summaryItems = { [
                             </li>
                         </ul>
                     </div>,
-                    requires: ["allowEditing", "editConfig"],
+                    requires: ["allowEditing"],
                     notes: <div>The example below shows how to locally update the
                         <code className="property">rows</code> value to reflect it on to the table. Rather than changing
                         it locally, it can be replaced with a different callback function that handles it in its own way
