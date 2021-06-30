@@ -600,8 +600,8 @@ summaryItems = { [
                         For <code className="property">fields</code>, the available <code className="property">type</code> values are:
                         <ul>
                             <li><code className="property">text</code> - a regular text field.</li>
-                            <li><code className="property">integer</code> - a number-only field.</li>
-                            <li><code className="property">double</code> - a number-only field that allows for two decimal places.</li>
+                            <li><code className="property">number</code> - a number-only field.</li>
+                            <li><code className="property">currency</code> - a number-only field that allows for two decimal places.</li>
                             <li><code className="property">boolean</code> - a dropdown field that shows options "true" or "false".</li>
                             <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> - a field that shows a dropdown.</li>
                             <li><code className="property">date</code> - a date field that shows a date-picker.</li>
@@ -629,8 +629,8 @@ summaryItems = { [
                     example: `editConfig = { {
     fields: {
         itemName: {label: "Name", type: "text"},
-        quantity: {label: "Qty", type: "integer"},
-        cost: {label: "Price", type: "double"},
+        quantity: {label: "Qty", type: "number"},
+        cost: {label: "Price", type: "currency"},
         availability: {label: "In Stock", type: "boolean"},
         uom: {
             label: "Unit Of Measure",
@@ -713,7 +713,7 @@ summaryItems = { [
         let newRows = Array.isArray(rows) ? rows.slice() : [];
         
         //Changing the target objects of the rows array based on {changed} values
-        if (changed && Object.keys(changed) > 0) {
+        if (changed && Object.keys(changed).length > 0) {
            Object.keys(changed).forEach(index => {
                 newRows[index] = Object.assign({}, newRows[index], changed[index]);
            }) 
@@ -782,8 +782,8 @@ summaryItems = { [
                         For <code className="property">fields</code>, the available <code className="property">type</code> values are:
                         <ul>
                             <li><code className="property">text</code> - a regular text field.</li>
-                            <li><code className="property">integer</code> - a number-only field.</li>
-                            <li><code className="property">double</code> - a number-only field that allows for two decimal places.</li>
+                            <li><code className="property">number</code> - a number-only field.</li>
+                            <li><code className="property">currency</code> - a number-only field that allows for two decimal places.</li>
                             <li><code className="property">boolean</code> - a dropdown field that shows options "true" or "false".</li>
                             <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> - a field that shows a dropdown.</li>
                             <li><code className="property">date</code> - a date field that shows a date-picker.</li>
@@ -814,8 +814,8 @@ summaryItems = { [
     startEditAction: { 'click' },
     fields: {
         itemName: {label: "Name", type: "text"},
-        quantity: {label: "Qty", type: "integer"},
-        cost: {label: "Price", type: "double"},
+        quantity: {label: "Qty", type: "number"},
+        cost: {label: "Price", type: "currency"},
         availability: {label: "In Stock", type: "boolean"},
         uom: {
             label: "Unit Of Measure",
@@ -833,7 +833,75 @@ summaryItems = { [
         expirationDate: {label: "Expiration Date", type: "date"}
     },
     fieldsHeight: "25px"    
-} }`}
+} }`},
+                {
+                    name: "sectionDivider",
+                    title: <div>
+                        <code className="property">onCommitChanges</code>
+                        When <code className="property">{`isTreeData = { true } `}</code>
+                    </div>,
+                    subtitle: <div>
+                        Because of the nested nature of tree data, when it comes to editing, the
+                        <code className="property">onCommitChanges</code> passes in different paramaters to assist
+                        with the feature.
+                    </div>
+                },
+                {
+                    description: <div>
+                        Rather than passing in a JSON object in the following format:
+                        <ul>
+                            <li>
+                                <code className="property">{
+                                    `{<rows array index>: {<changed column>: <updated column value>, ...} }`
+                                }</code>
+                            </li>
+                        </ul>
+
+                        When <code className="property">{`isTreeData = { true } `}</code> the object that GridComponent sends
+                        is a JSON object in the following format:
+                        <ul>
+                            <li>
+                                <code className="property">{
+                                    `{ targetIndex: [parentIndex, childIndex], changed: {<changed column>: <updated column value>} }`
+                                }</code>
+                            </li>
+                        </ul>
+
+                        Note that it contains two properties: <code className="property">targetIndex</code> and
+                        <code className="property">changeObject</code>. The difference is that it provides an exact
+                        reference to the target row, given the parent and the child indices from the rows array.
+
+                        <br/>
+                        <br/>
+                        Therefore, to access the target row from the <code className="property">rows</code>
+                        array it is as simple as:
+                        <br/>
+                        <code className="property">rows[parent][child]</code>
+                    </div>,
+                    notes: <div>
+                        The example below shows how to locally update the <code className="property">rows</code>
+                        value to reflect it on to the table.
+                        Rather than changing it locally, it can be replaced with a different callback function that
+                        handles it in its own way (ex. making API call to update database, etc.).
+                    </div>,
+                    example: `onCommitChanges = {
+    ({targetIndex, changed}) => {
+        const parentIndex = targetIndex[0];
+        const childIndex = targetIndex[1];
+        
+        //Re-creating the rows array (to prevent pass-by reference)
+        let newRows = Array.isArray(rows) ? rows.slice() : [];
+        
+        //Changing the target object of the rows array based on {changed} values locally
+        if (isNotAnEmptyObject(changed)) {
+            newRows[parentIndex]["children"][childIndex] = Object.assign({}, newRows[parentIndex]["children"][childIndex], changed);
+        }
+        
+        //Setting the new version of rows
+        this.setState({rows: newRows});
+    }                   
+}`
+                }
             ]
         },
         deleting: {
