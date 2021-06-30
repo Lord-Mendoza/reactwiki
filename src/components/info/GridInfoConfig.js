@@ -8,17 +8,17 @@ export const gridInfoConfig = {
     menuItems: [
         {key: "required", label: "Required"},
         {
-            key: "dataFormatting", label: "Data Formatting",
-            subMenuItems: [
-                {key: "treeData", label: "Tree Data"}
-            ]
-        },
-        {
             key: "columnFormatting", label: "Column Formatting",
             subMenuItems: [
                 {key: "columnWidths", label: "Column Widths"},
                 {key: "columnReorder", label: "Column Reordering"},
                 {key: "hiddenColumns", label: "Hiding Columns"}
+            ]
+        },
+        {
+            key: "dataFormatting", label: "Data Formatting",
+            subMenuItems: [
+                {key: "treeData", label: "Tree Data"}
             ]
         },
         {
@@ -118,68 +118,6 @@ export const gridInfoConfig = {
                 }
             ]
         },
-        treeData: {
-            introduction: "The rows data can be rendered in a tree-like fashion.",
-            properties: [
-                {
-                    name: "isTreeData",
-                    description: <div>toggles whether the
-                        <code className={"property"}>rows</code>
-                        property contains a 'children' property that is to be displayed as a tree.</div>,
-                    value: <div>boolean <code className="property">true</code> or <code
-                        className="property">false</code></div>,
-                    defaultValue: `false`,
-                    example: `isTreeData = {true}
-rows = { [
-    {
-        "orderNo" : "3641223-1203322",
-        "orderDate" : "2021-05-30 09:11:04.000",
-        "customerName": "Charles Smith"
-        "children": [
-            {
-                "itemId" : 105356,
-                "lineItem" : 1,
-                "itemName" : "Apples",
-                "weight": 1.00,
-                "uom": "oz"
-                "unitPrice": .60
-            },
-            {
-                "itemId": 105356,
-                "lineItem": 2,
-                "itemName" : "Oranges",
-                "weight": 1.00,
-                "uom": "oz"
-                "unitPrice": .60
-            }
-        ]
-    }, {
-        "orderNo" : "3641223-1207712",
-        "orderDate" : "2021-07-10 09:11:04.000",
-        "customerName": "Jess Nguyen"
-        "children": [
-            {
-                "itemId" : 118223,
-                "lineItem" : 1,
-                "itemName" : "Speakers",
-                "weight": 2.00,
-                "uom": "lbs"
-                "unitPrice": 79.99
-            },
-            {
-                "itemId": 176212,
-                "lineItem": 2,
-                "itemName" : "Screen Cleaner",
-                "weight": 1.00,
-                "uom": "lb"
-                "unitPrice": 9.99
-            }
-        ]
-    }
-] }`
-                }
-            ]
-        },
         columnWidths: {
             introduction: "The default widths of each column can be customized so that more data could be visible for a specific column, or to consolidate the extra spaces in the data.",
             properties: [
@@ -225,6 +163,79 @@ rows = { [
                         "name" property </div>,
                     example: `hiddenColumns = { [
  "orderId", "itemId" 
+] }`
+                }
+            ]
+        },
+        treeData: {
+            introduction: "The rows data can be rendered in a tree-like fashion.",
+            properties: [
+                {
+                    name: "isTreeData",
+                    description: <div>toggles whether the
+                        <code className={"property"}>rows</code>
+                        property contains a 'children' property that is to be displayed as a tree.</div>,
+                    value: <div>boolean <code className="property">true</code> or <code
+                        className="property">false</code></div>,
+                    defaultValue: `false`,
+                    example: `isTreeData = {true}
+columns={ [
+    {name: "orderNo", title: "Order No.", type: "number"},
+    {name: "orderDate", title: "Order Date", type: "date"},
+    {name: "customerName", title: "Customer Name"},
+    {name: "itemId", title: "Item ID", type: "number"},
+    {name: "lineItem", title: "Line Item", type: "number"},
+    {name: "itemName", title: "Item Name"},
+    {name: "weight", title: "Weight"},
+    {name: "uom", title: "Unit of Measure"},
+    {name: "unitPrice", title: "Unit Price", type: "currency"}
+] }
+rows={ [
+   {
+       "orderNo" : "3641223-1203322",
+       "orderDate" : "2021-05-30 09:11:04.000",
+       "customerName": "Charles Smith",
+       "children": [
+           {
+               "itemId" : 105356,
+               "lineItem" : 1,
+               "itemName" : "Apples",
+               "weight": 1.00,
+               "uom": "oz",
+               "unitPrice": .60
+           },
+           {
+               "itemId": 105356,
+               "lineItem": 2,
+               "itemName" : "Oranges",
+               "weight": 1.00,
+               "uom": "oz",
+               "unitPrice": .60
+           }
+       ]
+   }, {
+       "orderNo" : "3641223-1207712",
+       "orderDate" : "2021-07-10 09:11:04.000",
+       "customerName": "Jess Nguyen",
+       "children": [
+           {
+               "itemId" : 118223,
+               "lineItem" : 1,
+               "itemName" : "Speakers",
+               "weight": 2.00,
+               "uom": "lbs",
+               "unitPrice": 79.99
+           },
+           {
+               "itemId": 176212,
+               "lineItem": 2,
+               "itemName" : "Screen Cleaner",
+               "weight": 1.00,
+               "uom": "lb",
+               "unitPrice": 9.99
+           }
+       ]
+   }
 ] }`
                 }
             ]
