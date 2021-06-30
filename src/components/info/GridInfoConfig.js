@@ -255,23 +255,21 @@ rows={ [
                 {
                     name: "rowDetailContent",
                     description: "the content to display when a row gets expanded.",
-                    value: <div>a callback function. When a row is expanded, it passed in a
-                        <code className="property">row</code>
-                        object as a parameter. The object is formatted where the keys correspond to the
-                        <code className="property">columns</code>
+                    value: <div>a callback function. When a row is expanded, it passed in an object as a parameter
+                        with property <code className="property">row</code>.
+                        The object is formatted where the keys correspond to the<code className="property">columns</code>
                         prop.</div>,
                     requires: ["allowRowDetail"],
-                    example: `allowRowDetail = { true }, 
-rowDetailContent = {
-    (row) => {
-        const {itemId, itemName, uom, unitPrice} = row;
-        
-        return <div>
-            > Item Name: {itemName}
-            > Unit Of Measure: {uom}
-            > Cost: {unitPrice}
-        </div> 
-    }
+                    example: `allowRowDetail={true}
+rowDetailContent={
+   ({row}) => {
+       const {orderNo, orderDate, customerName, itemId, lineItem, itemName} = row;
+
+       return <div>
+           The customer {customerName} purchased {itemName} under the order
+           number {orderNo} on {orderDate}.
+       </div>
+   }
 }`},
             ]
         },
