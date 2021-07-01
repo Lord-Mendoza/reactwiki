@@ -44,3 +44,49 @@ li {
 .ui.block.inverted.header {
     border: 0;
 }
+
+/*Sidebar and content body*/
+.ui.segment.pushable.sidebarBody {
+    background-color: unset !important;
+    margin: 0;
+}
+
+.menuAndContentComponent.desktop .ui.segment.pushable.sidebarBody {
+    overflow: unset !important;
+    margin-bottom: 10px;
+}
+
+/*Side bar*/
+.menuAndContentComponent.desktop .sidebar.menu {
+    margin-top: 10px !important;
+    margin-left: 15px !important;
+    height: --screen-height !important;
+    max-height: --screen-height !important;
+    overflow-y: auto;
+}
+
+/*Content*/
+.pusher.sidebarContent {
+    overflow: scroll;
+    margin: 10px 15px 10px 38px;
+    width: 90vw;
+}
+
+.menuAndContentComponent.desktop .pusher.sidebarContent {
+    padding-right: 13%;
+}
+
+button.ui.icon.button.sideMenuToggleBtn {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 10vh;
+    width: 38px;
+    z-index: 1000;
+}
+
+/*Mobile*/
+
+.menuAndContentComponent:not(.desktop) .push.left.visible.sidebar.menu {
+    overflow-y: visible !important;
+}

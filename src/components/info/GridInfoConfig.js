@@ -1317,11 +1317,11 @@ exportData = {
             introduction: "The grid can be given a class name for CSS-related customizations.",
             properties: [
                 {
-                    name: "className",
+                    name: "gridContainerClass",
                     description: <div>The CSS class name to attach to the <code className="property">div</code> of the
                         GridComponent</div>,
                     value: "a string",
-                    example: `className = { "searchGrid" }`
+                    example: `gridContainerClass = { "searchGrid" }`
                 }
             ]
         },

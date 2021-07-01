@@ -15,6 +15,7 @@ import {Icon} from "semantic-ui-react";
 import {Switch} from "antd";
 import MenuAndContentComponent from "./MenuAndContentComponent";
 import {gridInfoConfig} from "./info/GridInfoConfig";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class MainComponent extends Component {
     constructor(props){
@@ -148,9 +149,9 @@ class MainComponent extends Component {
                 <div style={{paddingBottom: "10px", backgroundColor: "#343a40", paddingTop: "10px", marginTop: "-15px"}}>
                     <h4 style={{color: "white", textAlign: "center"}}>Developed by <a href="https://lordmendoza.com/">Lord Mendoza</a></h4>
                 </div>
+
+                <ScrollUpButton showAtPosition={500}/>
             </div>
-
-
         );
     }
 }
