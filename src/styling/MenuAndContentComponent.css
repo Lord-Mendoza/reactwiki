@@ -45,6 +45,14 @@ li {
     border: 0;
 }
 
+.ui.vertical.menu .active.item {
+    background-color: rgba(0,0,0,.1) !important;
+}
+
+.darkMode .ui.vertical.menu .active.item {
+    background-color: rgba(0, 0, 0, .5) !important;
+}
+
 /*Sidebar and content body*/
 .ui.segment.pushable.sidebarBody {
     background-color: unset !important;
@@ -68,7 +76,7 @@ li {
 /*Content*/
 .pusher.sidebarContent {
     overflow: scroll;
-    margin: 10px 15px 10px 38px;
+    margin: 10px 15px 10px 40px;
     width: 90vw;
 }
 
@@ -76,12 +84,13 @@ li {
     padding-right: 13%;
 }
 
+/*Toggle button for showing sidebar menu*/
 button.ui.icon.button.sideMenuToggleBtn {
     position: absolute;
     top: 10px;
     left: 0;
     height: 10vh;
-    width: 38px;
+    width: 35px;
     z-index: 1000;
 }
 

@@ -188,11 +188,48 @@ export default function MenuAndContentComponent(props) {
             content.push(<Segment raised inverted={darkMode}>
                 {contentItems[activeKey]["conclusion"]}
             </Segment>)
+
+        let sectionTitle;
+        if (isNotAnEmptyArray(menuItems)) {
+            for (let i = 0; i < menuItems.length; i++) {
+                let currentItem = menuItems[i];
+
+                if (currentItem.hasOwnProperty("subMenuItems")) {
+                    for (let j = 0; j < currentItem["subMenuItems"].length; j++) {
+                        let currentSubItem = currentItem["subMenuItems"][j];
+                        const subItemKey = currentSubItem["key"];
+                        const subItemLabel = currentSubItem["label"];
+
+                        if (subItemKey === activeKey) {
+                            sectionTitle = subItemLabel;
+                            break;
+                        }
+                    }
+                } else {
+                    const itemKey = currentItem["key"];
+                    const itemLabel = currentItem["label"];
+
+                    if (itemKey === activeKey) {
+                        sectionTitle = itemLabel;
+                        break;
+                    }
+                }
+
+                if (isNotNullNorUndefined(sectionTitle))
+                    break;
+            }
+        }
+
+        if (isNotNullNorUndefined(sectionTitle)) {
+            content.unshift(<Segment raised inverted={darkMode}>
+                <h3>{sectionTitle}</h3>
+            </Segment>)
+        }
     }
 
     let sidebarButton, sidebarVisibility, sidebarAnimation, sidebarPusherFunc, contentDim, sidebarClassName;
     if (window.screen.width <= 1250) {
-        sidebarButton = !showSidebar && <Button inverted={darkMode} icon onClick={toggleSidebar} className={'sideMenuToggleBtn'}>
+        sidebarButton = !showSidebar && <Button icon onClick={toggleSidebar} className={'sideMenuToggleBtn'}>
             <Icon name={'chevron right'}/>
         </Button>;
         sidebarAnimation = 'overlay';
@@ -204,8 +241,6 @@ export default function MenuAndContentComponent(props) {
         sidebarAnimation = 'slide along'
         sidebarClassName = 'desktop';
     }
-
-    const screenMaxHeight = window.screen.availHeight;
 
     return (<div className={"menuAndContentComponent " + sidebarClassName}>
         <Sidebar.Pushable as={Segment} className={'sidebarBody'}>
