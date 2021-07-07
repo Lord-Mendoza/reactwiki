@@ -119,7 +119,7 @@ export const gridInfoConfig = {
                                         properties:
                                         <code className="property">true</code> and
                                         <code className="property">false</code>, and the value of each property
-                                        is the column value to look out for to translate as true or false (See example below).
+                                        is the column value to look out for to translate as true or false (see example below).
                                     </li>
                                 </ul>
                             </li>
@@ -375,6 +375,13 @@ rowDetailContent={
                         className="property">false</code></div>,
                     defaultValue: `false`,
                     example: `allowFiltering = { true }`
+                },
+                {
+                    name: "filterPlaceholder",
+                    description: "the placeholder message to appear on the filter input field",
+                    value: "a string",
+                    defaultValue: `"Filtering..."`,
+                    example: `filterPlaceholder = { "Search..." }`
                 }
             ]
         },
@@ -679,9 +686,37 @@ summaryItems = { [
                             <li><code className="property">text</code> - a regular text field.</li>
                             <li><code className="property">number</code> - a number-only field.</li>
                             <li><code className="property">currency</code> - a number-only field that allows for two decimal places.</li>
-                            <li><code className="property">boolean</code> - a dropdown field that shows options "true" or "false".</li>
+                            <li><code className="property">boolean</code> - a checkbox field.
+                                <ul>
+                                    <li>
+                                        By default if the checkbox is checked/unchecked, then <code className="property">onCommitChanges</code> will pass in the boolean
+                                        values <code className="property">true</code> or
+                                        <code className="property">false</code>, respectively for that field. The passed in
+                                        values can be overridden using the
+                                        <code className="property">customTrueFalseValues</code> prop.
+
+                                        <ul>
+                                            <li>
+                                                <code className="property">customTrueFalseValues</code> is a JSON object with two
+                                                properties:
+                                                <code className="property">true</code> and
+                                                <code className="property">false</code>, and the value of each property
+                                                is the value to pass when the user checks/un-checks the checkbox,
+                                                respectively (see example below).
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
                             <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> - a field that shows a dropdown.</li>
-                            <li><code className="property">date</code> - a date field that shows a date-picker.</li>
+                            <li><code className="property">date</code> - a date field that shows a date-picker.
+                                <ul>
+                                    <li>
+                                        By default the date format is <code className="property">MM/DD/YYYY</code>,
+                                        but can be overridden using the <code className="property">format</code> property (see example below).
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
 
                         <br/>
@@ -708,7 +743,13 @@ summaryItems = { [
         itemName: {label: "Name", type: "text"},
         quantity: {label: "Qty", type: "number"},
         cost: {label: "Price", type: "currency"},
+        
         availability: {label: "In Stock", type: "boolean"},
+        
+        //If the checkbox is checked, the onCommitChanges will pass in "Yes", and if unchecked, it will pass in "No".
+        // This replaces the boolean true/false that gets passed in. 
+        onSale: {label: "On Sale", type: "boolean", customTrueFalseValues: {true: "Yes", false: "No"} },
+        
         uom: {
             label: "Unit Of Measure",
              type: {
@@ -722,7 +763,9 @@ summaryItems = { [
         warehouseSource: {
             label: "Warehouse Source", type: {dropdown: this.getWarehouseOptions} 
         },
-        expirationDate: {label: "Expiration Date", type: "date"}
+        
+        //Overrides the "MM/DD/YYYY" formatting
+        expirationDate: {label: "Expiration Date", type: "date", format: "YYYY/MM/DD"}
     },
     fieldsHeight: "25px"
 } }`}
@@ -861,9 +904,36 @@ summaryItems = { [
                             <li><code className="property">text</code> - a regular text field.</li>
                             <li><code className="property">number</code> - a number-only field.</li>
                             <li><code className="property">currency</code> - a number-only field that allows for two decimal places.</li>
-                            <li><code className="property">boolean</code> - a dropdown field that shows options "true" or "false".</li>
+                            <li><code className="property">boolean</code> - a checkbox field.
+                                <ul>
+                                    <li>
+                                        By default if the checkbox is checked/unchecked, then <code className="property">onCommitChanges</code> will pass in the boolean
+                                        values <code className="property">true</code> or
+                                        <code className="property">false</code>, respectively for that field. The passed in
+                                        values can be overridden using the
+                                        <code className="property">customTrueFalseValues</code> prop.
+
+                                        <ul>
+                                            <li>
+                                                <code className="property">customTrueFalseValues</code> is a JSON object with two
+                                                properties:
+                                                <code className="property">true</code> and
+                                                <code className="property">false</code>, and the value of each property
+                                                is the value to pass when the user checks/un-checks the checkbox,
+                                                respectively (see example below).
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
                             <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> - a field that shows a dropdown.</li>
-                            <li><code className="property">date</code> - a date field that shows a date-picker.</li>
+                            <li><code className="property">date</code> - a date field that shows a date-picker.
+                                <ul>
+                                    <li>By default the date format is <code className="property">MM/DD/YYYY</code>, but can be overridden
+                                        using the <code className="property">format</code> property (see example below).
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
 
                         <br/>
@@ -893,7 +963,13 @@ summaryItems = { [
         itemName: {label: "Name", type: "text"},
         quantity: {label: "Qty", type: "number"},
         cost: {label: "Price", type: "currency"},
+        
         availability: {label: "In Stock", type: "boolean"},
+        
+        //If the checkbox is checked, the onCommitChanges will pass in "Yes", and if unchecked, it will pass in "No".
+        // This replaces the boolean true/false that gets passed in. 
+        onSale: {label: "On Sale", type: "boolean", customTrueFalseValues: {true: "Yes", false: "No"} },
+        
         uom: {
             label: "Unit Of Measure",
              type: {
@@ -907,7 +983,9 @@ summaryItems = { [
         warehouseSource: {
             label: "Warehouse Source", type: {dropdown: this.getWarehouseOptions} 
         },
-        expirationDate: {label: "Expiration Date", type: "date"}
+        
+        //Overrides the "MM/DD/YYYY" formatting
+        expirationDate: {label: "Expiration Date", type: "date", format: "YYYY/MM/DD"}
     },
     fieldsHeight: "25px"    
 } }`},
