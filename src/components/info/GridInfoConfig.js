@@ -92,7 +92,36 @@ export const gridInfoConfig = {
                             </li>
 
                             <li>
-                                <code className="property">date</code> - reformats the data to the default "MM/DD/YYYY" format. Can specify an alternative format using the "format" property.
+                                <code className="property">date</code> - reformats the data to the default "MM/DD/YYYY" format.
+                                <ul>
+                                    <li>
+                                        Can specify an alternative format using the
+                                        <code className="property">format</code> property (see example below).
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <code className="property">boolean</code> - changes boolean
+                                <code className="property">true</code> or
+                                <code className="property">false</code> values to string
+                                <code className="property">'Y'</code> and
+                                <code className="property">'N'</code>, respectively.
+
+                                <ul>
+                                    <li>
+                                        The true-false mapping can be overridden using the
+                                        <code className="property">customTrueFalseValues</code> prop.
+                                    </li>
+
+                                    <li>
+                                        <code className="property">customTrueFalseValues</code> is a JSON object with two
+                                        properties:
+                                        <code className="property">true</code> and
+                                        <code className="property">false</code>, and the value of each property
+                                        is the column value to look out for to translate as true or false (See example below).
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                 </span>,
@@ -101,7 +130,13 @@ export const gridInfoConfig = {
     {name: "age", title: "Age", type: "number"},
     {name: "insDate", title: "Insert Date", type: "date"},
     {name: "updDate", title: "Update Date", type: "date", format: "MM/DD/YYYY hh:mm:ss a"},
-    {name: "balance", title: "Balance", type: "currency"}
+    {name: "balance", title: "Balance", type: "currency"},
+    
+    //Whenever column value is string "Yes" or "No", GridComponent will display "Y" or "N", respectively.
+    {name: "isActive", title: "Active", type: "boolean", customTrueFalseValues: {true: "Yes", false: "No"} }
+    
+    //Whenever column value is string "true" or "false", GridComponent will display "Y" or "N", respectively.
+    {name: "isPastDue", title: "Past Due", type: "boolean", customTrueFalseValues: {true: "true", false: "false"} }
 ] }`,
                     notes: "Specifying the type of a column does not alter its respective row data. It's only used to determine how the data will be presented to the user."
                 },
@@ -355,10 +390,23 @@ rowDetailContent={
                         className="property">false</code></div>,
                     defaultValue: `false`,
                     requires: ["grouping"],
-                    notes: <div>For grouping to work properly, the
-                        <code className="property">rows</code>
-                        property should include all of the data possible. This way, all the data can be grouped
-                        properly, internally. Remote paging should therefore be disabled.</div>,
+                    notes: <div>
+                        <ul>
+                            <li>
+                                For grouping to work properly, the
+                                <code className="property">rows</code>
+                                property should include all of the data possible. This way, all the data can be grouped
+                                properly, internally. Remote paging should therefore be disabled.
+                            </li>
+
+                            <li>
+                                If selections are to be allowed for the grid, there is an option to allow a row
+                                selection to select/de-select the rest of the rows in the group using the property
+                                <code className="property">selectByGroup</code>. See the "Selecting" section for
+                                more information.
+                            </li>
+                        </ul>
+                        </div>,
                     example: `allowGrouping = { true }`
                 },
                 {
@@ -539,6 +587,26 @@ summaryItems = { [
                     requires: ["allowSelections", "selections", "changeSelections"],
                     notes: "toggling this feature will prevent users from copying table cell values.",
                     example: `selectByRowClick = { true }`
+                },
+                {
+                    name: "sectionDivider",
+                    title: "Group Selections",
+                    subtitle: <div>
+                        For GridComponent configurations where both grouping and selecting is available,
+                        the grid can be toggled to allow a single row selection in a group to select the
+                        rest of the rows for that group. Conversely, if a single row is de-selected, then
+                        the rest in the group will get de-selected as well.
+                    </div>
+                },
+                {
+                    name: "selectByGroup",
+                    description: "toggles whether to allow users to select/de-select all rows in a group with a " +
+                        "single selection.",
+                    value: <div>boolean <code className="property">true</code> or <code
+                        className="property">false</code></div>,
+                    defaultValue: `false`,
+                    requires: ["allowSelections", "selections", "changeSelections", "allowGrouping", "grouping"],
+                    example: `selectByGroup = { true }`
                 },
             ]
         },

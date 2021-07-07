@@ -16,6 +16,7 @@ import {Switch} from "antd";
 import MenuAndContentComponent from "./MenuAndContentComponent";
 import {gridInfoConfig} from "./info/GridInfoConfig";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+import FileUploadComponentInfo from "./info/FileUploadComponentInfo";
 
 class MainComponent extends Component {
     constructor(props){
@@ -92,6 +93,9 @@ class MainComponent extends Component {
                 mainComponent = <SearchFormComponentInfo />;
                 break;
             case "file-component":
+                window.scrollTo(0,0);
+                mainComponent = <FileUploadComponentInfo />;
+                break;
             default:
                 window.scrollTo(0,0);
                 mainComponent = <MenuAndContentComponent darkMode={darkMode} {...gridInfoConfig}/>;
