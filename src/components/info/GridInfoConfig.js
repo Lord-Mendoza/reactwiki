@@ -809,12 +809,31 @@ summaryItems = { [
                         a property <code className="property">changed</code>.
                         <br/>
                         <br/>
-                        <code className="property">changed</code> is a JSON object in the following format:
                         <ul>
                             <li>
-                                <code className="property">{
-                                    `{<rows array index>: {<changed column>: <updated column value>, ...} }`
-                                }</code>
+                                If <code className="property">editConfig = 'row'</code> or
+                                <code className="property">editConfig = 'cell'</code>
+                                <br/>
+                                <code className="property">changed</code> is a JSON object in the following format:
+                                <ul>
+                                    <li>
+                                        <code className="property">{
+                                            `{<rows array index>: {<changed column>: <updated column value>, ...} }`
+                                        }</code>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                If <code className="property">editConfig = 'external'</code>
+                                <br/>
+                                <ul>
+                                    <li>
+                                        <code className="property">changed</code> is an array that contains the index
+                                        with respect to the <code className="property">rows</code> property that was
+                                        selected for editing.
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>,
@@ -850,25 +869,45 @@ summaryItems = { [
                         <ul>
                             <li><code className="property">editFormat</code> - specifies the type of edit the grid will
                                 render. The value is a string of either
-                                <code className="property">'cell'</code> or
-                                <code className="property">'row'</code>.
+                                <code className="property">'cell'</code>,
+                                <code className="property">'row'</code>, or
+                                <code className="property">'external'</code>.
 
                                 <ul>
                                     <li>
                                         If <code className="property">'row'</code> is selected, then an "Edit" button will
-                                        appear on the left of the row. When the row is in edit mode, the user can choose to
-                                        "Save" or "Cancel" their edits.
+                                        appear on the left of the row. Upon clicking, the row will be available for
+                                        inline editing. When the row is in edit mode, the user can choose to "Save" or
+                                        "Cancel" their edits. Only when "Save" is clicked is
+                                        <code className="property">onCommitChanges</code> triggered.
                                     </li>
                                     <li>
                                         If <code className="property">'cell'</code> is selected, then the edit mode
                                         will only trigger on a highlighted table cell. Once in edit mode, the table cell
                                         will have options to "Update" or "Cancel" the user's edits.
                                     </li>
+                                    <li>
+                                        If <code className="property">'external'</code> is selected, then the "Edit"
+                                        button will appear on the left of the row. Upon clicking, the
+                                        <code className="property">onCommitChanges</code> callback function will be
+                                        called directly, passing in the index of the row triggered for editing.
+                                        <ul>
+                                            <li>
+                                                In contrast to <code className="property">editFormat = 'row'</code>,
+                                                the row will remain in appearance and will not present any input fields.
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
 
                                 Defaults to
                                 <code className="property">'row'</code>.
                             </li>
+                        </ul>
+
+                        For <code className="property">{`editFormat = {'row'}`}</code> or
+                        <code className="property">{`editFormat = {'cell'}`}</code> the following props are available:
+                        <ul>
                             <li>
                                 <code className="property">fields</code> - a JSON object whose keys correspond to the
                                 <code className="property">columns</code> "name" property, and values are JSON objects
@@ -1272,6 +1311,23 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
                         data should be provided to the <code className="property">rows</code> property.
                     </div>,
                     example: `allowSorting = { true }`
+                },
+                {
+                    name: "defaultSorting",
+                    description: "toggles which column(s) to initially sort by.",
+                    value: <div>an array of JSON objects with the following properties:
+                        <ul>
+                            <li>
+                                <code className="property">columnName</code> - the key/id of the column that corresponds
+                                to one of the <code className="property">columns</code> "name" prop.
+                            </li>
+                            <li>
+                                <code className="property">direction</code> - either <code className="property">asc</code>
+                                or <code className="property">desc</code>.
+                            </li>
+                        </ul>
+                    </div>,
+                    example: `defaultSorting: { [ {columnName: "insertDate", direction: "desc"] }`
                 },
                 {
                     name: "sectionDivider",
