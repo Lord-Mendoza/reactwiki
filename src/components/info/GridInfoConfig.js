@@ -363,8 +363,8 @@ rowDetailContent={
             ]
         },
         tableHeaderFormatting: {
-            introduction: "The labels that the column headers can render can be customized (show popovers, show icons," +
-                " etc.)",
+            introduction: "The titles of the column headers can be customized (to show popovers over the title, " +
+                "or show icons instead of title, etc.)",
             properties: [
                 {
                     name: "tableHeaderConfig",
@@ -376,10 +376,13 @@ rowDetailContent={
                         <ul>
                             <li>
                                 <code className="property">renderedComponent</code> - a callback function that
-                                takes parameters
-                                <code className="property">(column, children)</code>
-                                and returns some HTML/React element. Can be used to display something other than the
-                                text value of the column header (ex. span element with a popover).
+                                takes parameters <code className="property">(column, children)</code>
+                                and returns some HTML/React element. To render what is regularly returned, use the
+                                passed <code className="property">children</code> and wrap your element
+                                around it (see example below for showing popover).
+                                Under <code className="property">column</code> you can access the column properties
+                                <code className="property">column.name</code> and
+                                <code className="property">column.title</code>.
                             </li>
                         </ul>
                     </div>,
