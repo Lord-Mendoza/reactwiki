@@ -28,6 +28,7 @@ export const gridInfoConfig = {
             ]
         },
         {key: "tableCellFormatting", label: "Table Cell Formatting"},
+        {key: "tableHeaderFormatting", label: "Table Header Formatting"},
         {key: "filtering", label: "Filtering"},
         {key: "grouping", label: "Grouping"},
         {key: "summarizing", label: "Summarizing"},
@@ -359,6 +360,45 @@ rowDetailContent={
         }
     }
 }`}
+            ]
+        },
+        tableHeaderFormatting: {
+            introduction: "The labels that the column headers can render can be customized (show popovers, show icons," +
+                " etc.)",
+            properties: [
+                {
+                    name: "tableHeaderConfig",
+                    description: "the specified elements to render for a specified column header.",
+                    value: <div>a JSON object whose keys correspond to the
+                        <code className="property">columns</code>
+                        "name" property, and values are JSON objects with one property:
+
+                        <ul>
+                            <li>
+                                <code className="property">renderedComponent</code> - a callback function that
+                                takes parameters
+                                <code className="property">(column, children)</code>
+                                and returns some HTML/React element. Can be used to display something other than the
+                                text value of the column header (ex. span element with a popover).
+                            </li>
+                        </ul>
+                    </div>,
+                    notes: <div>the example below uses the component <code className="property">Popup</code> from
+                    the library <code className="property">semantic-ui-react</code>.</div>,
+                    example: `tableHeaderConfig = {
+    totalCost: {
+        renderedComponent: (column, children) => {
+            return <Popup
+                content={"Total cost including taxes."}
+                trigger={<div> {children} </div>}
+                size={'tiny'}
+                position={'top center'}
+                inverted
+            />
+        }
+    }
+}`
+                }
             ]
         },
         filtering: {
