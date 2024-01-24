@@ -1,6 +1,8 @@
 import React from "react";
 import filteringImg from "../../images/Filtering-Grid-Design.png";
 import groupingImg from "../../images/Grouping-Example.gif";
+import eyeIconImg from "../../images/Hiding-Columns-Eye-Icon.png";
+import columnGroupingImg from "../../images/Column-Grouping-Img.png";
 
 export const gridInfoConfig = {
     title: "Grid Component",
@@ -12,7 +14,8 @@ export const gridInfoConfig = {
             subMenuItems: [
                 {key: "columnWidths", label: "Column Widths"},
                 {key: "columnReorder", label: "Column Reordering"},
-                {key: "hiddenColumns", label: "Hiding Columns"}
+                {key: "hiddenColumns", label: "Hiding Columns"},
+                {key: "nestedColumns", label: "Nesting Columns"}
             ]
         },
         {
@@ -55,8 +58,8 @@ export const gridInfoConfig = {
             key: "styling", label: "Styling",
             subMenuItems: [
                 {key: "className", label: "CSS Class Name"},
-                {key: "height", label: "Max Height"},
-                {key: "width", label: "Max Width"},
+                {key: "height", label: "Grid Height"},
+                {key: "width", label: "Grid Width"},
                 {key: "buttonLabels", label: "Refresh/Export Button Labels"}
             ]
         },
@@ -188,18 +191,86 @@ export const gridInfoConfig = {
         },
         hiddenColumns: {
             introduction: <div>
-                Certain columns can be hidden from view to prevent interactions against them, or from showing their values.
+                Certain columns can be hidden from view to prevent interactions against them, or from showing their
+                values.
             </div>,
+            images: [{image: eyeIconImg, caption: "The grid appears with an 'eye' icon on top-left."}],
             properties: [
                 {
                     name: "hiddenColumns",
-                    description: "a list of hidden columns on the grid",
+                    description: "a list of default hidden columns on the grid",
                     value: <div>an array whose values correspond to the
                         <code className="property">columns</code>
                         "name" property </div>,
-                    example: `hiddenColumns = { [
- "orderId", "itemId" 
-] }`
+                    example: `hiddenColumns = { 
+    ["orderId", "itemId" ] 
+}`
+                },
+                {
+                    name: "allowShowHideColumns",
+                    description: "toggles whether the 'eye' icon is visible to allow for certain columns to be hidden as selected by the user.",
+                    value: <div>boolean <code className="property">true</code> or <code
+                        className="property">false</code></div>,
+                    example: `allowShowHideColumns = { true }`
+                },
+                {
+                    name: "disabledColumnsForHiding",
+                    description: "specifies which columns can never be hidden even if the users try to toggle it in the 'eye' icon.",
+                    value: <div>an array of strings where each string value should correspond
+                        to the <code className="property">columns</code>
+                        "name" property
+                    </div>,
+                    example: `disabledColumnsForHiding = { 
+    ["orderId", "itemId" ] 
+}`
+                }
+            ]
+        },
+        nestedColumns: {
+            introduction: <div>
+                Related columns can be grouped or nested together.
+            </div>,
+            images: [
+                {image: columnGroupingImg, caption: "Columns can be grouped/banded together under a parent column."}
+            ],
+            properties: [
+                {
+                    name: "nestedColumns",
+                    description: "specifies the hierarchy of columns being nested together.",
+                    value: <div>an array of objects with the following properties:
+                        <ul>
+                            <li>
+                                <code className="property">title</code> - the assigned label for the column
+                            </li>
+                            <li>
+                                <code className="property">children</code> - an array of objects with a single
+                                property <code className="property">columnName</code> that corresponds to one of the
+                                columns in
+                                the required <code className="property">columns</code>
+                                "name" property.
+                            </li>
+                        </ul>
+                    </div>,
+                    example: `nestedColumns = { 
+    [ 
+        {
+            title: "Student Info",
+            children: [
+                {columnName: "firstName"},
+                {columnName: "lastName"},
+                {columnName: "age"}
+            ]
+        },
+        {
+            title: "Grade Info",
+            children: [
+                {columnName: "className"},
+                {columnName: "midtermGrade"},
+                {columnName: "finalGrade"}
+            ]
+        }
+    ] 
+}`
                 }
             ]
         },
@@ -273,6 +344,12 @@ rows={ [
        ]
    }
 ] }`
+                },
+                {
+                    name: "expandTreeByDefault",
+                    description: "sets the tree data to be expanded by default.",
+                    defaultValue: 'false',
+                    example: `expandTreeByDefault = { false }`
                 }
             ]
         },
@@ -293,7 +370,8 @@ rows={ [
                     description: "the content to display when a row gets expanded.",
                     value: <div>a callback function. When a row is expanded, it passed in an object as a parameter
                         with property <code className="property">row</code>.
-                        The object is formatted where the keys correspond to the<code className="property">columns</code>
+                        The object is formatted where the keys correspond to the<code
+                            className="property">columns</code>
                         prop.</div>,
                     requires: ["allowRowDetail"],
                     example: `allowRowDetail={true}
@@ -306,7 +384,8 @@ rowDetailContent={
            number {orderNo} on {orderDate}.
        </div>
    }
-}`},
+}`
+                },
             ]
         },
         tableCellFormatting: {
@@ -359,7 +438,8 @@ rowDetailContent={
             </Popup>
         }
     }
-}`}
+}`
+                }
             ]
         },
         tableHeaderFormatting: {
@@ -387,7 +467,7 @@ rowDetailContent={
                         </ul>
                     </div>,
                     notes: <div>the example below uses the component <code className="property">Popup</code> from
-                    the library <code className="property">semantic-ui-react</code>.</div>,
+                        the library <code className="property">semantic-ui-react</code>.</div>,
                     example: `tableHeaderConfig = {
     totalCost: {
         renderedComponent: (column, children) => {
@@ -456,7 +536,7 @@ rowDetailContent={
                                 more information.
                             </li>
                         </ul>
-                        </div>,
+                    </div>,
                     example: `allowGrouping = { true }`
                 },
                 {
@@ -469,7 +549,8 @@ rowDetailContent={
                     </div>,
                     requires: ["allowGrouping"],
                     example: `allowGrouping = { true }
-grouping = { "productType" }`},
+grouping = { "productType" }`
+                },
                 {
                     name: "expandGroupsByDefault",
                     description: "toggles whether to expand all groups by default.",
@@ -539,7 +620,8 @@ summaryItems = { [
     columnName: "unitPrice", type: "max",
     columnName: "unitPrice", type: "min",
     columnName: "profitMargin", type: "sum"
-] }`},
+] }`
+                },
                 {
                     name: "summaryItemLabels",
                     description: <div>The labels that will replace the default labels for the summaries.
@@ -560,7 +642,8 @@ summaryItems = { [
     sum: "Total",
     max: "Max. Price",
     avg: "Average Price"       
-} }`},
+} }`
+                },
                 {
                     name: "customSummaries",
                     description: "The custom summary value(s) to provide, replacing the internal calculated value(s).",
@@ -568,7 +651,8 @@ summaryItems = { [
                         order as the
                         <code className="property">summaryItems</code>.
                     </div>,
-                    example: `customSummaries = { [1259.00, 79.99, 50.00] }`}
+                    example: `customSummaries = { [1259.00, 79.99, 50.00] }`
+                }
             ]
         },
         selecting: {
@@ -617,7 +701,8 @@ summaryItems = { [
     (selections) => {
         this.setState({rowSelections: selections});
     }                     
-}`},
+}`
+                },
                 {
                     name: "showSelectAll",
                     description: "toggles whether to show a select-all checkbox in the grid header, allowing for " +
@@ -675,7 +760,7 @@ summaryItems = { [
                         allowed for creating, then the property <code className="property">editConfig</code> and its
                         <code className="property">fields</code> property needs to be provided to allow only those given
                         columns for creating, as well as the format the input field types will have.
-                        </div>,
+                    </div>,
                     requires: ["onCommitChanges"]
                 },
                 {
@@ -684,7 +769,8 @@ summaryItems = { [
                     value: <div>a callback function that takes in a JSON object as a parameter, which contains
                         a property <code className="property">added</code>.
                         <br/>
-                        <code className="property">added</code> is an array of JSON objects whose keys corresponds to the
+                        <code className="property">added</code> is an array of JSON objects whose keys corresponds to
+                        the
                         <code className="property">columns</code> "name" property, and values are the inputted values by
                         the user for those columns.
                     </div>,
@@ -706,7 +792,8 @@ summaryItems = { [
         //Setting the new version of rows with the added rows
         this.setState({rows: newRows});
     }    
-}`},
+}`
+                },
                 {
                     name: "editConfig",
                     description: "a configuration specifying which columns are allowed for data-input, as well as their input types.",
@@ -719,28 +806,35 @@ summaryItems = { [
                             </li>
                             <li>
                                 <code className="property">fieldsHeight</code> - a CSS-supported height value that
-                                specifies how tall the fields will be. Defaults to <code className="property">20px</code>.
+                                specifies how tall the fields will be. Defaults to <code
+                                className="property">20px</code>.
                             </li>
                         </ul>
 
                         <br/>
-                        For <code className="property">fields</code>, the available <code className="property">type</code> values are:
+                        For <code className="property">fields</code>, the available <code
+                            className="property">type</code> values are:
                         <ul>
                             <li><code className="property">text</code> - a regular text field.</li>
                             <li><code className="property">number</code> - a number-only field.</li>
-                            <li><code className="property">currency</code> - a number-only field that allows for two decimal places.</li>
+                            <li><code className="property">currency</code> - a number-only field that allows for two
+                                decimal places.
+                            </li>
                             <li><code className="property">boolean</code> - a checkbox field.
                                 <ul>
                                     <li>
-                                        By default if the checkbox is checked/unchecked, then <code className="property">onCommitChanges</code> will pass in the boolean
+                                        By default if the checkbox is checked/unchecked, then <code
+                                        className="property">onCommitChanges</code> will pass in the boolean
                                         values <code className="property">true</code> or
-                                        <code className="property">false</code>, respectively for that field. The passed in
+                                        <code className="property">false</code>, respectively for that field. The passed
+                                        in
                                         values can be overridden using the
                                         <code className="property">customTrueFalseValues</code> prop.
 
                                         <ul>
                                             <li>
-                                                <code className="property">customTrueFalseValues</code> is a JSON object with two
+                                                <code className="property">customTrueFalseValues</code> is a JSON object
+                                                with two
                                                 properties:
                                                 <code className="property">true</code> and
                                                 <code className="property">false</code>, and the value of each property
@@ -751,20 +845,25 @@ summaryItems = { [
                                     </li>
                                 </ul>
                             </li>
-                            <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> - a field that shows a dropdown.</li>
+                            <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> -
+                                a field that shows a dropdown.
+                            </li>
                             <li><code className="property">date</code> - a date field that shows a date-picker.
                                 <ul>
                                     <li>
                                         By default the date format is <code className="property">MM/DD/YYYY</code>,
-                                        but can be overridden using the <code className="property">format</code> property (see example below).
+                                        but can be overridden using the <code
+                                        className="property">format</code> property (see example below).
                                     </li>
                                 </ul>
                             </li>
                         </ul>
 
                         <br/>
-                        For the <code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> type,
-                        the <code className="property">&lt;<i>dropdown values</i>&gt;</code> can be one of the following:
+                        For the <code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;
+                        </code> type,
+                        the <code className="property">&lt;<i>dropdown values</i>&gt;</code> can be one of the
+                        following:
                         <ul>
                             <li>
                                 an array of objects in the following format (color can be omitted):
@@ -774,7 +873,8 @@ summaryItems = { [
                                 </code>
                             </li>
                             <li>
-                                a hook callback function that handles the asynchronous retrieval of dropdown options, and returns a
+                                a hook callback function that handles the asynchronous retrieval of dropdown options,
+                                and returns a
                                 <code className="property">&lt;Select/&gt;</code>
                                 object
                             </li>
@@ -811,7 +911,8 @@ summaryItems = { [
         expirationDate: {label: "Expiration Date", type: "date", format: "YYYY/MM/DD"}
     },
     fieldsHeight: "25px"
-} }`}
+} }`
+                }
             ]
         },
         editing: {
@@ -904,7 +1005,8 @@ summaryItems = { [
         //Setting the new version of rows with the edited rows
         this.setState({rows: newRows});
     }    
-}`},
+}`
+                },
                 {
                     name: "editConfig",
                     description: "a configuration specifying which columns are allowed for data-input, as well as their input types.",
@@ -918,7 +1020,8 @@ summaryItems = { [
 
                                 <ul>
                                     <li>
-                                        If <code className="property">'row'</code> is selected, then an "Edit" button will
+                                        If <code className="property">'row'</code> is selected, then an "Edit" button
+                                        will
                                         appear on the left of the row. Upon clicking, the row will be available for
                                         inline editing. When the row is in edit mode, the user can choose to "Save" or
                                         "Cancel" their edits. Only when "Save" is clicked is
@@ -958,11 +1061,13 @@ summaryItems = { [
                             </li>
                             <li>
                                 <code className="property">fieldsHeight</code> - a CSS-supported height value that
-                                specifies how tall the fields will be. Defaults to <code className="property">20px</code>.
+                                specifies how tall the fields will be. Defaults to <code
+                                className="property">20px</code>.
                             </li>
                         </ul>
 
-                        For <code className="property">{`editFormat = {'cell'}`}</code> the following props are available:
+                        For <code className="property">{`editFormat = {'cell'}`}</code> the following props are
+                        available:
                         <ul>
                             <li>
                                 <code className="property">selectTextOnEditStart</code> - specifies whether to highlight
@@ -981,23 +1086,29 @@ summaryItems = { [
                         </ul>
 
                         <br/>
-                        For <code className="property">fields</code>, the available <code className="property">type</code> values are:
+                        For <code className="property">fields</code>, the available <code
+                            className="property">type</code> values are:
                         <ul>
                             <li><code className="property">text</code> - a regular text field.</li>
                             <li><code className="property">number</code> - a number-only field.</li>
-                            <li><code className="property">currency</code> - a number-only field that allows for two decimal places.</li>
+                            <li><code className="property">currency</code> - a number-only field that allows for two
+                                decimal places.
+                            </li>
                             <li><code className="property">boolean</code> - a checkbox field.
                                 <ul>
                                     <li>
-                                        By default if the checkbox is checked/unchecked, then <code className="property">onCommitChanges</code> will pass in the boolean
+                                        By default if the checkbox is checked/unchecked, then <code
+                                        className="property">onCommitChanges</code> will pass in the boolean
                                         values <code className="property">true</code> or
-                                        <code className="property">false</code>, respectively for that field. The passed in
+                                        <code className="property">false</code>, respectively for that field. The passed
+                                        in
                                         values can be overridden using the
                                         <code className="property">customTrueFalseValues</code> prop.
 
                                         <ul>
                                             <li>
-                                                <code className="property">customTrueFalseValues</code> is a JSON object with two
+                                                <code className="property">customTrueFalseValues</code> is a JSON object
+                                                with two
                                                 properties:
                                                 <code className="property">true</code> and
                                                 <code className="property">false</code>, and the value of each property
@@ -1008,10 +1119,13 @@ summaryItems = { [
                                     </li>
                                 </ul>
                             </li>
-                            <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> - a field that shows a dropdown.</li>
+                            <li><code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> -
+                                a field that shows a dropdown.
+                            </li>
                             <li><code className="property">date</code> - a date field that shows a date-picker.
                                 <ul>
-                                    <li>By default the date format is <code className="property">MM/DD/YYYY</code>, but can be overridden
+                                    <li>By default the date format is <code className="property">MM/DD/YYYY</code>, but
+                                        can be overridden
                                         using the <code className="property">format</code> property (see example below).
                                     </li>
                                 </ul>
@@ -1019,8 +1133,10 @@ summaryItems = { [
                         </ul>
 
                         <br/>
-                        For the <code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;</code> type,
-                        the <code className="property">&lt;<i>dropdown values</i>&gt;</code> can be one of the following:
+                        For the <code className="property">&#123;dropdown: &lt;<i>dropdown values</i>&gt;&#125;
+                        </code> type,
+                        the <code className="property">&lt;<i>dropdown values</i>&gt;</code> can be one of the
+                        following:
                         <ul>
                             <li>
                                 an array of objects in the following format (color can be omitted):
@@ -1030,7 +1146,8 @@ summaryItems = { [
                                 </code>
                             </li>
                             <li>
-                                a hook callback function that handles the asynchronous retrieval of dropdown options, and returns a
+                                a hook callback function that handles the asynchronous retrieval of dropdown options,
+                                and returns a
                                 <code className="property">&lt;Select/&gt;</code>
                                 object
                             </li>
@@ -1070,7 +1187,8 @@ summaryItems = { [
         expirationDate: {label: "Expiration Date", type: "date", format: "YYYY/MM/DD"}
     },
     fieldsHeight: "25px"    
-} }`},
+} }`
+                },
                 {
                     name: "sectionDivider",
                     title: <div>
@@ -1094,7 +1212,8 @@ summaryItems = { [
                             </li>
                         </ul>
 
-                        When <code className="property">{`isTreeData = { true } `}</code> the object that GridComponent sends
+                        When <code className="property">{`isTreeData = { true } `}</code> the object that GridComponent
+                        sends
                         is a JSON object in the following format:
                         <ul>
                             <li>
@@ -1187,7 +1306,8 @@ summaryItems = { [
         //Setting the new version of rows with the deleted rows
         this.setState({rows: newRows});
     }    
-}`},
+}`
+                },
                 {
                     name: "showDeleteConfirmation",
                     description: "toggles whether to show a popup to confirm that the user wants to delete the row.",
@@ -1230,7 +1350,7 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
                         will perform paging internally using all of the data it is given in the
                         <code className="property">rows</code>. For this feature to work accurately, all of the possible
                         data should be provided to the <code className="property">rows</code> property.
-                        </div>,
+                    </div>,
                     example: `showPagingPanel = { true }`
                 },
                 {
@@ -1239,7 +1359,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
                     subtitle: <div>To configure the grid for remote paging,
                         <code className="property">showPagingPanel</code> and
                         <code className="property">allowRemotePaging</code> needs to be set to
-                        <code className="property">true</code>, as well as filling-in the rest of the props as listed below.</div>
+                        <code className="property">true</code>, as well as filling-in the rest of the props as listed
+                        below.</div>
                 },
                 {
                     name: "allowRemotePaging",
@@ -1277,7 +1398,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
     (currentPage) => {
         this.setState({gridCurrentPage: currentPage});
     } 
-}`},
+}`
+                },
                 {
                     name: "pageSize",
                     description: "the current page size that the user has set.",
@@ -1308,7 +1430,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
     (pageSize) => {
         this.setState({gridPageSize: pageSize});
     } 
-}`},
+}`
+                },
                 {
                     name: "totalCount",
                     description: "the number of data in total that the grid will page through remotely. This is used" +
@@ -1365,7 +1488,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
                                 to one of the <code className="property">columns</code> "name" prop.
                             </li>
                             <li>
-                                <code className="property">direction</code> - either <code className="property">asc</code>
+                                <code className="property">direction</code> - either <code
+                                className="property">asc</code>
                                 or <code className="property">desc</code>.
                             </li>
                         </ul>
@@ -1378,7 +1502,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
                     subtitle: <div>To configure the grid for remote sorting,
                         <code className="property">allowSorting</code> and
                         <code className="property">allowRemoteSorting</code> needs to be set to
-                        <code className="property">true</code>, as well as filling-in the rest of the props as listed below.</div>
+                        <code className="property">true</code>, as well as filling-in the rest of the props as listed
+                        below.</div>
                 },
                 {
                     name: "allowRemoteSorting",
@@ -1416,7 +1541,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
     (sorting) => {
         this.setState({gridSorting: sorting});
     } 
-}`},
+}`
+                },
                 {
                     name: "sectionDivider",
                     title: "Sorting Algorithm Customization For Columns"
@@ -1462,7 +1588,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
                 return (dateA < dateB) ? -1 : 1;
             }
     }
-} }`}
+} }`
+                }
             ]
         },
         refreshing: {
@@ -1479,7 +1606,8 @@ deleteConfirmationMessage = { "You are about to delete this item. Do you want to
                 },
                 {
                     name: "refreshData",
-                    description: <div>a function that handles the refreshing of the grid when the user clicks "Refresh"</div>,
+                    description: <div>a function that handles the refreshing of the grid when the user clicks
+                        "Refresh"</div>,
                     value: <div>
                         a callback function that should re-retrieve and pass the latest values to the
                         <code className="property">rows</code> prop.
@@ -1571,9 +1699,15 @@ exportData = {
             ]
         },
         height: {
-            introduction: "The grid can be given a maximum height to prevent the data from growing too tall, and " +
-                "show scroll bars if it exceeds the specified value.",
+            introduction: "The grid can be given a minimum/maximum height to prevent the data from shrinking too short, " +
+                "or growing too tall, and displays scroll bars if it exceeds the specified value.",
             properties: [
+                {
+                    name: "minGridHeight",
+                    description: "the minimum height the grid can shrink to vertically. Will also define the default height of the grid.",
+                    value: "a string that is a CSS-support height value",
+                    example: `minGridHeight = { "50vh" }`
+                },
                 {
                     name: "maxGridHeight",
                     description: "the maximum height the grid can expand to vertically.",

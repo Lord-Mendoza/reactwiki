@@ -1,4 +1,5 @@
-import flatten from 'flat';
+import _ from "lodash";
+import {isEmptyString, isNotEmptyString} from "./StringVariableValidators";
 
 export const isNotAnEmptyObject = (val) => {
     return val !== undefined && val !== null
@@ -10,11 +11,10 @@ export const isAnEmptyObject = (val) => {
 }
 
 export const isSameObject = (objOne, objTwo) => {
-    if (isNotAnEmptyObject(objOne) && isNotAnEmptyObject(objTwo)) {
-        let objOneFlattened = flatten(objOne, {maxDepth: 5});
-        let objTwoFlattened = flatten(objTwo, {maxDepth: 5});
-
-        return JSON.stringify(objOneFlattened, Object.keys(objOneFlattened).sort()) === JSON.stringify(objTwoFlattened, Object.keys(objTwoFlattened).sort())
+    if (objOne === undefined && objTwo === undefined) {
+        return true;
+    } else if (isNotAnEmptyObject(objOne) && isNotAnEmptyObject(objTwo)) {
+        return _.isEqual(objOne, objTwo);
     } else if (isAnEmptyObject(objOne) && isAnEmptyObject(objTwo))
         return false;
     else if (isAnEmptyObject(objOne) && isNotAnEmptyObject(objTwo))
@@ -39,4 +39,27 @@ export const isNotNullNorUndefined = (val) => {
 
 export const isNullOrUndefined = (val) => {
     return !isNotNullNorUndefined(val);
+}
+
+export const copyObject = (val) => {
+    return _.cloneDeep(val);
+}
+
+export const removeNullsFromObject = (obj) => {
+    let newObj = {};
+
+    if (isNotAnEmptyObject(obj)) {
+        Object.keys(obj).forEach(prop => {
+            if (isNotNullNorUndefined(obj[prop])) {
+                if (typeof obj[prop] === "string") {
+                    if (isNotEmptyString(obj[prop]))
+                        newObj[prop] = obj[prop];
+                } else {
+                    newObj[prop] = obj[prop];
+                }
+            }
+        })
+    }
+
+    return newObj;
 }

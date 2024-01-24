@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import FormFieldsComponentInfo from './info/FormFieldsComponentInfo';
 import PopupComponentInfo from './info/PopupComponentInfo';
 import MaskComponentInfo from './info/MaskComponentInfo';
 import LoaderComponentInfo from "./info/LoaderComponentInfo";
 import SearchFormComponentInfo from "./info/SearchFormComponentInfo";
 
-import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
+import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import '../styling/MainComponent.css';
 import 'aos/dist/aos.css';
 import AOS from "aos";
@@ -17,9 +16,10 @@ import MenuAndContentComponent from "./MenuAndContentComponent";
 import {gridInfoConfig} from "./info/GridInfoConfig";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import FileUploadComponentInfo from "./info/FileUploadComponentInfo";
+import {formFieldsInfoConfig} from "./info/FormFieldsInfoConfig";
 
 class MainComponent extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         let darkMode;
@@ -28,7 +28,7 @@ class MainComponent extends Component {
 
         this.state = {
             darkMode,
-            copySuccess:""
+            copySuccess: ""
         };
 
         this.handleSelection = this.handleSelection.bind(this);
@@ -40,9 +40,9 @@ class MainComponent extends Component {
         Prism.highlightAll();
     }
 
-    handleSelection(e){
+    handleSelection(e) {
         this.setState({
-          selection: e.target.id
+            selection: e.target.id
         })
     }
 
@@ -61,7 +61,7 @@ class MainComponent extends Component {
     }
 
 
-    render(){
+    render() {
         const {selection, darkMode} = this.state;
 
         AOS.init();
@@ -69,36 +69,36 @@ class MainComponent extends Component {
         let mainComponent;
         switch (selection) {
             case "form-fields-component":
-                window.scrollTo(0,0);
-                mainComponent = <FormFieldsComponentInfo />;
+                window.scrollTo(0, 0);
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...formFieldsInfoConfig}/>;
                 break;
             case "grid-component":
-                window.scrollTo(0,0);
+                window.scrollTo(0, 0);
                 mainComponent = <MenuAndContentComponent darkMode={darkMode} {...gridInfoConfig}/>;
                 break;
             case "loader-component":
-                window.scrollTo(0,0);
-                mainComponent = <LoaderComponentInfo />;
+                window.scrollTo(0, 0);
+                mainComponent = <LoaderComponentInfo/>;
                 break;
             case "mask-component":
-                window.scrollTo(0,0);
-                mainComponent = <MaskComponentInfo />;
+                window.scrollTo(0, 0);
+                mainComponent = <MaskComponentInfo/>;
                 break;
             case "popup-component":
-                window.scrollTo(0,0);
-                mainComponent = <PopupComponentInfo />;
+                window.scrollTo(0, 0);
+                mainComponent = <PopupComponentInfo/>;
                 break;
             case "search-component":
-                window.scrollTo(0,0);
-                mainComponent = <SearchFormComponentInfo />;
+                window.scrollTo(0, 0);
+                mainComponent = <SearchFormComponentInfo/>;
                 break;
             case "file-component":
-                window.scrollTo(0,0);
-                mainComponent = <FileUploadComponentInfo />;
+                window.scrollTo(0, 0);
+                mainComponent = <FileUploadComponentInfo/>;
                 break;
             default:
-                window.scrollTo(0,0);
-                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...gridInfoConfig}/>;
+                window.scrollTo(0, 0);
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...formFieldsInfoConfig}/>;
                 break;
         }
 
@@ -106,26 +106,34 @@ class MainComponent extends Component {
         if (darkMode === true)
             style = {backgroundColor: "#222222", color: "white"};
 
-        return(
+        return (
             <div>
-                <Navbar sticky="top" collapseOnSelect expand ="lg" bg="dark" variant="dark">
+                <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Navbar.Brand>
                         <img src={"logo.png"} style={{marginRight: "5px"}} alt={'react wiki logo'}/>
                         <span style={{verticalAlign: "text-bottom"}}>React Wiki</span>
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <NavDropdown id="nav-dropdown" title = "Components">
-                                <NavDropdown.Item id='file-component' onClick = {this.handleSelection}> File Upload Component </NavDropdown.Item>
-                                <NavDropdown.Item id='form-fields-component' onClick = {this.handleSelection}> Form Fields Component </NavDropdown.Item>
-                                <NavDropdown.Item id="grid-component" onClick = {this.handleSelection} > Grid Component </NavDropdown.Item>
-                                <NavDropdown.Item id='loader-component' onClick = {this.handleSelection}> Loader Component </NavDropdown.Item>
-                                <NavDropdown.Item id='mask-component' onClick = {this.handleSelection}> Mask Component </NavDropdown.Item>
-                                <NavDropdown.Item id='popup-component' onClick = {this.handleSelection}> Popup Component </NavDropdown.Item>
-                                <NavDropdown.Item id='search-component' onClick = {this.handleSelection}> Search Form Component </NavDropdown.Item>
+                            <NavDropdown id="nav-dropdown" title="Components">
+                                <NavDropdown.Item id='file-component' onClick={this.handleSelection}> File Upload
+                                    Component </NavDropdown.Item>
+                                <NavDropdown.Item id='form-fields-component' onClick={this.handleSelection}> Form Fields
+                                    Component </NavDropdown.Item>
+                                <NavDropdown.Item id="grid-component" onClick={this.handleSelection}> Grid
+                                    Component </NavDropdown.Item>
+                                <NavDropdown.Item id='loader-component' onClick={this.handleSelection}> Loader
+                                    Component </NavDropdown.Item>
+                                <NavDropdown.Item id='mask-component' onClick={this.handleSelection}> Mask
+                                    Component </NavDropdown.Item>
+                                <NavDropdown.Item id='popup-component' onClick={this.handleSelection}> Popup
+                                    Component </NavDropdown.Item>
+                                <NavDropdown.Item id='search-component' onClick={this.handleSelection}> Search Form
+                                    Component </NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href={"https://www.npmjs.com/package/reactwiki-components"}> Get Package </Nav.Link>
+                            <Nav.Link href={"https://www.npmjs.com/package/reactwiki-components"}> Get
+                                Package </Nav.Link>
                         </Nav>
 
                         <div style={{padding: ".5rem 1rem"}}>
@@ -141,7 +149,8 @@ class MainComponent extends Component {
                         </div>
 
                         <div style={{padding: ".5rem 1rem .5rem 0"}}>
-                            <a href={"https://github.com/lord-mendoza/reactWiki-components"} style={{color: 'white'}}> <Icon name="github" size='large'/> </a>
+                            <a href={"https://github.com/lord-mendoza/reactWiki-components"} style={{color: 'white'}}>
+                                <Icon name="github" size='large'/> </a>
                         </div>
                     </Navbar.Collapse>
                 </Navbar>
@@ -150,8 +159,10 @@ class MainComponent extends Component {
                     {mainComponent}
                 </div>
 
-                <div style={{paddingBottom: "10px", backgroundColor: "#343a40", paddingTop: "10px", marginTop: "-15px"}}>
-                    <h4 style={{color: "white", textAlign: "center"}}>Developed by <a href="https://lordmendoza.com/">Lord Mendoza</a></h4>
+                <div
+                    style={{paddingBottom: "10px", backgroundColor: "#343a40", paddingTop: "10px", marginTop: "-15px"}}>
+                    <h4 style={{color: "white", textAlign: "center"}}>Developed by <a href="https://lordmendoza.com/">Lord
+                        Mendoza</a></h4>
                 </div>
 
                 <ScrollUpButton showAtPosition={500}/>

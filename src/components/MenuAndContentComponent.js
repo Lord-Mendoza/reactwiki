@@ -2,12 +2,11 @@ import React, {useEffect, useState} from "react";
 import {Button, Header, Icon, Menu, Segment, Sidebar} from "semantic-ui-react";
 import {isNotAnEmptyArray} from "../utilities/helpers/ArrayVariableValidators";
 import {Carousel, Col, Row} from "react-bootstrap";
-import {isNotAnEmptyObject, isNotNullNorUndefined} from "../utilities/helpers/ObjectVariableValidators";
+import {isNotAnEmptyObject, isNotNullNorUndefined} from "../utilities/helpers/ObjectVariableFunctions";
 import {isNotEmptyString} from "../utilities/helpers/StringVariableValidators";
 import Prism from "prismjs";
 import "../styling/MenuAndContentComponent.css";
 import '../styling/ComponentStyling.css';
-import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 export default function MenuAndContentComponent(props) {
     const initialState = {
