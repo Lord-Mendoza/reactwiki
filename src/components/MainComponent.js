@@ -17,6 +17,7 @@ import {gridInfoConfig} from "./info/GridInfoConfig";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import FileUploadComponentInfo from "./info/FileUploadComponentInfo";
 import {formFieldsInfoConfig} from "./info/FormFieldsInfoConfig";
+import {loaderInfoConfig} from "./info/LoaderInfoConfig";
 
 class MainComponent extends Component {
     constructor(props) {
@@ -78,7 +79,7 @@ class MainComponent extends Component {
                 break;
             case "loader-component":
                 window.scrollTo(0, 0);
-                mainComponent = <LoaderComponentInfo/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...loaderInfoConfig}/>;
                 break;
             case "mask-component":
                 window.scrollTo(0, 0);
@@ -98,7 +99,7 @@ class MainComponent extends Component {
                 break;
             default:
                 window.scrollTo(0, 0);
-                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...formFieldsInfoConfig}/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...loaderInfoConfig}/>;
                 break;
         }
 
@@ -108,7 +109,7 @@ class MainComponent extends Component {
 
         return (
             <div>
-                <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark" style={{padding: "10px"}}>
                     <Navbar.Brand>
                         <img src={"logo.png"} style={{marginRight: "5px"}} alt={'react wiki logo'}/>
                         <span style={{verticalAlign: "text-bottom"}}>React Wiki</span>
