@@ -114,6 +114,8 @@ export default class MenuAndContentComponent extends Component {
             && contentItems.hasOwnProperty(activeKey)
             && isNotAnEmptyArray(contentItems[activeKey]["properties"])) {
 
+            let includePropPostFix = contentItems[activeKey]["includePropPostFix"] !== false;
+
             content = contentItems[activeKey]["properties"].map((content) => {
                 const {
                     name, description, value, defaultValue, example, notes, requires,
@@ -127,10 +129,11 @@ export default class MenuAndContentComponent extends Component {
                             <Header.Subheader style={{paddingTop: ".5em"}}>{subtitle}</Header.Subheader>}
                     </Header>
                 } else {
+                    let postFix = includePropPostFix ? "Prop" : "";
                     return <Segment raised inverted={darkMode}>
                         {isNotNullNorUndefined(name) &&
                             <Row noGutters style={{paddingBottom: '.5em', paddingLeft: "1em"}}><h4><code
-                                className="property">{name}</code>Prop
+                                className="property">{name}</code>{postFix}
                             </h4>
                             </Row>}
 
