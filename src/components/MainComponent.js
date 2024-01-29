@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import PopupComponentInfo from './info/PopupComponentInfo';
-import MaskComponentInfo from './info/MaskComponentInfo';
-import LoaderComponentInfo from "./info/LoaderComponentInfo";
 import SearchFormComponentInfo from "./info/SearchFormComponentInfo";
 
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
@@ -18,6 +16,7 @@ import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import FileUploadComponentInfo from "./info/FileUploadComponentInfo";
 import {formFieldsInfoConfig} from "./info/FormFieldsInfoConfig";
 import {loaderInfoConfig} from "./info/LoaderInfoConfig";
+import {maskInfoConfig} from "./info/MaskInfoConfig";
 
 class MainComponent extends Component {
     constructor(props) {
@@ -83,7 +82,7 @@ class MainComponent extends Component {
                 break;
             case "mask-component":
                 window.scrollTo(0, 0);
-                mainComponent = <MaskComponentInfo/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...maskInfoConfig}/>;
                 break;
             case "popup-component":
                 window.scrollTo(0, 0);
@@ -99,7 +98,7 @@ class MainComponent extends Component {
                 break;
             default:
                 window.scrollTo(0, 0);
-                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...loaderInfoConfig}/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...maskInfoConfig}/>;
                 break;
         }
 
