@@ -118,7 +118,7 @@ export default class MenuAndContentComponent extends Component {
 
             content = contentItems[activeKey]["properties"].map((content) => {
                 const {
-                    name, description, value, defaultValue, example, notes, requires,
+                    name, description, value, defaultValue, showDefaultValueAsCode, example, notes, requires,
                     title, subtitle
                 } = content;
 
@@ -141,9 +141,12 @@ export default class MenuAndContentComponent extends Component {
                             {isNotNullNorUndefined(description) && [<Col xs={3}>Description</Col>,
                                 <Col xs={9}>{description}</Col>]}
                             {isNotNullNorUndefined(value) && [<Col xs={3}>Value</Col>, <Col xs={9}>{value}</Col>]}
-                            {isNotNullNorUndefined(defaultValue) && [<Col xs={3}>Default Value</Col>,
+                            {isNotNullNorUndefined(defaultValue) && showDefaultValueAsCode !== false ? [<Col xs={3}>Default
+                                Value</Col>,
                                 <Col xs={9}><code className="property"
-                                                  style={{marginLeft: 0}}>{defaultValue}</code></Col>]}
+                                                  style={{marginLeft: 0}}>{defaultValue}</code></Col>] : [<Col xs={3}>Default
+                                Value</Col>,
+                                <Col xs={9}>{defaultValue}</Col>]}
                             {isNotAnEmptyArray(requires) && [<Col xs={3}><span
                                 style={{fontWeight: "bold", color: "red"}}>Requires</span></Col>,
                                 <Col xs={9}>{

@@ -13,10 +13,10 @@ import {Switch} from "antd";
 import MenuAndContentComponent from "./MenuAndContentComponent";
 import {gridInfoConfig} from "./info/GridInfoConfig";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
-import FileUploadComponentInfo from "./info/FileUploadComponentInfo";
 import {formFieldsInfoConfig} from "./info/FormFieldsInfoConfig";
 import {loaderInfoConfig} from "./info/LoaderInfoConfig";
 import {maskInfoConfig} from "./info/MaskInfoConfig";
+import {fileUploadInfoConfig} from "./info/FileUploadInfoConfig";
 
 class MainComponent extends Component {
     constructor(props) {
@@ -94,11 +94,11 @@ class MainComponent extends Component {
                 break;
             case "file-component":
                 window.scrollTo(0, 0);
-                mainComponent = <FileUploadComponentInfo/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...fileUploadInfoConfig}/>;
                 break;
             default:
                 window.scrollTo(0, 0);
-                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...maskInfoConfig}/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...fileUploadInfoConfig}/>;
                 break;
         }
 

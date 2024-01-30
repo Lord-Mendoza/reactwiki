@@ -2,7 +2,7 @@ import React from "react";
 import maskComponentImg from "../../images/Mask-Component-Example.gif";
 
 export const maskInfoConfig = {
-    title: "MaskComponent",
+    title: "Mask Component",
     defaultMenuItemSelected: "required",
     menuItems: [
         {key: "required", label: "Required"},

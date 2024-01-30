@@ -1,7 +1,7 @@
 import React from "react";
 
 export const loaderInfoConfig = {
-    title: "LoaderComponent",
+    title: "Loader Component",
     defaultMenuItemSelected: "required",
     menuItems: [
         {key: "required", label: "Required"},
@@ -53,7 +53,7 @@ export const loaderInfoConfig = {
                 {
                     name: "inverted",
                     description: "Specifies whether to invert the background color of the overlay from black to light gray.",
-                    default: true,
+                    defaultValue: `true`,
                     value: <span>A boolean <code className="property">true</code> or
                         <code className="property">false</code> value.
                     </span>,
