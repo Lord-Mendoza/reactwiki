@@ -98,7 +98,7 @@ class MainComponent extends Component {
                 break;
             default:
                 window.scrollTo(0, 0);
-                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...fileUploadInfoConfig}/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...gridInfoConfig}/>;
                 break;
         }
 

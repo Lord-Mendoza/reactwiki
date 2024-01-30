@@ -4,7 +4,7 @@ import fileUploadBtn from "../../images/File-Upload-Btn.gif";
 
 export const fileUploadInfoConfig = {
     title: "File Upload Component",
-    defaultMenuItemSelected: "uploadText",
+    defaultMenuItemSelected: "required",
     menuItems: [
         {key: "required", label: "Required"},
         {
