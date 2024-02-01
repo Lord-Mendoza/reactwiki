@@ -11,12 +11,12 @@ import {Icon} from "semantic-ui-react";
 import {Switch} from "antd";
 import MenuAndContentComponent from "./MenuAndContentComponent";
 import {gridInfoConfig} from "./info/GridInfoConfig";
-import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import {formFieldsInfoConfig} from "./info/FormFieldsInfoConfig";
 import {loaderInfoConfig} from "./info/LoaderInfoConfig";
 import {maskInfoConfig} from "./info/MaskInfoConfig";
 import {fileUploadInfoConfig} from "./info/FileUploadInfoConfig";
 import {popupInfoConfig} from "./info/PopupInfoConfig";
+import ScrollToTop from "react-scroll-to-top";
 
 class MainComponent extends Component {
     constructor(props) {
@@ -165,7 +165,7 @@ class MainComponent extends Component {
                         Mendoza</a></h4>
                 </div>
 
-                <ScrollUpButton showAtPosition={500}/>
+                <ScrollToTop smooth/>
             </div>
         );
     }

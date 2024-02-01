@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import '../../styling/ComponentStyling.css';
-import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import Prism from "prismjs";
 import {
     configFileSampleCode,
@@ -21,6 +20,7 @@ import {
     searchMenuTransferTabSampleCode
 } from "../../utilities/constants/SearchFormCodeConstants";
 import {Carousel} from "react-bootstrap";
+import ScrollToTop from "react-scroll-to-top";
 
 class SearchFormComponentInfo extends Component {
     componentDidMount() {
@@ -1251,7 +1251,7 @@ class SearchFormComponentInfo extends Component {
                     </section>
                 </div>
 
-                <ScrollUpButton showAtPosition={500}/>
+                <ScrollToTop smooth/>
             </div>
         )
     }
