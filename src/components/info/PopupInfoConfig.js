@@ -10,13 +10,13 @@ export const popupInfoConfig = {
     defaultMenuItemSelected: "required",
     menuItems: [
         {key: "required", label: "Required"},
+        {key: "footer", label: "Footer Content"},
         {
-            key: "customizations", label: "Customizations",
+            key: "styling", label: "Styling",
             subMenuItems: [
-                {key: "footer", label: "Footer Content"},
                 {key: "bodyPadding", label: "Body Padding"},
                 {key: "closeButton", label: "Close Button"},
-                {key: "className", label: "Class Name"},
+                {key: "className", label: "CSS Class Name"},
             ]
         },
     ],
@@ -71,11 +71,11 @@ export const popupInfoConfig = {
             introduction: "PopupComponent supports customizing the bottom of the popup to add a footer section for" +
                 " grouping together buttons, or displaying additional custom content.",
             images: [
-                {image: allImg, caption: <span>Appearance when <code className="property">footerConfig = "all"</code></span>},
-                {image: closeOnlyImg, caption: <span>Appearance when <code className="property">footerConfig = "closeOnly"</code></span>},
                 {image: customImg, caption: <span>Appearance when <code className="property">footerConfig = "custom"</code></span>},
                 {image: customFormImg, caption: <span>Appearance when <code className="property">footerConfig = "custom"</code> and renders a FormFieldsComponent as content.</span>},
-                {image: submitImg, caption: <span>Appearance when <code className="property">footerConfig = "submit"</code></span>}
+                {image: closeOnlyImg, caption: <span>Appearance when <code className="property">footerConfig = "closeOnly"</code></span>},
+                {image: submitImg, caption: <span>Appearance when <code className="property">footerConfig = "submit"</code></span>},
+                {image: allImg, caption: <span>Appearance when <code className="property">footerConfig = "all"</code></span>}
             ],
             properties: [
                 {

@@ -6,7 +6,13 @@ export const maskInfoConfig = {
     defaultMenuItemSelected: "required",
     menuItems: [
         {key: "required", label: "Required"},
-        {key: "style", label: "Style"}
+        {
+            key: "styling", label: "Styling",
+            subMenuItems: [
+                {key: "loadingIcon", label: "Loading Icon"},
+                {key: "textOnlyContent", label: "Text Only Content"}
+            ]
+        },
     ],
     contentItems: {
         required: {
@@ -39,17 +45,20 @@ export const maskInfoConfig = {
                 }
             ]
         },
-        style: {
-            introduction: <div>The MaskComponent can be customized further to show a media file (as a loading icon)
-                along with the loading message, or text only.
-            </div>,
+        loadingIcon: {
+            introduction: <div>The loading icon for MaskComponent can be a custom icon.</div>,
             properties: [
                 {
                     name: "loadingIcon",
                     description: "Specifies the media file that represents the loading icon.",
                     value: "HTML-supported source file",
                     example: `loadingIcon = { loadingImg }`
-                },
+                }
+            ]
+        },
+        textOnlyContent: {
+            introduction: <div>The MaskComponent can omit any images and simply display text.</div>,
+            properties: [
                 {
                     name: "textOnlyContent",
                     description: "Restricts the loading mask popup to display the loading message only, without" +

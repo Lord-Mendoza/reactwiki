@@ -8,13 +8,18 @@ export const fileUploadInfoConfig = {
     menuItems: [
         {key: "required", label: "Required"},
         {
-            key: "configurations", label: "Configurations",
+            key: "uploadManager", label: "Restricting Uploaded Files",
             subMenuItems: [
-                {key: "appearance", label: "Appearance"},
-                {key: "uploadText", label: "Upload Text Instruction"},
-                {key: "fileTypes", label: "File Types Accepted"},
-                {key: "uploadCount", label: "Upload Count"},
-                {key: "uploadReset", label: "Reset Upon Submit"},
+                {key: "fileTypes", label: "File Type"},
+                {key: "uploadCount", label: "File Count"}
+            ]
+        },
+        {key: "fileUploadManager", label: "File Upload Manager"},
+        {
+            key: "styling", label: "Styling",
+            subMenuItems: [
+                {key: "appearance", label: "Button/File Drop Field"},
+                {key: "uploadText", label: "Upload Text Instruction"}
             ]
         }
     ],
@@ -30,37 +35,6 @@ export const fileUploadInfoConfig = {
                     value: "a callback function.",
                     example: `files = { this.setFiles }`
                 }
-            ]
-        },
-        appearance: {
-            introduction: <div>The FileUploadComponent can appear as a file-drop field, or an upload button.</div>,
-            images: [
-                {image: fileUploadDefault, caption: "Demonstrates the FileUploadComponent in its default appearance."},
-                {image: fileUploadBtn, caption: "Demonstrates the FileUploadComponent in its button appearance."},
-            ],
-            properties: [
-                {
-                    name: "uploadByBtn",
-                    description: "Specifies whether to show a button to trigger upload, or a file upload field.",
-                    defaultValue: `false`,
-                    value: <div>boolean <code className="property">true</code> or <code
-                        className="property">false</code></div>,
-                    example: `uploadByBtn = { true }`
-                },
-                {
-                    name: "sectionDivider",
-                    title: "File Upload Manager",
-                    subtitle: "Files uploaded can either be managed after uploading them (for adding more files, or" +
-                        " deleting already uploaded ones), or be sent straight to the callback function."
-                },
-                {
-                    name: "showFileUploadManager",
-                    description: " Specifies whether to show the \"files uploaded\" queue to the user, and allow them to reset, delete, and submit them",
-                    defaultValue: `true`,
-                    value: <div>boolean <code className="property">true</code> or <code
-                        className="property">false</code></div>,
-                    example: `showFileUploadManager = { true }`
-                },
             ]
         },
         fileTypes: {
@@ -102,7 +76,8 @@ export const fileUploadInfoConfig = {
                     showDefaultValueAsCode: false,
                     defaultValue: <span>
                         <ul>
-                            <li>If uploadByBtn is set to true, the default fileUploadText is <code className="property">"Upload"</code></li>
+                            <li>If uploadByBtn is set to true, the default fileUploadText is <code
+                                className="property">"Upload"</code></li>
                             <li>Otherwise, it's <code className="property">"Drag and drop some files here, or click to select files"</code></li>
                         </ul>
                     </span>,
@@ -124,10 +99,18 @@ export const fileUploadInfoConfig = {
                 }
             ]
         },
-        uploadReset: {
-            introduction: <div>The FileUploadComponent supports resetting the uploaded files queue upon submit, or
-                retaining it.</div>,
+        fileUploadManager: {
+            introduction: "Files uploaded can either be managed after uploading them (for adding more files, or " +
+                "deleting already uploaded ones), or be sent straight to the callback function.",
             properties: [
+                {
+                    name: "showFileUploadManager",
+                    description: " Specifies whether to show the \"files uploaded\" queue to the user, and allow them to reset, delete, and submit them",
+                    defaultValue: `true`,
+                    value: <div>boolean <code className="property">true</code> or <code
+                        className="property">false</code></div>,
+                    example: `showFileUploadManager = { true }`
+                },
                 {
                     name: "resetUponSubmit",
                     description: "Specifies whether to reset the list of files uploaded upon clicking \"submit\"",
@@ -135,6 +118,23 @@ export const fileUploadInfoConfig = {
                         className="property">false</code></div>,
                     defaultValue: `true`,
                     example: `resetUponSubmit = { false }`
+                }
+            ]
+        },
+        appearance: {
+            introduction: <div>The FileUploadComponent can appear as a file-drop field, or an upload button.</div>,
+            images: [
+                {image: fileUploadDefault, caption: "Demonstrates the FileUploadComponent in its default appearance."},
+                {image: fileUploadBtn, caption: "Demonstrates the FileUploadComponent in its button appearance."},
+            ],
+            properties: [
+                {
+                    name: "uploadByBtn",
+                    description: "Specifies whether to show a button to trigger upload, or a file upload field.",
+                    defaultValue: `false`,
+                    value: <div>boolean <code className="property">true</code> or <code
+                        className="property">false</code></div>,
+                    example: `uploadByBtn = { true }`
                 }
             ]
         }

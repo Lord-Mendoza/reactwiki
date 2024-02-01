@@ -5,8 +5,13 @@ export const loaderInfoConfig = {
     defaultMenuItemSelected: "required",
     menuItems: [
         {key: "required", label: "Required"},
-        {key: "loadingMessage", label: "Loading Message"},
-        {key: "style", label: "Style"},
+        {
+            key: "styling", label: "Styling",
+            subMenuItems: [
+                {key: "loadingMessage", label: "Loading Message"},
+                {key: "inverted", label: "Inverted Appearance"},
+            ]
+        },
     ],
     contentItems: {
         required: {
@@ -47,8 +52,8 @@ export const loaderInfoConfig = {
                 },
             ]
         },
-        style: {
-            introduction: "LoaderComponent supports additional style configurations.",
+        inverted: {
+            introduction: "LoaderComponent supports having an inverted appearance.",
             properties: [
                 {
                     name: "inverted",
