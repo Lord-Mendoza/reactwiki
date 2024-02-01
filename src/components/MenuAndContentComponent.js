@@ -144,8 +144,8 @@ export default class MenuAndContentComponent extends Component {
                             {isNotNullNorUndefined(defaultValue) && showDefaultValueAsCode !== false ? [<Col xs={3}>Default
                                 Value</Col>,
                                 <Col xs={9}><code className="property"
-                                                  style={{marginLeft: 0}}>{defaultValue}</code></Col>] : [<Col xs={3}>Default
-                                Value</Col>,
+                                                  style={{marginLeft: 0}}>{defaultValue}</code></Col>] :
+                                isNotNullNorUndefined(defaultValue) && [<Col xs={3}>Default Value</Col>,
                                 <Col xs={9}>{defaultValue}</Col>]}
                             {isNotAnEmptyArray(requires) && [<Col xs={3}><span
                                 style={{fontWeight: "bold", color: "red"}}>Requires</span></Col>,

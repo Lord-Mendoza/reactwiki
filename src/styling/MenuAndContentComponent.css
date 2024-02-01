@@ -53,6 +53,11 @@ li {
     background-color: rgba(0, 0, 0, .5) !important;
 }
 
+a.carousel-control-prev:hover, a.carousel-control-next:hover {
+    background-color: lightgray;
+    filter: invert(1) grayscale(100);
+}
+
 /*Sidebar and content body*/
 .ui.segment.pushable.sidebarBody {
     background-color: unset !important;

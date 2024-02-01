@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PopupComponentInfo from './info/PopupComponentInfo';
 import SearchFormComponentInfo from "./info/SearchFormComponentInfo";
 
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
@@ -17,6 +16,7 @@ import {formFieldsInfoConfig} from "./info/FormFieldsInfoConfig";
 import {loaderInfoConfig} from "./info/LoaderInfoConfig";
 import {maskInfoConfig} from "./info/MaskInfoConfig";
 import {fileUploadInfoConfig} from "./info/FileUploadInfoConfig";
+import {popupInfoConfig} from "./info/PopupInfoConfig";
 
 class MainComponent extends Component {
     constructor(props) {
@@ -86,7 +86,7 @@ class MainComponent extends Component {
                 break;
             case "popup-component":
                 window.scrollTo(0, 0);
-                mainComponent = <PopupComponentInfo/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...popupInfoConfig}/>;
                 break;
             case "search-component":
                 window.scrollTo(0, 0);
@@ -98,7 +98,7 @@ class MainComponent extends Component {
                 break;
             default:
                 window.scrollTo(0, 0);
-                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...gridInfoConfig}/>;
+                mainComponent = <MenuAndContentComponent darkMode={darkMode} {...fileUploadInfoConfig}/>;
                 break;
         }
 
